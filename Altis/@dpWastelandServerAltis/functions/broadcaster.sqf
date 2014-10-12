@@ -15,27 +15,6 @@ _localClockCycle = "update";
 while {true} do 
 {
 	publicVariable "currentInvites";
-	
-	if (_localAllowPlayerIcons != allowPlayerIcons) then
-	{
-		publicVariable "allowPlayerIcons";
-		_localAllowPlayerIcons = allowPlayerIcons;
-	};
-	if (_localAllowGroups != allowGroups) then
-	{
-		publicVariable "allowGroups";
-		_localAllowGroups = allowGroups;
-	};
-	if (_localClockCycle != clockCycle) then
-	{
-		publicVariable "clockCycle";
-		publicVariable "clockCycle";
-		_localClockCycle = clockCycle;
-	};
-	
-	
-	publicVariable "zones";
-	publicVariable "restrictedZones";
 
     sleep 2; 
 };

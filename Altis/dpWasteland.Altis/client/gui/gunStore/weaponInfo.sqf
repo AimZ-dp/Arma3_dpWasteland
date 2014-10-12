@@ -40,7 +40,7 @@ _gunlisttext ctrlSetText format [""];
 	_gunpicture ctrlSettext _picture;
     
 	_gunlisttext ctrlSetText format ["Price: $%1", _price];	
-}}forEach weaponsArray;
+}}forEach pvar_weaponsArray;
 
 {if(_itemText == _x select 1) then{
 	_weap_type = _x select 0; 
@@ -54,7 +54,7 @@ _gunlisttext ctrlSetText format [""];
     
     
 	_gunlisttext ctrlSetText format ["Price: $%1", _price];	
-}}forEach ammoArray;
+}}forEach pvar_ammoArray;
 
 {if(_itemText == _x select 1) then{
 	_weap_type = _x select 0; 
@@ -68,4 +68,4 @@ _gunlisttext ctrlSetText format [""];
     
     
 	_gunlisttext ctrlSetText format ["Price: $%1", _price];	
-}}forEach accessoriesArray;
+}}forEach pvar_accessoriesArray;

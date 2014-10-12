@@ -21,7 +21,7 @@ class Mission
 	randomSeed=4593667;
 	class Intel
 	{
-		briefingName="dp Wasteland v2.7";
+		briefingName="dp Wasteland v2.7.3";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
@@ -2477,45 +2477,45 @@ class Mission
 		};
 		class Item48
 		{
-			position[]={26985.354,21.279991,24713.217};
+			position[]={26840.156,21.899445,24651.643};
 			name="Airport_1";
 			type="Empty";
-			colorName="ColorWhite";
+			colorName="ColorBlack";
 		};
 		class Item49
 		{
-			position[]={21128,20.722483,7340.1348};
+			position[]={20942.166,27.133274,7264.3325};
 			name="Airport_2";
 			type="Empty";
-			colorName="ColorWhite";
+			colorName="ColorBlack";
 		};
 		class Item50
 		{
-			position[]={14782.856,17.85,16334.501};
+			position[]={14337.746,18.951691,16144.073};
 			name="Airport_3";
 			type="Empty";
-			colorName="ColorWhite";
+			colorName="ColorBlack";
 		};
 		class Item51
 		{
-			position[]={11522.133,22.968752,11690.834};
+			position[]={11629.723,23.122614,11869.336};
 			name="Airport_4";
 			type="Empty";
-			colorName="ColorWhite";
+			colorName="ColorBlack";
 		};
 		class Item52
 		{
-			position[]={9137.6689,16.948696,21480.656};
+			position[]={9169.457,16.231901,21543.414};
 			name="Airport_5";
 			type="Empty";
-			colorName="ColorWhite";
+			colorName="ColorBlack";
 		};
 		class Item53
 		{
-			position[]={23152.711,3.1900001,18684.586};
+			position[]={23149.035,3.1900001,18811.74};
 			name="Airport_6";
 			type="Empty";
-			colorName="ColorWhite";
+			colorName="ColorBlack";
 		};
 		class Item54
 		{
@@ -2579,7 +2579,7 @@ class Mission
 			name="map_restriction_1";
 			markerType="RECTANGLE";
 			type="Empty";
-			colorName="ColorGreen";
+			colorName="ColorRed";
 			fillName="Border";
 			a=7200;
 			b=4600;

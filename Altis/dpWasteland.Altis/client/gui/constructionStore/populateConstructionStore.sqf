@@ -25,6 +25,6 @@ switch(_switch) do
 		// Populate the gun shop weapon list
 		{
 			_conlistIndex = _conlist lbAdd format["%1",_x select 0];
-		} forEach baseObjectList;
+		} forEach pvar_baseObjectList;
 	};
 };

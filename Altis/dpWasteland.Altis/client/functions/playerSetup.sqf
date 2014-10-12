@@ -78,9 +78,6 @@ player assignItem "ItemWatch";
 // start the spawn dialog
 sleep 2;
 [] call playerSpawn;	
-[] spawn spawnDefence;
-[] call displayRestrictedZones; 
-[] spawn detectRestrictedZones; 
 
 player enableFatigue false;
 

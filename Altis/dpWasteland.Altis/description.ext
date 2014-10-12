@@ -16,7 +16,7 @@ class Header
 // --- MISSION LOADING -----------------------------------------
 
 author = "=(dp)= Dev Team";
-OnLoadName = "dp Wasteland v2.7 dev";
+OnLoadName = "dp Wasteland v2.7.3";
 OnLoadMission = "Wasteland is a harsh survival sandbox where 2 teams and independent players fight for survival";
 loadScreen = "Loading.jpg";
 
@@ -62,7 +62,7 @@ allowFunctionsRecompile = 0;
 // --- RESPAWN -----------------------------------------
 
 respawn = 3;
-respawnDelay = 1;
+respawnDelay = 15;
 //respawnVehicleDelay = 60;
 //respawnDialog = 0;
 //respawnTemplates[] = {Counter};

@@ -3,7 +3,6 @@
 //	@file Author: [404] Deadbeat, [404] Costlyy, AimZ =(dp)=
 //	@file Created: 08/12/2012 15:19
 //	@file Args:
-
 if(!isServer) exitwith {};
 
 diag_log format["****** mission_AirWreck Started ******"];
@@ -13,7 +12,7 @@ diag_log format["****** mission_AirWreck Started ******"];
 [sideMissionDelayTime] call createWaitCondition;
 
 //Mission Initialization.
-private ["_missionMarkerName","_missionType"];
+private ["_missionMarkerName","_missionType","_marker","_marker2"];
 _missionMarkerName = format["%1_AirWreck_Marker", _this select 0];
 _missionType = "Aircraft Wreck";
 
@@ -24,13 +23,25 @@ _zonePos = _zoneData select 0;
 _zoneWidth = _zoneData select 1;
 _zoneHeight = _zoneData select 2;
 _randomEndPos = [_zonePos,_zoneWidth,_zoneHeight,2,0,1,0] call findSafeRectPos;
-_randomEndPos set [2, 300];
+_randomEndPos set [2, 150];
+_randomStartPos = [_zonePos,1,2000,2,2,1,0] call BIS_fnc_findSafePos;
+_randomStartPos set [2, 150];
+
+// Markers for start and destination
+_marker = createMarker [format["%1_current", _missionMarkerName], _randomStartPos];
+_marker setMarkerType "n_air";
+_marker setMarkerColor "ColorBlack";
+_marker setMarkerText "Helicopter";
+_marker2 = createMarker [format["%1_watpoint", _missionMarkerName], _randomEndPos];
+_marker2 setMarkerType "waypoint";
+_marker2 setMarkerColor "ColorBlack";
+_marker2 setMarkerText "Mission Destination";
 
 // ---- CREATE VEHICLE AND UNITS, SEND TO WAYPOINT ----
 
-private ["_vehicle","_CivGrpS","_pilot","_waypoint"];
+private ["_vehicle","_CivGrpS","_pilot","_soldier","_waypoint"];
 // Create the vehicle FLYING
-_vehicle = [_randomEndPos, TransportHelicopters, true, 3000, false, false, 2, "FLY"] call HeliCreation;	
+_vehicle = [_randomStartPos, TransportHelicopters, true, 10, false, false, 2, "FLY"] call HeliCreation;	
 _vehicle setVehicleLock "LOCKED";
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
 _vehicle setDamage 0;
@@ -40,50 +51,95 @@ _CivGrpS = createGroup civilian;
 _CivGrpS addVehicle _vehicle;
 _pilot = [_CivGrpS, _randomEndPos] call createRandomSoldier; 
 _pilot moveInDriver _vehicle;
+_CivGrpS selectLeader _pilot;
+_soldier = [_CivGrpS, _randomEndPos] call createRandomSoldier; 
+_soldier addBackpack "B_Parachute";	
+_soldier moveInCargo _vehicle;
+_soldier = [_CivGrpS, _randomEndPos] call createRandomSoldier; 
+_soldier addBackpack "B_Parachute";	
+_soldier moveInCargo _vehicle;
+_soldier = [_CivGrpS, _randomEndPos] call createRandomSoldier; 
+_soldier addBackpack "B_Parachute";	
+_soldier moveInCargo _vehicle;
+_soldier = [_CivGrpS, _randomEndPos] call createRandomSoldier; 
+_soldier addBackpack "B_Parachute";	
+_soldier moveInCargo _vehicle;
+_soldier = [_CivGrpS, _randomEndPos] call createRandomSoldier; 
+_soldier addBackpack "B_Parachute";	
+_soldier moveInCargo _vehicle;
 
 _waypoint = _CivGrpS addWaypoint [_randomEndPos, 0];
 _waypoint setWaypointType "MOVE";
-_waypoint setWaypointCompletionRadius 500;
-_waypoint setWaypointCombatMode "GREEN"; // Defensive behaviour
-_waypoint setWaypointBehaviour "SAFE"; // Force convoy to normally drive on the street.
-_waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointSpeed "FULL";
-_waypoint = _CivGrpS addWaypoint [[0,0,250], 0];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointCompletionRadius 300;
+_waypoint setWaypointCompletionRadius 50;
 _waypoint setWaypointCombatMode "GREEN"; // Defensive behaviour
 _waypoint setWaypointBehaviour "SAFE"; // Force convoy to normally drive on the street.
 _waypoint setWaypointFormation "NO CHANGE";
 _waypoint setWaypointSpeed "NORMAL";
+_waypoint = _CivGrpS addWaypoint [_randomStartPos, 0];
+_waypoint setWaypointType "MOVE";
+_waypoint setWaypointCompletionRadius 50;
+_waypoint setWaypointCombatMode "GREEN"; // Defensive behaviour
+_waypoint setWaypointBehaviour "SAFE"; // Force convoy to normally drive on the street.
+_waypoint setWaypointFormation "NO CHANGE";
+_waypoint setWaypointSpeed "LIMITED";
 
-[_vehicle, _pilot, _CivGrpS] spawn {
-	private ["_vehicle", "_group", "_pilot"];
+private ["_box1","_box2","_para","_spawnPos"];
+_box1 = objNull;
+_box2 = objNull;
+
+[_vehicle, _randomEndPos, _pilot, _CivGrpS] spawn {
+	private ["_vehicle", "_randomEndPos", "_pilot"];
 	_vehicle = _this select 0;
-	_pilot = _this select 1;
-	_group = _this select 2;
+	_randomEndPos = _this select 1;
+	_pilot = _this select 2;
+	_group = _this select 3;
+	_box1 = _this select 4;
+	_box2 = _this select 5;
 	
 	waituntil {currentWaypoint _group > 1};
+	
+	// Create these on crash!  Para them!
+	_spawnPos = getPos _vehicle;
+	_spawnPos set [2, (_spawnPos select 2) - 5];
+	_box1 = [_spawnPos, missionAmmoBoxes, true, 10, false, "FLY"] call boxCreation;	
+	_box1 setPos _spawnPos;
+	_box2 = [_spawnPos, missionAmmoBoxes, true, 10, false, "FLY"] call boxCreation;	
+	_box2 setPos _spawnPos;
+	
+	_para = createVehicle ["B_Parachute_02_F", _spawnPos, [], 10, "FLY"];
+	_para setDir getDir _box1;
+	_para setPos getPos _box1;
+	_box1 attachTo [_para, [0,2,0]];
+	[_box1, _para] spawn {_veh = _this select 0;_para = _this select 1;waitUntil {getPos _veh select 2 < 4};
+		_vel = velocity _veh;detach _veh;_veh setVelocity _vel;_time = time + 5;waitUntil {time > _time};
+		if (!isNull _para) then {deleteVehicle _para};};
+	
+	_para = createVehicle ["B_Parachute_02_F", _spawnPos, [], 10, "FLY"];
+	_para setDir getDir _box2;
+	_para setPos getPos _box2;
+	_box2 attachTo [_para, [0,1,0]];
+	0 = [_box2, _para] spawn {_veh = _this select 0;_para = _this select 1;waitUntil {getPos _veh select 2 < 4};
+		_vel = velocity _veh;detach _veh;_veh setVelocity _vel;_time = time + 5;waitUntil {time > _time};
+		if (!isNull _para) then {deleteVehicle _para};};
 
-	_pilot setDamage 1;
-	_vehicle setDamage 0.75;
-	_vel = velocity _vehicle;
-	_vel set [2, (_vel select 2) - 10];
-	_vehicle setDamage 0.75;
-	_vehicle setVelocity _vel;
+	// Eject all the crew		
+	{
+		//sleep 1;
+		_x action ["eject",_vehicle];
+	} foreach units _group;
+	
+	_pilot setDamage 1;	
+	
+	deleteWaypoint [_CivGrpS, 1];
+	deleteWaypoint [_CivGrpS, 2];
+	_waypoint = _CivGrpS addWaypoint [_box1, 0];	
+	_waypoint setWaypointType "HOLD";
+	_waypoint setWaypointCompletionRadius 50;
+	_waypoint setWaypointCombatMode "GREEN"; // Defensive behaviour
+	_waypoint setWaypointBehaviour "SAFE"; // Force convoy to normally drive on the street.
+	_waypoint setWaypointFormation "NO CHANGE";
+	_waypoint setWaypointSpeed "FULL";	
 };
-
-// ---- MARKERS ----
-
-private ["_marker","_marker2"];
-// Markers for start and destination
-_marker = createMarker [format["%1_current", _missionMarkerName], position _vehicle];
-_marker setMarkerType "n_air";
-_marker setMarkerColor "ColorBlack";
-
-_marker2 = createMarker [format["%1_watpoint", _missionMarkerName], _randomEndPos];
-_marker2 setMarkerType "waypoint";
-_marker2 setMarkerColor "ColorBlack";
-_marker2 setMarkerText "Wreckage LZ";
 
 // ---- HINT TO CLIENTS ----
 
@@ -96,12 +152,10 @@ publicVariable "pvar_messageSystem";
 
 // ---- MISSION LOOP,  ---- 
 
-private ["_result","_startTime","_missionEnd","_currTime","_playerPresent","_unitsAlive","_hasSpawned","_box1","_box2"];
+private ["_result","_startTime","_missionEnd","_currTime","_playerPresent","_unitsAlive","_hasSpawned"];
 _result = 0;
 _startTime = floor(time);
 _missionEnd = false;
-_box1 = objNull;
-_box2 = objNull;
 _hasSpawned = false;
 while {!_missionEnd} do
 {
@@ -109,48 +163,25 @@ while {!_missionEnd} do
 	_playerPresent = false;
     _currTime = floor(time);
 	
+	// update the start position
+	_marker setMarkerPos (position _vehicle);
+
 	if(_currTime - _startTime >= sideMissionTimeout) then {_result = 1;};
 	{if((isPlayer _x) AND (_x distance _randomEndPos <= missionRadiusTrigger)) then {_playerPresent = true};sleep 0.1;}forEach playableUnits;
 	_unitsAlive = ({alive _x} count units _CivGrpS);
-	if ((_result == 1) OR ((_playerPresent) AND (_unitsAlive < 1) && _hasSpawned)) then
+	if ((_result == 1) OR ((_playerPresent) AND (_unitsAlive < 1))) then
 	{
 		_missionEnd = true;
 	};
 
-	// update the start position
-	if (alive _vehicle) then
-	{
-		_marker setMarkerPos (position _vehicle);
-	}
-	else
+	if (!(alive _pilot)) then
 	{	
-		if (!_hasSpawned) then
-		{
-			_randomEndPos = position _vehicle;
-				
-			// Create these on crash!  Para them!
-			_box1 = [[(_randomEndPos select 0) + 10, (_randomEndPos select 1), 0], missionAmmoBoxes, true, 10, false] call boxCreation;	
-			_box2 = [[(_randomEndPos select 0) - 10, (_randomEndPos select 1), 0], missionAmmoBoxes, true, 10, false] call boxCreation;	
-			[_CivGrpS,[(_randomEndPos select 0) + 10, (_randomEndPos select 1) + 10, 0]] spawn createSmallGroup;
-			
-			[_missionMarkerName,_randomEndPos,_missionType] call createClientMarker;
-			deleteMarker _marker;
-			deleteMarker _marker2;
-			
-			_hasSpawned = true;
-		};
-	};
-	
-	_vehicle setVariable ["timeout", (time + ammoDesertedTimeLimit + random maxRandomTimeLimit), true];
-	_vehicle setVariable ["last_timeout", time, true];
-	
-	if (!(isNull _box1)) then
-	{
+		[_missionMarkerName,getpos _box1,_missionType] call createClientMarker;
+		
+		_vehicle setVariable ["timeout", (time + ammoDesertedTimeLimit + random maxRandomTimeLimit), true];
+		_vehicle setVariable ["last_timeout", time, true];
 		_box1 setVariable ["timeout", (time + ammoDesertedTimeLimit + random maxRandomTimeLimit), true];
 		_box1 setVariable ["last_timeout", time, true];
-	};
-	if (!(isNull _box2)) then	
-	{
 		_box2 setVariable ["timeout", (time + ammoDesertedTimeLimit + random maxRandomTimeLimit), true];
 		_box2 setVariable ["last_timeout", time, true];
 	};
@@ -189,6 +220,7 @@ else
 
 //Reset Mission Spot.
 [_missionMarkerName] call deleteClientMarker;
-
+deleteMarker _marker;
+deleteMarker _marker2;
 
 diag_log format["****** mission_AirWreck Finished ******"];

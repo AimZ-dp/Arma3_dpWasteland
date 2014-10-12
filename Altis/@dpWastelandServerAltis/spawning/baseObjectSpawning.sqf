@@ -18,7 +18,7 @@ _end = 24;
 for "_i" from _start to _end step _step do
 {
     _pos = getMarkerPos format ["Town_%1", _i];
-	//_type = floor (random (count baseObjectList));
+	//_type = floor (random (count pvar_baseObjectList));
 	//[_pos, _type] call baseObjectCreation;	
 	[_position, survivalObjectList, true, 50, true] call baseObjectCreation;	
 	

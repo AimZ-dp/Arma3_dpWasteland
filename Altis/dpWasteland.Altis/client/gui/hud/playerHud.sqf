@@ -26,7 +26,7 @@ while {true} do
 	
 	_vitals ctrlSetStructuredText parseText format ["%1 <img size='1.0' image='client\ui\icons\health.paa'/><br/>%2 <img size='1.0' image='client\ui\icons\water.paa'/><br/>%3 <img size='1.0' image='client\ui\icons\food.paa'/><br/>%4 <img size='1.0' image='client\ui\icons\money.paa'/>", _health, round (player getVariable ["thirst",0]), round (player getVariable ["hunger",0]), player getVariable ["cmoney",0]];
 	_vitals ctrlCommit 0;
-
+/*
 	_scanning = "...";
 	if (scanningInProgress) then
 	{
@@ -46,7 +46,7 @@ while {true} do
 	
 	_hudScanner ctrlSetStructuredText parseText format ["<img size='1.0' image='client\ui\icons\battery.paa'/> %1%2<br/>%3", scannerBattery, "%", _scanning];
 	_hudScanner ctrlCommit 0;
-			
+*/			
 	if(player != vehicle player) then
 	{
 		_tempString = "";

@@ -2,7 +2,8 @@ private ["_allVehicles","_allMObjects","_check","_vehicleType"];
 
 _allVehicles = vehicles;
 _allMObjects = allMissionObjects "All";
-	
+
+/* ---- TODO: SEND A MESSAGE TO THE SERVER, MAKE THE SERVER DO ALL THE CLEAN UP ----
 {
 	_check = _x getVariable ["newVehicle",0];
 	if(_check != vChecksum) then 
@@ -13,6 +14,7 @@ _allMObjects = allMissionObjects "All";
 		};
 	};
 } forEach _allMObjects; //_allVehicles;
+*/
 
 player commandChat "All Hacked Vehicles Deleted";
 

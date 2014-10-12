@@ -13,7 +13,7 @@ private ["_soldierTypes","_uniformTypes","_vestTypes","_weaponTypes","_group","_
 
 _soldierTypes = ["C_man_1","C_man_1_2_F","C_man_1_3_F","C_man_polo_1_F","C_man_polo_2_F","C_man_polo_3_F"];
 _uniformTypes = ["U_B_CombatUniform_mcam_vest","U_B_CombatUniform_mcam_tshirt","U_B_CombatUniform_mcam"];
-_vestTypes = ["V_PlateCarrier1_cbr","V_PlateCarrier1_rgr"];
+_vestTypes = ["V_PlateCarrier1_blk","V_PlateCarrier1_rgr"];
 //_pistolTypes = [];
 _weaponTypes = ["arifle_TRG20_F","LMG_Mk200_F","arifle_MXM_F","arifle_MX_GL_F","arifle_MXM_Black_F","arifle_MX_GL_F","arifle_MX_GL_Black_F"];
 //_launcherType = ["launch_RPG32_F"];

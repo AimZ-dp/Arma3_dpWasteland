@@ -14,20 +14,19 @@ _counter= 0;
 
 for "_i" from 1 to 20 step 1 do
 {
-	private ["_townPos","_townNumber","_ZoneRestricted","_attempts"];
+	private ["_areaArray","_areaName","_townPos","_townNumber","_ZoneRestricted","_attempts"];
 	_townNumber = 0;
 	_ZoneRestricted = true;
 	_attempts = 0;
 	while {(_ZoneRestricted && _attempts < 1000)} do
 	{
-		// GET A RANDOM TOWN POSITION
-		_townNumber = floor (random (count bayList));
+		_townNumber = floor (random (count pvar_bayList));
 		_townPos = getMarkerPos format ["Bay_%1", _townNumber+1];
 		_ZoneRestricted = [_townPos] call isPosRestricted;
 		_attempts = _attempts + 1;
 	};
 	_position = getMarkerPos format ["Bay_%1", _townNumber+1];
-	_radius = (bayList select _townNumber) select 1;
+	_radius = (pvar_bayList select _townNumber) select 1;
 
 	_type = floor (random 3);
 	switch (_type) do

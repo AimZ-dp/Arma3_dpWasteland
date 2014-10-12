@@ -19,7 +19,7 @@ if (_uid in dpModerators || _uid in serverdpAdministrators) then
 	
 	if not(isNil "_displaydpMod") then {_dpModSelect = _displaydpMod displayCtrl dpModMenu_option;};
 	if not(isNil "_displayServerAdmin") then {_serverAdminSelect = _displayServerAdmin displayCtrl serverAdminMenu_option;};
-	
+		
 	switch (_panelType) do
 	{
 		case 0: //dpModerator panel
@@ -68,46 +68,46 @@ if (_uid in dpModerators || _uid in serverdpAdministrators) then
 			    };
 			    case 5: //Allow Player Icons
 			    {      
-					if (allowPlayerIcons == "ON") then
+					if (pvar_allowPlayerIcons == "ON") then
 					{
-						allowPlayerIcons = "OFF";					
+						pvars_allowPlayerIcons = "OFF";					
 					}
 					else
 					{
-						allowPlayerIcons = "ON";
+						pvars_allowPlayerIcons = "ON";
 					};
-					publicVariableServer "allowPlayerIcons";
+					publicVariableServer "pvars_allowPlayerIcons";
 				};
 				case 6: //Allow Groups
 			    {      
-					if (allowGroups == "ON") then
+					if (pvar_allowGroups == "ON") then
 					{
-						allowGroups = "OFF";					
+						pvars_allowGroups = "OFF";					
 					}
 					else
 					{
-						allowGroups = "ON";
+						pvars_allowGroups = "ON";
 					};
-					publicVariableServer "allowGroups";
+					publicVariableServer "pvars_allowGroups";
 			    };
 				case 7: //Day Cycle
 			    {      
-					if (clockCycle == "DAY ONLY") then
+					if (pvar_clockCycle == "DAY ONLY") then
 					{
-						clockCycle = "DAY AND NIGHT";					
+						pvars_clockCycle = "DAY AND NIGHT";					
 					}
 					else
 					{
-						if (clockCycle == "DAY AND NIGHT") then
+						if (pvar_clockCycle == "DAY AND NIGHT") then
 						{
-							clockCycle = "NIGHT ONLY";					
+							pvars_clockCycle = "NIGHT ONLY";					
 						}
 						else
 						{
-							clockCycle = "DAY ONLY";	
+							pvars_clockCycle = "DAY ONLY";	
 						};
 					};
-					publicVariableServer "clockCycle";
+					publicVariableServer "pvars_clockCycle";
 			    };
 			};
 	    };

@@ -36,7 +36,7 @@ switch(_switch) do
 					pvar_createBaseObject = [_class, _position,player];
 					publicVariableServer "pvar_createBaseObject"; 
 				};                    		
-			}forEach baseObjectList;
+			}forEach pvar_baseObjectList;
 		};
 
 		player setVariable["cmoney",_playerMoney - constructionstoreCart,true];

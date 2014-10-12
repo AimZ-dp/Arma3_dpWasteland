@@ -101,7 +101,7 @@ if(!dialog) then
 	_mIndex = _mvalue lbadd "$5000"; _mvalue lbSetData [(lbSize _mvalue)-1, "5000"];
 	
 	//  disable groups if allowGroups enabled
-	if (allowGroups == "OFF") then
+	if (pvar_allowGroups == "OFF") then
 	{
 	 	_groupButton ctrlShow false;    
 	};

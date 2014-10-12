@@ -52,7 +52,7 @@ switch(_switch) do
 						}
 						else
 						{
-							{if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach weaponsArray;
+							{if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach pvar_weaponsArray;
 							gunStoreCart = gunStoreCart - _price;
 							hint format["You do not have space for this item %1",_name];  
 						};
@@ -68,7 +68,7 @@ switch(_switch) do
 						}
 						else
 						{
-							{if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach weaponsArray;
+							{if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach pvar_weaponsArray;
 							gunStoreCart = gunStoreCart - _price;
 							hint format["You do not have space for this item %1",_name];  
 						};
@@ -84,13 +84,13 @@ switch(_switch) do
 						}
 						else
 						{
-							{if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach weaponsArray;
+							{if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach pvar_weaponsArray;
 							gunStoreCart = gunStoreCart - _price;
 							hint format["You do not have space for this item %1",_name];  
 						};
 					};
 				};                    		
-			}forEach weaponsArray;
+			}forEach pvar_weaponsArray;
 
 			{
 				if(_itemText == _x select 1) then
@@ -106,13 +106,13 @@ switch(_switch) do
 					}
 					else
 					{
-						{if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach ammoArray;
+						{if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach pvar_ammoArray;
 						gunStoreCart = gunStoreCart - _price;
 						hint format["You do not have space for this item %1",_name];  
 						sleep 0.5;
 					};
 				}
-			}forEach ammoArray;
+			}forEach pvar_ammoArray;
 
 			{
                 if(_itemText == _x select 1) then
@@ -132,13 +132,13 @@ switch(_switch) do
 					}
 					else
 					{
-						{if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach accessoriesArray;
+						{if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach pvar_accessoriesArray;
 						gunStoreCart = gunStoreCart - _price;
 						hint format["You do not have space for this item %1",_name];  
 						sleep 0.5;
 					};
 				};
-            }forEach accessoriesArray;
+            }forEach pvar_accessoriesArray;
 		};
 
 		player setVariable["cmoney",_playerMoney - gunStoreCart,true];

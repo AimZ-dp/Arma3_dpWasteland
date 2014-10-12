@@ -75,6 +75,7 @@ class WastelandHud {
 				align = "right";
 			};
 		};
+/*
 		class WastelandHud_Scanner:w_RscText
 		{
 			idc = hud_scanner_idc;
@@ -93,5 +94,6 @@ class WastelandHud {
 				align = "left";
 			};
 		};
+*/
 	};
 };

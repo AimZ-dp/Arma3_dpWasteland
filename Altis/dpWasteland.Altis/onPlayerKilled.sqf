@@ -19,6 +19,7 @@ _respawnDelay = [_this, 3, 0] call BIS_fnc_param;
 ["playing %1 just died!",name _corpse] call BIS_fnc_logFormat;
 
 _corpse removeAction playerMenuId;
+_corpse removeAction WeaponActionsId;
 {
 	_corpse removeAction _x;
 } forEach aActionsIDs;

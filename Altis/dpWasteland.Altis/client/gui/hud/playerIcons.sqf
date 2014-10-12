@@ -21,7 +21,7 @@ addMissionEventHandler ["Draw3D", {
 			_playerDistance = _playerPos distance player;
 			
 			_scannerStrength = 1;
-			if (allowPlayerIcons == "OFF") then 
+			if (pvar_allowPlayerIcons == "OFF") then 
 			{
 				// 400 meters
 				//_scannerStrength = (scannerBattery * ((-0.002 * (_playerPos distance player)) + 1)) / 100;
@@ -111,7 +111,7 @@ addMissionEventHandler ["Draw3D", {
 				
 				// 400 meters
 				_scannerStrength = 1;
-				if (allowPlayerIcons == "OFF") then 
+				if (pvar_allowPlayerIcons == "OFF") then 
 				{
 					_scannerStrength = (scannerBattery * ((-0.0015 * (_playerPos distance player)) + 1)) / 100;
 				}

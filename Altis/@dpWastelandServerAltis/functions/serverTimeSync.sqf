@@ -15,7 +15,7 @@ publicVariable "currentDate";
 _prevHours = _dateStamp select 3;
 _prevMinutes = _dateStamp select 4;
 
-_prevClockCycle = clockCycle;
+_prevClockCycle = pvar_clockCycle;
 _updateTime = false;
 
 while {true} do
@@ -33,14 +33,14 @@ while {true} do
 		_prevHours = _hours;
 	};
 	
-	if (_prevClockCycle != clockCycle) then
+	if (_prevClockCycle != pvar_clockCycle) then
 	{
 		// clock cycle has changed
 		_updateTime = true;
-		_prevClockCycle = clockCycle;
+		_prevClockCycle = pvar_clockCycle;
 	};
 	
-	if (clockCycle == "DAY ONLY") then 
+	if (pvar_clockCycle == "DAY ONLY") then 
 	{
 		// 5:00am - 7:30pm
 		if ((_hours > 19 || (_hours == 19 && _minutes > 30)) || _updateTime) then 
@@ -57,7 +57,7 @@ while {true} do
 			_updateTime = false;
 		};
 	};
-	if (clockCycle == "NIGHT ONLY") then
+	if (pvar_clockCycle == "NIGHT ONLY") then
 	{
 		// 8:00pm - 4:30am
 		if ((_hours > 4 || (_hours == 4 && _minutes > 30)) || _updateTime) then 
@@ -74,7 +74,7 @@ while {true} do
 			_updateTime = false;
 		};		
 	};
-	if (clockCycle == "DAY AND NIGHT") then
+	if (pvar_clockCycle == "DAY AND NIGHT") then
 	{
 		// 4:00pm
 		if (_updateTime) then 

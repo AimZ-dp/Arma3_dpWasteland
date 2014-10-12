@@ -36,13 +36,13 @@ switch(_switch) do
                 _townName = _name;
 				_pos = getMarkerPos (_x select 0);
 				_rad = _x select 1;
-				_pos = [_pos,5,_rad,2,0,0,0] call BIS_fnc_findSafePos;
+				_pos = [_pos,5,_rad,1,0,0,0] call BIS_fnc_findSafePos;
 				_pos = [_pos select 0, _pos select 1, (_pos select 2) + 10];				
 				player setPos _pos;
 				respawnDialogActive = false;
 				closeDialog 0;
 			};
-		}forEach cityList;
+		}forEach pvar_cityList;
     };
     case 1:
     {
@@ -53,13 +53,13 @@ switch(_switch) do
                 _townName = _name;
 				_pos = getMarkerPos (_x select 0);
 				_rad = _x select 1;
-				_pos = [_pos,5,_rad,2,0,0,0] call BIS_fnc_findSafePos;
+				_pos = [_pos,5,_rad,1,0,0,0] call BIS_fnc_findSafePos;
 				_pos = [_pos select 0, _pos select 1, (_pos select 2) + 10];			
 				player setPos _pos;
 				respawnDialogActive = false;
 				closeDialog 0;
 			};
-		}forEach cityList;
+		}forEach pvar_cityList;
     };
     case 2:
     {
@@ -70,13 +70,13 @@ switch(_switch) do
                 _townName = _name;
 				_pos = getMarkerPos (_x select 0);
 				_rad = _x select 1;
-				_pos = [_pos,5,_rad,2,0,0,0] call BIS_fnc_findSafePos;
+				_pos = [_pos,5,_rad,1,0,0,0] call BIS_fnc_findSafePos;
 				_pos = [_pos select 0, _pos select 1, (_pos select 2) + 10];			
 				player setPos _pos;
 				respawnDialogActive = false;
 				closeDialog 0;
 			};
-		}forEach cityList;
+		}forEach pvar_cityList;
     };
     case 3:
     {
@@ -87,13 +87,13 @@ switch(_switch) do
                 _townName = _name;
 				_pos = getMarkerPos (_x select 0);
 				_rad = _x select 1;
-				_pos = [_pos,5,_rad,2,0,0,0] call BIS_fnc_findSafePos;
+				_pos = [_pos,5,_rad,1,0,0,0] call BIS_fnc_findSafePos;
 				_pos = [_pos select 0, _pos select 1, (_pos select 2) + 10];			
 				player setPos _pos;
 				respawnDialogActive = false;
 				closeDialog 0;
 			};
-		}forEach cityList;
+		}forEach pvar_cityList;
     };
     case 4:
     {
@@ -104,13 +104,13 @@ switch(_switch) do
                 _townName = _name;
 				_pos = getMarkerPos (_x select 0);
 				_rad = _x select 1;
-				_pos = [_pos,5,_rad,2,0,0,0] call BIS_fnc_findSafePos;
+				_pos = [_pos,5,_rad,1,0,0,0] call BIS_fnc_findSafePos;
 				_pos = [_pos select 0, _pos select 1, (_pos select 2) + 10];			
 				player setPos _pos;
 				respawnDialogActive = false;
 				closeDialog 0;
 			};
-		}forEach cityList;
+		}forEach pvar_cityList;
     };
 };
 sleep 5;

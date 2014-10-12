@@ -41,6 +41,43 @@ player createDiaryRecord["changelog",
 
 player createDiaryRecord["changelog",
 ["=(dp)=","
+<br/>2.7.2<br/>
+	[Improvement] remove scanner - will replace with a perk later.<br/>
+	[Improvement] Player Spawn: spawn in bays.<br/>
+	[Improvement] GUI: Update the interface (blue is liked).<br/>
+	[Improvement] Stores: Double stores in each zone, don't spawn in restricted zones.<br/>
+	[Improvement] vehicles: Update vehicles list, Everything apart from support, balance after few games.<br/>
+	[Improvement] vehicles: Helicopters have open doors.<br/>
+	[Improvement] vehicles: spawn in bays.<br/>
+	[Update] Weapons: Update weapons list - Everything, need to start balancing after a few games.<br/>
+	[Improvement] If holstered, action for main weapon.<br/>
+	[Improvement] Weapons: crates spawn in bays.<br/>
+	[Improvement] Mission: Double up the missions (spawn second controller after sleep, issue will be the markers).<br/>
+	[Improvement] Increase heli spawn radius.<br/>
+	[Bug] Repeated Player Menu action, enter vehicle - BIS must of changed player vehicle interaction.<br/>
+	[Bug] Store lamp disappeared.<br/>
+	[Bug] Gun guy needs to be more aggressive.<br/>
+	[Bug] Can not refuel jerry can.<br/>
+	[Improvement] Remove icon from welcome screen.<br/>
+	[Bug] Jump bug, don't hold down V.<br/>
+	[Bug] Load in bug, items are duplicated in truck and object stays on ground.<br/>
+<br/>2.7.1<br/>
+	Moved over to Altis map.<br/>
+	[Improvement] Created restricted zones to close off half the map.<br/>
+	[Improvement] Made changes to the stores spawning positions.<br/>
+	[Improvement] Made changes to the mission spawn positions.<br/>
+	[Improvement] Made changes to the store guys, so the are not so static.<br/>
+	[Bug] Fixed Boat Spawn - SUV array was commented out.<br/>
+	[Bug] Fixed surveiller_conditions_actions_menu.sqf - fn_findstring is not a valid function.<br/>
+	[Bug] 2x Scanner Actions - BIS must of made RespawnOnStart a permanent feature.<br/>
+	[Bug] Multiple Player Menu Actions - BIS must of made RespawnOnStart a permanent feature.<br/>
+	[Improvement] Remove Fatigue.<br/>
+	[Bug] Logistics Not Working  - ArmA3 is now extremely picky about local\global vars, must make sure declared in private.<br/> 
+	[Improvement] Holster gun wanted.<br/>
+	[Improvement] Jump wanted.<br/>
+	[Improvement] Change the Caps players are spawned with.<br/>
+	[Bug] AI left over from mission.<br/>
+	[Bug] Remove bobcat heli? glitched when getting out.<br/>
 <br/>2.7<br/>
 <br/>Merged Following changes made by CADelta v2.5 to v2.6:<br/>
 Thanks to Krycek who took on dp server whilst I was out of action.<br/>

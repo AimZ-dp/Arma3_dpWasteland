@@ -17,12 +17,7 @@
 
 #include "config.sqf"
 
-if (isServer) then
-{
-	// On cr?e le point d'attache qui servira aux attachTo pour les objets ? charger virtuellement dans les v?hicules
-	R3F_LOG_PUBVAR_point_attache = "Land_HelipadEmpty_F" createVehicle [0, 0, 0];
-	publicVariable "R3F_LOG_PUBVAR_point_attache";
-};
+
 
 // Un serveur d?di? n'en a pas besoin
 if !(isServer && isDedicated) then

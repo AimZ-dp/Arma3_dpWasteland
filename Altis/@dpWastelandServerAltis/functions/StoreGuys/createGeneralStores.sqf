@@ -6,68 +6,105 @@
 
 if(!isServer) exitWith {};
 
-generalStoreLocations = [];
+private ["_storesPerActiveZone","_locIndex","_numStores","_storeGuyPos"];
+
+_storesPerActiveZone = _this select 0;
+_locIndex = 0;
+_storeGuyPos = [];
 
 // Create a Gun Store in each Zone
 {
-	// TODO: MAKE THIS A FUNCTION, ALSO USED IN createMissionLocation
-	private ["_zonePos","_zoneSize","_zoneWidth","_zoneHeight","_randomPos"];
-	_zonePos = getMarkerPos format ["map_restriction_%1", _x];
-	_zoneSize = getMarkerSize format ["map_restriction_%1", _x];
-	_zoneWidth = _zoneSize select 0;
-	_zoneHeight = _zoneSize select 1;
-	_randomPos = [_zonePos,_zoneWidth,_zoneHeight,2,0,1,0] call findSafeRectPos;
-	//----------------------------------------------
-
-	private ["_gunStoreGroup","_storeGuy","_storeHouse","_storeLights"];
-
-	// create a building
-	_storeHouse = createVehicle ["Land_u_Shop_01_V1_F",_randomPos,[],1,"NONE"]; 
-	_storeHouse setDir 0;
-	_storeHouse allowDamage false;
-	_storeHouse setVariable["newVehicle",vChecksum,true];
-	_storeHouse setVariable["R3F_LOG_disabled",false];
-	
-	_tempPos = getPos _storeHouse;
-	_tempPos set [0, (_tempPos select 0) + 10];
-	_tempPos set [1, (_tempPos select 1) - 15];
-	_storeLights = createVehicle ["Land_LampHalogen_F",_tempPos,[],1,"NONE"]; 
-	_storeLights setDir 25;
-	_storeLights allowDamage false;
-	_storeHouse setVariable["newVehicle",vChecksum,true];
-	_storeLights setVariable["R3F_LOG_disabled",false];
-	
-	// Create the Guy same as in mission file
-	_gunStoreGroup = createGroup civilian;
-	_gunStoreGroup setBehaviour "CARELESS";
-	_storeGuy = _gunStoreGroup createunit ["C_man_polo_6_F", _randomPos, [], 1, "NONE"];
-	//_storeGuy setSkill 0.8;
-	_storeGuy addVest "V_PlateCarrier1_cbr";
-	_storeGuy addEventHandler ["HandleDamage", {
-			[_this select 0] spawn 
-			{
-				_unit = _this select 0;
-				if (primaryWeapon _unit == "") then
-				{
-					//_unit addMagazine "30Rnd_556x45_Stanag";
-					//_unit addWeapon "arifle_TRG20_F";
-					//_unit setCombatMode "RED";
-					//sleep 30;
-					//_unit setCombatMode "GREEN";
-					//_unit removeWeapon "arifle_TRG20_F";
-				};
+	if (!(_x in pvar_restrictedZones)) then
+	{
+		for "_numStores" from 1 to _storesPerActiveZone do
+		{
+			// Check the array 
+			_storeGuyPos = pvar_generalStoreLocations select _locIndex;
+				
+			if (count _storeGuyPos < 2) then
+			{		
+				// TODO: MAKE THIS A FUNCTION, ALSO USED IN createMissionLocation
+				private ["_zonePos","_zoneSize","_zoneWidth","_zoneHeight","_randomPos"];
+				_zonePos = getMarkerPos format ["map_restriction_%1", _x];
+				_zoneSize = getMarkerSize format ["map_restriction_%1", _x];
+				_zoneWidth = _zoneSize select 0;
+				_zoneHeight = _zoneSize select 1;
+				_randomPos = [_zonePos,_zoneWidth,_zoneHeight,4,0,1,0] call findSafeRectPos;
+				//----------------------------------------------
+								
+				// OUTPUT THE POSITION TO THE LOG JUST INCASE POSITION WANTS TO BE SET PERMANENTLY
+				["	General Store (zone %1): Generated Pos=%2", _x, _randomPos] call BIS_fnc_logFormat;
+				
+				_storeGuyPos = _randomPos;
 			};
-		false}];
+			
+			private ["_gunStoreGroup","_storeGuy","_storeHouse","_storeLights","_tempPos"];
+			// create a building
+			_storeHouse = createVehicle ["Land_u_Shop_01_V1_F",_storeGuyPos,[],1,"NONE"]; 
+			_storeHouse allowDamage false;
+			_storeHouse setVariable["newVehicle",vChecksum,true];
+			_storeHouse setVariable["R3F_LOG_disabled",false];
+			
+			private ["_dir","_roadlist","_minDistance"];
+			_dir = 0;
+			_roadlist = _storeHouse nearRoads 150;
+			_minDistance = 999;
+			{
+				_dist = _x distance _storeHouse;
+				if (_dist < _minDistance) then
+				{
+					_minDistance = _dist;
+					_dir = [_x, _storeHouse] call BIS_fnc_dirTo;
+				};
+			} foreach _roadlist;
+			_storeHouse setDir _dir;
+			
+			_tempPos = getPos _storeHouse;
+			_tempPos set [0, (_tempPos select 0) + 10];
+			_tempPos set [1, (_tempPos select 1) - 15];
+			_storeLights = createVehicle ["Land_LampHalogen_F",_tempPos,[],1,"NONE"]; 
+			_storeLights setDir 25;
+			_storeLights allowDamage false;
+			_storeLights setVariable["newVehicle",vChecksum,true];
+			_storeLights setVariable["R3F_LOG_disabled",false];
+			
+			// Create the Guy same as in mission file
+			_gunStoreGroup = createGroup civilian;
+			_storeGuy = _gunStoreGroup createunit ["C_man_polo_6_F", _storeGuyPos, [], 1, "NONE"];
+			_storeGuy setSkill 0.8;
+			_storeGuy setBehaviour "SAFE";
+			_storeGuy setCombatMode "BLUE";
+			_storeGuy addVest "V_PlateCarrier1_rgr";
+			_storeGuy addEventHandler ["HandleDamage", {
+					[_this select 0] spawn 
+					{
+						private ["_unit"];
+						_unit = _this select 0;
+						if (primaryWeapon _unit == "") then
+						{
+							_unit addMagazine "30Rnd_556x45_Stanag";
+							_unit addWeapon "arifle_TRG20_F";
+							_unit setBehaviour "AWARE";
+							_unit setCombatMode "RED";
+							sleep 30;
+							_unit setBehaviour "SAFE";
+							_unit setCombatMode "BLUE";
+							_unit removeWeapon "arifle_TRG20_F";
+						};
+					};
+					false}];
+			
+			// Create the markers for Guy on map
+			pvar_generalStoreLocations set [_locIndex, _storeGuyPos];
 		
-	// Create the markers for Guy on map
-	_locIndex = count generalStoreLocations;
-	generalStoreLocations set [_locIndex, _randomPos];
-	
-	// Control the guy
-	[_storeGuy, _randomPos, "gen", _locIndex, _storeHouse] spawn controlStoreGuy;
-	
-} foreach zones;
+			// Control the guy
+			[_storeGuy, _storeGuyPos, "gen", _locIndex, _storeHouse] spawn controlStoreGuy;
+							
+			_locIndex = _locIndex + 1;
+		};
+	};
+} foreach pvar_gameZones;
 
 //Send store positions to the clients
-publicVariable "generalStoreLocations";
+publicVariable "pvar_generalStoreLocations";
 

@@ -1,13 +1,13 @@
 // TODO: Fix that convoy get sometimes stuck on objects on the road.
 if(!isServer) exitwith {};
 
-diag_log format["****** mission_Convoy Started ******"];
+//diag_log format["****** mission_Convoy Started ******"];
 
 #include "mainMissionDefines.sqf"
 
 private ["_missionMarkerName","_missionType","_picture","_vehicleName","_target","_hint","_waypoint","_waypoints","_group","_vehicles","_marker","_failed","_startTime","_numWaypoints","_boxtype","_ammobox","_createVehicle","_leader","_missionEnd"];
 
-_missionMarkerName = "Convoy_Marker";
+_missionMarkerName = format ["%1_Convoy_Vehicle", _this select 0];
 _missionType = "Convoy";
 
 [mainMissionDelayTime] call createWaitCondition;
@@ -211,9 +211,9 @@ _marker setMarkerText "Convoy";
 _picture = getText (configFile >> "CfgVehicles" >> _target >> "picture");
 _vehicleName = getText (configFile >> "cfgVehicles" >> _target >> "displayName");
 _hint = parseText format ["<t align='center' color='%4' shadow='2' size='1.75'>Main Objective</t><br/><t align='center' color='%4'>------------------------------</t><br/><t align='center' color='%5' size='1.25'>%1</t><br/><t align='center'><img size='5' image='%2'/></t><br/><t align='center' color='%5'>A <t color='%4'>%3</t> is convoyed by two armored vehicles. Stop them!</t>", _missionType, _picture, _vehicleName, mainMissionColor, subTextColor];
-messageSystem = _hint;
+pvar_messageSystem = _hint;
 if (!isDedicated) then { call serverMessage };
-publicVariable "messageSystem";
+publicVariable "pvar_messageSystem";
 
 _failed = false;
 _startTime = floor(time);
@@ -247,9 +247,9 @@ if(_failed) then
 	deleteGroup _group;
 		
     _hint = parseText format ["<t align='center' color='%4' shadow='2' size='1.75'>Objective Failed</t><br/><t align='center' color='%4'>------------------------------</t><br/><t align='center' color='%5' size='1.25'>%1</t><br/><t align='center'><img size='5' image='%2'/></t><br/><t align='center' color='%5'>Objective failed, better luck next time</t>", _missionType, _picture, _vehicleName, failMissionColor, subTextColor];
-    messageSystem = _hint;
+    pvar_messageSystem = _hint;
     if (!isDedicated) then { call serverMessage };
-    publicVariable "messageSystem";
+    publicVariable "pvar_messageSystem";
 } else {
     // Mission complete
     deleteGroup _group;
@@ -258,12 +258,12 @@ if(_failed) then
     _ammobox = [getMarkerPos _marker, missionAmmoBoxes, true, 2, false] call boxCreation;	
     
     _hint = parseText format ["<t align='center' color='%4' shadow='2' size='1.75'>Objective Complete</t><br/><t align='center' color='%4'>------------------------------</t><br/><t align='center' color='%5' size='1.25'>%1</t><br/><t align='center'><img size='5' image='%2'/></t><br/><t align='center' color='%5'>The convoy has been successfully stopped. Now the weapons and cars are yours.</t>", _missionType, _picture, _vehicleName, successMissionColor, subTextColor];
-    messageSystem = _hint;
+    pvar_messageSystem = _hint;
     if (!isDedicated) then { call serverMessage };
-    publicVariable "messageSystem";
+    publicVariable "pvar_messageSystem";
 };
 
 deleteMarker _marker;
 
-diag_log format["****** mission_Convoy Finished ******"];
+//diag_log format["****** mission_Convoy Finished ******"];
 

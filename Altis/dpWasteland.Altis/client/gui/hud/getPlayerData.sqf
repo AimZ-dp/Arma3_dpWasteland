@@ -45,12 +45,12 @@ while {true} do
 					_playerDistance = _playerPos distance player;
 
 					_maxDistance = 1000;
-					if (allowPlayerIcons == "OFF" || !_isFriendly) then 
+					if (pvar_allowPlayerIcons == "OFF" || !_isFriendly) then 
 					{
 						_maxDistance = 600;
 					};
 					
-					if ((scanningInProgress || allowPlayerIcons == "ON") && _playerDistance <= _maxDistance) then
+					if ((scanningInProgress || pvar_allowPlayerIcons == "ON") && _playerDistance <= _maxDistance) then
 					{
 						_iconArray set [count _iconArray, _x];
 					};
@@ -64,8 +64,8 @@ while {true} do
 			};	
 		};
 		sleep 0.1;
-	//} forEach allUnits;
-	} forEach playableUnits;
+	} forEach allUnits;
+	//} forEach playableUnits;
 	
 	iconArray = + _iconArray;
 	nameArray = + _nameArray;

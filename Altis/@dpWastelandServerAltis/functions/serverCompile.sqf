@@ -20,7 +20,6 @@ createBaseObject = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAl
 //Spawning Compiles
 boxSpawning = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\spawning\boxSpawning.sqf";
 boxCreation = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\spawning\boxCreation.sqf";
-baseObjectSpawning = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\spawning\baseObjectSpawning.sqf";
 baseObjectCreation = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\spawning\baseObjectCreation.sqf";
 survivalObjectSpawning = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\spawning\survivalObjectSpawning.sqf";
 survivalObjectCreation = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\spawning\survivalObjectCreation.sqf";
@@ -80,6 +79,10 @@ createGunStores = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAlt
 createGeneralStores = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\StoreGuys\createGeneralStores.sqf";
 createConstructionStores = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\StoreGuys\createConstructionStores.sqf";
 controlStoreGuy = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\StoreGuys\controlStoreGuy.sqf";
+
+// Fuelling
+refuelVehicle = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\Fuelling\refuelVehicle.sqf";
+defuelVehicle = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\Fuelling\defuelVehicle.sqf";
 
 serverCompiledScripts = true;
 

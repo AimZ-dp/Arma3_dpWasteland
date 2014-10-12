@@ -5,7 +5,7 @@
 //	@file Args:
 if(!isServer) exitwith {};
 
-diag_log format["****** mission_UAV Started ******"];
+//diag_log format["****** mission_UAV Started ******"];
 
 #include "sideMissionDefines.sqf";
 
@@ -13,14 +13,12 @@ private ["_result","_missionMarkerName","_missionType","_startTime","_returnData
 
 //Mission Initialization.
 _result = 0;
-_missionMarkerName = "UAV_Marker";
+_missionMarkerName = format["%_UAV_Marker", _this select 0];
 _missionType = "Unmanned Vehicle";
 _startTime = floor(time);
 
 //Get Mission Location
-_returnData = call createMissionLocation;
-_randomPos = _returnData select 0;
-_randomIndex = _returnData select 1;
+_randomPos = [false] call createMissionLocation;
 
 [sideMissionDelayTime] call createWaitCondition;
 
@@ -38,8 +36,8 @@ _vehicle setVariable ["R3F_LOG_disabled", true, true];
 _picture = getText (configFile >> "cfgVehicles" >> typeOf _vehicle >> "picture");
 _vehicleName = getText (configFile >> "cfgVehicles" >> typeOf _vehicle >> "displayName");
 _hint = parseText format ["<t align='center' color='%4' shadow='2' size='1.75'>Side Objective</t><br/><t align='center' color='%4'>------------------------------</t><br/><t align='center' color='%5' size='1.25'>%1</t><br/><t align='center'><img size='5' image='%2'/></t><br/><t align='center' color='%5'>A <t color='%4'> %6</t> <t color='%4'> %3</t>, has been spotted at the marker go get it for your team.</t>", _missionType, _picture, _vehicleName, sideMissionColor, subTextColor, str(side _vehicle)];
-messageSystem = _hint;
-publicVariable "messageSystem";
+pvar_messageSystem = _hint;
+publicVariable "pvar_messageSystem";
 
 _startTime = floor(time);
 
@@ -55,27 +53,35 @@ while {!_missionEnd} do
 	{
 		_missionEnd = true;
 	};
+	
+	_vehicle setVariable ["timeout", (time + ammoDesertedTimeLimit + random maxRandomTimeLimit), true];
+	_vehicle setVariable ["last_timeout", time, true];
 };
-
-_vehicle setVehicleLock "UNLOCKED";
-_vehicle setVariable ["R3F_LOG_disabled", false, true];
 
 if(_result == 1) then
 {
 	//Mission Failed.
-    deleteVehicle _vehicle;
+
+	_vehicle setDamage 1;
+		
     _hint = parseText format ["<t align='center' color='%4' shadow='2' size='1.75'>Objective Failed</t><br/><t align='center' color='%4'>------------------------------</t><br/><t align='center' color='%5' size='1.25'>%1</t><br/><t align='center'><img size='5' image='%2'/></t><br/><t align='center' color='%5'>Objective failed, keep your eyes open.</t>", _missionType, _picture, _vehicleName, failMissionColor, subTextColor];
-	messageSystem = _hint;
-    publicVariable "messageSystem";
-} else {
+	
+	pvar_messageSystem = _hint;
+    publicVariable "pvar_messageSystem";
+} 
+else 
+{
 	//Mission Complete.
+
+	_vehicle setVehicleLock "UNLOCKED";
+	_vehicle setVariable ["R3F_LOG_disabled", false, true];
+
     _hint = parseText format ["<t align='center' color='%4' shadow='2' size='1.75'>Objective Complete</t><br/><t align='center' color='%4'>------------------------------</t><br/><t align='center' color='%5' size='1.25'>%1</t><br/><t align='center'><img size='5' image='%2'/></t><br/><t align='center' color='%5'>The vehicle has been captured, let the spying begin.</t>", _missionType, _picture, _vehicleName, successMissionColor, subTextColor];
-	messageSystem = _hint;
-    publicVariable "messageSystem";
+	pvar_messageSystem = _hint;
+    publicVariable "pvar_messageSystem";
 };
 
 //Reset Mission Spot.
-MissionSpawnMarkers select _randomIndex set[1, false];
 [_missionMarkerName] call deleteClientMarker;
 
-diag_log format["****** mission_UAV Finished ******"];
+//diag_log format["****** mission_UAV Finished ******"];

@@ -91,7 +91,7 @@ while {respawnDialogActive} do
                 _friendlyCount = 0;
                 _enemyCount = 0; 
                 
-            }forEach cityList; 
+            }forEach pvar_cityList; 
 
             {
                 _button = _display displayCtrl (_x select 0);
@@ -227,7 +227,7 @@ while {respawnDialogActive} do
                 };
                 _friendlyCount = 0;
                 _enemyCount = 0; 
-            }forEach cityList; 
+            }forEach pvar_cityList; 
 
             {
                 _button = _display displayCtrl (_x select 0);

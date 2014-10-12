@@ -27,12 +27,12 @@ _ZoneRestricted = false;
 		&& ((_Pos select 1) < _zoneT && (_Pos select 1) > _zoneB)) then
 	{
 		// position is in this zone, check for restricted
-		if (_x in RestrictedZones) then
+		if (_x in pvar_restrictedZones) then
 		{
 			// this is not restricted
 			_ZoneRestricted = true;
 		};
 	};	
-} foreach zones;
+} foreach pvar_gameZones;
 
 _ZoneRestricted

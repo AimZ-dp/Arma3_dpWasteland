@@ -35,4 +35,4 @@ _conlisttext ctrlSetText format [""];
 	_conpicture ctrlSettext _picture;
     
 	_conlisttext ctrlSetText format ["Price: $%1", _price];	
-}}forEach baseObjectList;
+}}forEach pvar_baseObjectList;

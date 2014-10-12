@@ -1,5 +1,5 @@
 
-private ["data","_class","_position","_player","_object"];
+private ["_data","_class","_position","_player","_object"];
 
 _data = _this select 0;
 

@@ -20,17 +20,21 @@ _respawnDelay = [_this, 3, 0] call BIS_fnc_param;
 
 titleText ["You were born to respawn...", "BLACK", 0];
 
-// remove everything
-//{player removeWeapon _x;} foreach weapons player;
-//player switchMove "aidlpercmstpsraswrfldnon_idlesteady01n";
-//player playMove "aidlpercmstpsraswrfldnon_idlesteady01n";
-
-//sleep 2;
-
 // Player setup
 [] call PlayerSetup;				// initialise players gear
+
 [] spawn createMenuActions;			// add player menu items
 [] spawn initSurvival; 
+
+[] spawn spawnDefence;
+[] spawn detectRestrictedZones; 
+
+// Update map markers
+[] call createTownMarkers;
+[] call displayRestrictedZones; 
+[pvar_gunStoreLocations,"Weapon Store"] call updateStoreMarkers;
+[pvar_generalStoreLocations,"General Store"] call updateStoreMarkers;
+[pvar_constructionStoreLocations,"Construction Store"] call updateStoreMarkers;
 
 // **************************************
 [] spawn 
@@ -42,7 +46,7 @@ titleText ["You were born to respawn...", "BLACK", 0];
 	{
 		pDialogTeamkiller = pvar_PlayerTeamKiller;
 		pvar_PlayerTeamKiller = objNull;
-		if (allowPlayerIcons == "ON") then
+		if (pvar_allowPlayerIcons == "ON") then
 		{
 			[] execVM "client\functions\createTeamKillDialog.sqf";
 		};

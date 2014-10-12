@@ -79,10 +79,11 @@ getDebugData = compileFinal preprocessFileLineNumbers "client\gui\hud\getDebugDa
 
 // Update markers
 createTownMarkers = compileFinal preprocessFileLineNumbers "client\functions\createTownMarkers.sqf";
-//createGunStoreMarkers = compileFinal preprocessFileLineNumbers "client\functions\createGunStoreMarkers.sqf";
-//createGeneralStoreMarkers = compileFinal preprocessFileLineNumbers "client\functions\createGeneralStoreMarkers.sqf";
-//createConstructionStoreMarkers = compileFinal preprocessFileLineNumbers "client\functions\createConstructionStoreMarkers.sqf";
 updateStoreMarkers = compileFinal preprocessFileLineNumbers "client\functions\updateStoreMarkers.sqf";
+
+// Fuelling
+refuelVehicle = compileFinal preprocessFileLineNumbers "client\functions\Fuelling\refuelVehicle.sqf";
+defuelVehicle = compileFinal preprocessFileLineNumbers "client\functions\Fuelling\defuelVehicle.sqf";
 
 playerCompiledScripts = true;
 

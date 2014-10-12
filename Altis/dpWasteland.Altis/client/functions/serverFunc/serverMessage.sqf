@@ -3,5 +3,5 @@
 //@file Author: [404] Deadbeat
 //@file Created: 20/11/2012 05:19
 
-_hint = messageSystem;
+_hint = pvar_messageSystem;
 hint _hint;

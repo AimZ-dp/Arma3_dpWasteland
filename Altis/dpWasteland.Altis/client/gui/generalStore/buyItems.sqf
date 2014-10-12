@@ -33,7 +33,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
                 player setVariable["water",(player getVariable "water") + 1,true];	
             } else {
                 _price = 0;
-                {if(_x select 0 == "Bottled Water") then{_price = _x select 4;};}forEach generalStore;
+                {if(_x select 0 == "Bottled Water") then{_price = _x select 4;};}forEach pvar_generalStore;
             	genStoreCart = genStoreCart - _price;    
             };
         };
@@ -43,7 +43,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
                 player setVariable["canfood",(player getVariable "canfood") + 1,true];
             } else {
             	_price = 0;
-                {if(_x select 0 == "Canned Food") then{_price = _x select 4;};}forEach generalStore;
+                {if(_x select 0 == "Canned Food") then{_price = _x select 4;};}forEach pvar_generalStore;
             	genStoreCart = genStoreCart - _price;    
             };
         };
@@ -53,7 +53,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
                 player setVariable["medkits",(player getVariable "medkits") + 1,true];
             } else {
             	_price = 0;
-                {if(_x select 0 == "Medical Kit") then{_price = _x select 4;};}forEach generalStore;
+                {if(_x select 0 == "Medical Kit") then{_price = _x select 4;};}forEach pvar_generalStore;
             	genStoreCart = genStoreCart - _price;    
             };
         };
@@ -63,7 +63,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
                 player setVariable["repairkits",(player getVariable "repairkits") + 1,true];
             } else {
             	_price = 0;
-                {if(_x select 0 == "Repair Kit") then{_price = _x select 4;};}forEach generalStore;
+                {if(_x select 0 == "Repair Kit") then{_price = _x select 4;};}forEach pvar_generalStore;
             	genStoreCart = genStoreCart - _price;    
             };
         };
@@ -74,7 +74,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
             } else {
             	if (!((player getVariable "fuelFull") + 1 <= 1)) then {
 	            	_price = 0;
-	                {if(_x select 0 == "Jerry Can (Full)") then{_price = _x select 4;};}forEach generalStore;
+	                {if(_x select 0 == "Jerry Can (Full)") then{_price = _x select 4;};}forEach pvar_generalStore;
 	            	genStoreCart = genStoreCart - _price;    
                 } else {
                     player setVariable["fuelEmpty",0,true];
@@ -89,7 +89,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
             } else {
             	if (((player getVariable "fuelFull") + 1 <= 1)) then {
 	            	_price = 0;
-	                {if(_x select 0 == "Jerry Can (Empty)") then{_price = _x select 4;};}forEach generalStore;
+	                {if(_x select 0 == "Jerry Can (Empty)") then{_price = _x select 4;};}forEach pvar_generalStore;
 	            	genStoreCart = genStoreCart - _price;    
                 } else {
                     player setVariable["fuelEmpty",1,true];
@@ -102,7 +102,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
                 player setVariable["spawnBeacon",(player getVariable "spawnBeacon") + 1,true];
             } else {
             	_price = 0;
-                {if(_x select 0 == "Spawn Beacon") then{_price = _x select 4;};}forEach generalStore;
+                {if(_x select 0 == "Spawn Beacon") then{_price = _x select 4;};}forEach pvar_generalStore;
             	genStoreCart = genStoreCart - _price;    
             };
         };
@@ -123,7 +123,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
 					else
 					{
 						_price = 0;
-					   {if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach uniformArray;
+					   {if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach pvar_uniformArray;
 						genStoreCart = genStoreCart - _price;
 						hint format["You have already have a vest please drop it before buying a new one"]; 
 					};
@@ -138,7 +138,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
 					else
 					{
 						_price = 0;
-					   {if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach uniformArray;
+					   {if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach pvar_uniformArray;
 						genStoreCart = genStoreCart - _price;
 						hint format["You have already have a uniform on please drop it before buying a new one"]; 
 					};
@@ -153,7 +153,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
 					else
 					{
 						_price = 0;
-					   {if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach uniformArray;
+					   {if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach pvar_uniformArray;
 						genStoreCart = genStoreCart - _price;
 						hint format["You have something in the headgear slot please drop it before buying a new one"]; 
 					};
@@ -168,7 +168,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
 					else
 					{
 						_price = 0;
-					   {if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach uniformArray;
+					   {if(_x select 0 == _class) then{_price = _x select 2; _name = _x select 1;};}forEach pvar_uniformArray;
 						genStoreCart = genStoreCart - _price;
 						hint format["You have something in the backpack slot please drop it before buying a new one"]; 
 					};
@@ -179,7 +179,7 @@ for [{_x=0},{_x<=_size},{_x=_x+1}] do
 				};
 			};
 		};
-	}forEach uniformArray;
+	}forEach pvar_uniformArray;
 };
 
 player setVariable["cmoney",_playerMoney - genStoreCart,true];

@@ -8,7 +8,7 @@ private ["_markerName"];
 {
 	_markerName = format["map_restriction_%1",_x];
 
-	if (_x in RestrictedZones) then
+	if (_x in pvar_restrictedZones) then
 	{
 		_markerName setMarkerShape "RECTANGLE";
 		_markerName setMarkerBrush "FDiagonal";
@@ -63,5 +63,5 @@ private ["_markerName"];
     _markerName setMarkerColorLocal "ColorWhite";
 	_markerName setMarkerType "mil_destroy";
 	*/
-} foreach Zones;
+} foreach pvar_gameZones;
 

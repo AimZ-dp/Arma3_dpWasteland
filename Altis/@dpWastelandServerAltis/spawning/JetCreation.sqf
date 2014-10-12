@@ -5,7 +5,7 @@ if(!isDedicated) exitWith {};
 
 //diag_log format["*** JetCreation Started ***"];
 
-private ["_jettype","_jet","_type","_position"];
+private ["_position","_objectList","_restrictContent","_coverArea","_respawn"];
 _position = _this select 0;
 _objectList = _this select 1;
 _restrictContent = _this select 2;
@@ -17,21 +17,24 @@ if (count _this > 5) then
 	_wreck = _this select 5;
 };
 
+private ["_newPos", "_jettype","_jet","_type"];
+// Get the random position
+_newPos = [_position,1,_coverArea,5,0,1,0] call BIS_fnc_findSafePos;
+
+// Get the random vehicle type to spawn
 _type = floor (random (count _objectList));
 _jettype = _objectList select _type;
 
-_jet = createVehicle [_jettype,[7094,5961,0],[],40,"NONE"];
+// Create the object at the found new position
+_jet = createVehicle [_jettype,_newPos,[],0,"NONE"];
+_jet setDir (random 360);
+
+// Add variables to allow the server to control the respawn, burning times and remove hacked vehicles
 _jet setVariable["newVehicle",vChecksum,true];
 _jet setVariable ["timeout", (time + desertedTimeLimit + random maxRandomTimeLimit), true];
 _jet setVariable ["last_timeout", time, true];
 _jet setVariable ["status", "alive", true];
 _jet setVariable ["respawn", _respawn, true];
-_jet setDir (random 360);
-_position = [_position, 1, _coverArea, 1, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
-_jet setPos _position;
-
-//_jet allowDamage false;
-//_jet enableSimulation false;
 
 if (_restrictContent) then
 {
@@ -50,7 +53,6 @@ if (_restrictContent) then
 	};
 };
 
-sleep 1;
 
 if (_wreck) then 
 {

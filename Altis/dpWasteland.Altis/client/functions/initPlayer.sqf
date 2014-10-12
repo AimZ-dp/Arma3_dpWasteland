@@ -15,4 +15,6 @@ if(!(playerSide in [west, east, resistance])) then {
 	endMission "LOSER";
 };
 
+
+
 diag_log format["*** initialisePlayer Finished ***"];

@@ -14,20 +14,27 @@ _counter = 0;
 
 for "_i" from 1 to 20 step 1 do
 {
-	private ["_townPos","_townNumber","_ZoneRestricted","_attempts"];
+	private ["_areaArray","_areaName","_townPos","_townNumber","_ZoneRestricted","_attempts"];
+	
+	// MAKE THIS A FUNCTION - PASS IN AN ARRAY OF LOCATION ARRAYS, THEN PICK RANDOM LIST
+	_areaArray = pvar_cityList;
+	_areaName = "Town";
+	if (random 10 > 8) then {
+		_areaArray = pvar_bayList;	
+		_areaName = "Bay";
+	};
 	_townNumber = 0;
 	_ZoneRestricted = true;
 	_attempts = 0;
 	while {(_ZoneRestricted && _attempts < 1000)} do
 	{
-		// GET A RANDOM TOWN POSITION
-		_townNumber = floor (random (count cityList));
-		_townPos = getMarkerPos format ["Town_%1", _townNumber+1];
+		_townNumber = floor (random (count _areaArray));
+		_townPos = getMarkerPos format ["%1_%2", _areaName, _townNumber+1];
 		_ZoneRestricted = [_townPos] call isPosRestricted;
 		_attempts = _attempts + 1;
 	};
-	_position = getMarkerPos format ["Town_%1", _townNumber+1];
-	_radius = (cityList select _townNumber) select 1;
+	_position = _townPos;
+	_radius = (_areaArray select _townNumber) select 1;
 	
 	[_position, survivalObjectList, true, _radius, true] call survivalObjectCreation;	
 

@@ -19,13 +19,13 @@ if(_primary == "") exitWith {hint "You don't have a current weapon in your hand 
 	{
 		_weapon_value = _weapon_value + (_x select 3);
 	};
-} forEach weaponsArray;
+} forEach pvar_weaponsArray;
 {
 	if(_x select 0 == _magazine) then 
 	{
 		_weapon_value = _weapon_value + (_x select 3);
 	};
-} forEach ammoArray;
+} forEach pvar_ammoArray;
 
 player removeWeapon _primary;
 if (_magazine != "") then 

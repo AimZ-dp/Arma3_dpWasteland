@@ -15,13 +15,13 @@ _counter = 0;
 
 for "_i" from 1 to 20 step 1 do
 {
-	_position = getMarkerPos format ["Airport_%1", floor(random (count airportList))+1];
+	_position = getMarkerPos format ["Airport_%1", floor(random (count pvar_airportList))+1];
 	
 	_type = floor (random 2);
 	switch (_type) do 
 	{ 
-	  case 0: {[_position, LightHelicopters, true, 80, true] call HeliCreation;}; 
-	  case 1: {[_position, TransportHelicopters, true, 80, true] call HeliCreation;}; 
+	  case 0: {[_position, LightHelicopters, true, 200, true] call HeliCreation;}; 
+	  case 1: {[_position, TransportHelicopters, true, 200, true] call HeliCreation;}; 
 	};
 
 	_counter = _counter + 1;

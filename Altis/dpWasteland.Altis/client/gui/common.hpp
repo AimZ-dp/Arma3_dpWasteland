@@ -97,7 +97,7 @@ class w_RscStructuredText
 	type = 13;
 	idc = -1;
 	style = 0;
-	colorText[] = {0.8784,0.8471,0.651,1};
+	colorText[] = {0.8784,0.651,0.8471,1};
 	class Attributes
 	{
 		font = "PuristaMedium";
@@ -117,7 +117,7 @@ class w_RscStructuredText
 class w_RscBackground
 {
 
-    colorBackground[] = {0.14, 0.18, 0.13, 0.8};
+    colorBackground[] = {0.14, 0.13, 0.18, 0.8};
     text              = "";
     type              = CT_STATIC;
     idc               = -1;
@@ -158,7 +158,7 @@ class w_RscListBox
     colorSelect[] = {1, 1, 1, 1};
     colorText[] = {1, 1, 1, 1};
     colorBackground[] = {0,0,0,0};
-    colorSelectBackground[] = {0.40, 0.43, 0.28, 0.5};
+    colorSelectBackground[] = {0.40, 0.28, 0.43, 0.5};
     colorScrollbar[] = {0.2, 0.2, 0.2, 1};
     arrowEmpty = "client\ui\ui_arrow_combo_ca.paa";
     arrowFull = "client\ui\ui_arrow_combo_active_ca.paa";
@@ -200,7 +200,7 @@ class w_Rsclist
         colorSelect[] = {1, 1, 1, 1};
         colorText[] = {1, 1, 1, 1};
         colorBackground[] = {0,0,0,0};
-        colorSelectBackground[] = {0.40, 0.43, 0.28, 0.5};
+        colorSelectBackground[] = {0.40, 0.28, 0.43, 0.5};
         colorScrollbar[] = {0.2, 0.2, 0.2, 1};
         arrowEmpty = "client\ui\ui_arrow_combo_ca.paa";
         arrowFull = "client\ui\ui_arrow_combo_active_ca.paa";
@@ -416,7 +416,7 @@ class RscButton
     colorBackground[]         = {0.8,0.8,0.8,0.3};
     colorBackgroundActive[]   = {0.7,0.7,0.7,1};
     colorBackgroundDisabled[] = {1,1,1,0.5};
-    colorFocused[]            = {0.84,1,0.55,1};
+    colorFocused[]            = {0.84,0.55,1,1};
     colorShadow[]             = {0, 0, 0, 0.1};
     colorBorder[]             = {1, 1, 1, 0.1};
     offsetX                   = 0;
@@ -446,7 +446,7 @@ class w_RscCombo {
 	colorText[] = {0, 0, 0, 1};
 	colorBackground[] = {1, 1, 1, 1};
 	colorSelect[] = {1, 0, 0, 1};
-	colorSelectBackground[] = {0, 1, 0, 1};
+	colorSelectBackground[] = {0, 0, 1, 1};
 	soundSelect[] = {"", 0.000000, 1};
 	soundExpand[] = {"", 0.000000, 1};
 	soundCollapse[] = {"", 0.000000, 1};
@@ -461,7 +461,7 @@ class w_RscCombo {
 	arrowFull = "client\ui\ui_arrow_top_active_ca.paa";
 	arrowEmpty = "client\ui\ui_arrow_top_ca.paa";
 	border = "client\ui\ui_border_scroll_ca.paa";
-				
+
 		class ComboScrollbar
 		{
 			color[] = {1, 1, 1, 1};

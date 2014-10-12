@@ -3,51 +3,42 @@ if(!isDedicated) exitWith {};
 
 diag_log format["****** SERVER init Started ******"];
 
+// ---- MOVED TO SERVER FOR SECURITY, NEED TO SORT AND PUT IN FUNCTIONS ----
+modVersion = "hiddenfromclients";
+vChecksum = 1;
+{vChecksum = vChecksum + _x;} forEach (toArray modVersion); 
+
+// On cr?e le point d'attache qui servira aux attachTo pour les objets ? charger virtuellement dans les v?hicules
+R3F_LOG_PUBVAR_point_attache = "Land_HelipadEmpty_F" createVehicle [0, 0, 0];
+R3F_LOG_PUBVAR_point_attache setVariable["newVehicle",vChecksum,true];
+publicVariable "R3F_LOG_PUBVAR_point_attache";
+// -------------------------------
+
+"pvars_allowPlayerIcons" addPublicVariableEventHandler {	
+	if (pvar_allowPlayerIcons != pvars_allowPlayerIcons) then
+	{
+		pvar_allowPlayerIcons = pvars_allowPlayerIcons;
+		publicVariable "pvar_allowPlayerIcons";
+	};
+};
+"pvars_allowGroups" addPublicVariableEventHandler {	
+	if (pvar_allowGroups != pvars_allowGroups) then
+	{
+		pvar_allowGroups = pvars_allowGroups;
+		publicVariable "pvar_allowGroups";
+	};
+};
+"pvars_clockCycle" addPublicVariableEventHandler {	
+	if (pvar_clockCycle != pvars_clockCycle) then
+	{
+		pvar_clockCycle = pvars_clockCycle;
+		publicVariable "pvar_clockCycle";
+	};
+};
+
 "pvar_createBaseObject" addPublicVariableEventHandler {[_this select 1] call createBaseObject};
-"refuelVehicle" addPublicVariableEventHandler {
-	
-	_data = _this select 1;
-	_currVehicle = _data select 0;
-	_fuelAmount = _data select 1;
-	if (_currVehicle != "") then 
-	{
-		_obj = objectFromNetId _currVehicle;
-		if (_obj != objNull) then
-		{
-			if (local _obj) then
-			{
-				_fuel = ((fuel _obj) + _fuelAmount);	
-				if (_fuel > 1) then {_fuel = 1;};
-				_obj setFuel _fuel;
-				
-				refuelVehicle = ["",0];
-				publicVariable "refuelVehicle";
-			};
-		};
-	};
-};
-"defuelVehicle" addPublicVariableEventHandler {
-	
-	_data = _this select 1;
-	_currVehicle = _data select 0;
-	_fuelAmount = _data select 1;
-	if (_currVehicle != "") then 
-	{
-		_obj = objectFromNetId _currVehicle;
-		if (_obj != objNull) then
-		{
-			if (local _obj) then
-			{
-				_fuel = ((fuel _obj) - _fuelAmount);	
-				if (_fuel < 0) then {_fuel = 0;};
-				_obj setFuel _fuel;
-				
-				defuelVehicle = ["",0];
-				publicVariable "defuelVehicle";
-			};
-		};
-	};
-};
+"pvar_refuelVehicle" addPublicVariableEventHandler {[_this select 1] call refuelVehicle};
+"pvar_defuelVehicle" addPublicVariableEventHandler {[_this select 1] call refuelVehicle};
 
 //Execute Server Side Scripts.
 [] call serverAdminList;
@@ -55,6 +46,30 @@ diag_log format["****** SERVER init Started ******"];
 [] call relations;
 [] spawn serverTimeSync;
 [] spawn broadcaster;
+
+//Create the store guys
+[storesPerActiveZone] call createGunStores;
+[storesPerActiveZone] call createGeneralStores;
+[storesPerActiveZone] call createConstructionStores;
+
+//Execute Server Cleanup.
+[] spawn cleanObjects;
+[] spawn cleanDead;
+
+//Execute Server Spawning.
+[] call vehicleSpawning;
+[] call HeliSpawning;
+[] call boxSpawning;
+[] call boatSpawning;
+[] call survivalObjectSpawning;
+[] spawn respawnCheck;
+
+//Execute Server Missions.
+["controller1"] spawn sideMissionController;
+["controller1"] spawn mainMissionController;
+//sleep 150;
+//["controller2"] spawn sideMissionController;
+//["controller2"] spawn mainMissionController;
 
 /*
 [] spawn {
@@ -67,26 +82,5 @@ diag_log format["****** SERVER init Started ******"];
 	} foreach _objects;
 };
 */
-
-//Execute Server Spawning.
-[] call vehicleSpawning;
-[] call HeliSpawning;
-[] call boxSpawning;
-[] call boatSpawning;
-[] call survivalObjectSpawning;
-[] spawn respawnCheck;
-
-//Create the store guys
-[] call createGunStores;
-[] call createGeneralStores;
-[] call createConstructionStores;
-
-//Execute Server Missions.
-[] spawn sideMissionController;
-[] spawn mainMissionController;
-
-//Execute Server Cleanup.
-[] spawn cleanObjects;
-[] spawn cleanDead;
 
 diag_log format["****** SERVER init Finshed ******"];

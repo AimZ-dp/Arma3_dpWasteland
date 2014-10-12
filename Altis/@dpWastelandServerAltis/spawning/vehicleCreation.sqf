@@ -9,42 +9,32 @@ if(!isDedicated) exitWith {};
 
 //diag_log format["*** vehicleCreation Started ***"];
 
-private ["_cartype","_car","_type","_position"];
+private ["_position","_objectList","_restrictContent","_coverArea","_respawn"];
 _position = _this select 0;
 _objectList = _this select 1;
 _restrictContent = _this select 2;
 _coverArea = _this select 3;
 _respawn = _this select 4;
 
+private ["_newPos", "_cartype","_car","_type","_altitude"];
+// Get the random position
+_newPos = [_position,1,_coverArea,5,0,1,0] call BIS_fnc_findSafePos;
+
+// Get the random vehicle type to spawn
 _type = floor (random (count _objectList));
 _cartype = _objectList select _type;
 
-_car = createVehicle [_cartype,[7094,5961,0],[],40,"NONE"];
+// Create the object at the found new position
+_car = createVehicle [_cartype,_newPos,[],0,"NONE"];
+_car setDir (random 360);
+
+// Add variables to allow the server to control the respawn, burning times and remove hacked vehicles
 _car setVariable ["newVehicle",vChecksum,true];
 _car setVariable ["timeout", (time + desertedTimeLimit + random maxRandomTimeLimit), true];
 _car setVariable ["last_timeout", time, true];
 _car setVariable ["status", "alive", true];
 _car setVariable ["respawn", _respawn, true];
-_car setDir (random 360);
 
-//	_this select 0: center position (Array)
-//	_this select 1: minimum distance from the center position (Number)
-//	_this select 2: maximum distance from the center position (Number)
-//	_this select 3: minimum distance from the nearest object (Number)
-//	_this select 4: water mode (Number)
-//						0: cannot be in water
-//						1: can either be in water or not
-//						2: must be in water
-//	_this select 5: maximum terrain gradient (average altitude difference in meters - Number)
-//	_this select 6: shore mode (Number):
-//						0: does not have to be at a shore
-//						1: must be at a shore
-	
-_position = [_position,1,_coverArea,2,0,1,0] call BIS_fnc_findSafePos;
-_car setPos _position;
-
-//_car allowDamage false;
-//_car enableSimulation false;
 
 if (_restrictContent) then
 {
@@ -66,5 +56,6 @@ if (_restrictContent) then
 };
 
 _car
+
 
 //diag_log format["*** vehicleCreation Finished ***"];

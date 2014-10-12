@@ -31,7 +31,7 @@ switch(_switch) do
 		// Populate the gun shop weapon list
 		{
 			_gunlistIndex = _gunlist lbAdd format["%1",_x select 1];
-		} forEach weaponsArray;
+		} forEach pvar_weaponsArray;
 	};
 	
 	case 1:
@@ -46,7 +46,7 @@ switch(_switch) do
 		// Populate the gun shop weapon list
 		{
 			_gunlistIndex = _gunlist lbAdd format["%1",_x select 1];
-		} forEach ammoArray;	
+		} forEach pvar_ammoArray;	
 	};
 
 	case 2:
@@ -61,6 +61,6 @@ switch(_switch) do
 		// Populate the gun shop weapon list
 		{
 			_gunlistIndex = _gunlist lbAdd format["%1",_x select 1];
-		} forEach accessoriesArray;	
+		} forEach pvar_accessoriesArray;	
 	};
 };

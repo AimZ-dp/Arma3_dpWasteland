@@ -25,9 +25,9 @@ if (local player) then {
 	_selectedItem = lbCurSel _cartlist;
 	_itemText = _cartlist lbText _selectedItem;
 
-	{if(_itemText == _x select 1) then{_price = _x select 2;}}forEach weaponsArray;
-	{if(_itemText == _x select 1) then{_price = _x select 2;}}forEach ammoArray;
-	{if(_itemText == _x select 1) then{_price = _x select 2;}}forEach accessoriesArray;
+	{if(_itemText == _x select 1) then{_price = _x select 2;}}forEach pvar_weaponsArray;
+	{if(_itemText == _x select 1) then{_price = _x select 2;}}forEach pvar_ammoArray;
+	{if(_itemText == _x select 1) then{_price = _x select 2;}}forEach pvar_accessoriesArray;
 	
 	gunStoreCart = gunStoreCart - _price;
 	_totalText CtrlsetText format["Total: $%1", gunStoreCart];

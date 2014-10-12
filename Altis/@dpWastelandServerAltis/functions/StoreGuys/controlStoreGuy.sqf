@@ -23,25 +23,26 @@ while {true} do
 {
 	// TODO: GET THE STORE GUY TO UPDATE HIS POSTION EVERY 60 MINS
 	_guy doMove getpos _building;
-	
+
+/*	
 	private ["_currentPosition"];
 	_currentPosition = getPos _guy;
 	
 	if (_type == "gun") then
 	{
-		gunStoreLocations set [_locIndex, _currentPosition];
-		publicVariable "gunStoreLocations";
+		pvar_gunStoreLocations set [_locIndex, _currentPosition];
+		publicVariable "pvar_gunStoreLocations";
 	};
 	if (_type == "gen") then
 	{
-		generalStoreLocations set [_locIndex, _currentPosition];
-		publicVariable "generalStoreLocations";
+		pvar_generalStoreLocations set [_locIndex, _currentPosition];
+		publicVariable "pvar_generalStoreLocations";
 	};	
 	if (_type == "con") then
 	{
-		constructionStoreLocations set [_locIndex, _currentPosition];
-		publicVariable "constructionStoreLocations";
+		pvar_constructionStoreLocations set [_locIndex, _currentPosition];
+		publicVariable "pvar_constructionStoreLocations";
 	};
-	
-	sleep 10;
+*/
+	sleep 30;
 };

@@ -24,8 +24,8 @@ if (fuel _vehicle > 0.10) then
 	{
         if(!(local _vehicle)) then 
 		{
-			defuelVehicle = [netId _vehicle,_fuelAmount];
-			publicVariable "defuelVehicle";	
+			pvar_defuelVehicle = [netId _vehicle,_fuelAmount];
+			publicVariable "pvar_defuelVehicle";	
 		} 
 		else 
 		{

@@ -37,7 +37,7 @@ if(_switchText == "Buy") then
             _itemInfo ctrlSetStructuredText parseText ((_x select 2));
 			_itemlisttext ctrlSetText format ["Price: $%1", _price];	
 		}
-	}forEach generalStore;
+	}forEach pvar_generalStore;
 	{
 		if(_itemText == _x select 1) then{
 			_weap_type = _x select 0; 
@@ -50,7 +50,7 @@ if(_switchText == "Buy") then
 			_picture ctrlSettext _picLink;
 			_itemlisttext ctrlSetText format ["Price: $%1", _price];	
 		}
-	}forEach uniformArray;
+	}forEach pvar_uniformArray;
 } else {	
 	{
 	    if(_itemText == _x select 0) then{
@@ -60,5 +60,5 @@ if(_switchText == "Buy") then
             _itemInfo ctrlSetStructuredText parseText ((_x select 2));
 			_itemlisttext ctrlSetText format ["Price: $%1", _price];	
 		}
-	}forEach generalStore;
+	}forEach pvar_generalStore;
 };

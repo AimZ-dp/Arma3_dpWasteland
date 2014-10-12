@@ -14,7 +14,7 @@ _pos = _this select 1;
 //Anti Vehicle
 _leader = _group createunit ["C_man_polo_1_F", [(_pos select 0) + 10, _pos select 1, 0], [], 0.5, "Form"];
 _leader addUniform "U_B_CombatUniform_mcam_vest";
-_leader addVest "V_PlateCarrier1_cbr";
+_leader addVest "V_PlateCarrier1_blk";
 _leader addBackpack "B_AssaultPack_blk";			// CAD Added - He kinda needs a backpack if he should hold two rockets no? ;)
 _leader addMagazine "RPG32_F";
 _leader addMagazine "RPG32_HE_F";
@@ -28,7 +28,7 @@ _leader addEventHandler ["killed", {_this execVM "\@dpWastelandServerAltis\funct
 //Support
 _man2 = _group createunit ["C_man_polo_1_F", [(_pos select 0) - 30, _pos select 1, 0], [], 0.5, "Form"];
 _man2 addUniform "U_B_CombatUniform_mcam_tshirt";
-_man2 addVest "V_PlateCarrier1_rgr";
+_man2 addVest "V_PlateCarrier1_blk";
 _man2 addMagazine "200Rnd_65x39_cased_Box";
 _man2 addMagazine "200Rnd_65x39_cased_Box";
 _man2 addWeapon "LMG_Mk200_F";
@@ -37,7 +37,7 @@ _man2 addEventHandler ["killed", {_this execVM "\@dpWastelandServerAltis\functio
 //Rifleman
 _man3 = _group createunit ["C_man_polo_1_F", [_pos select 0, (_pos select 1) + 30, 0], [], 0.5, "Form"];
 _man3 addUniform "U_B_CombatUniform_mcam";
-_man3 addVest "V_PlateCarrier1_cbr";
+_man3 addVest "V_PlateCarrier1_blk";
 _man3 addMagazine "30Rnd_556x45_Stanag";
 _man3 addMagazine "30Rnd_556x45_Stanag";
 _man3 addMagazine "30Rnd_556x45_Stanag";
@@ -47,7 +47,7 @@ _man3 addEventHandler ["killed", {_this execVM "\@dpWastelandServerAltis\functio
 //Rifleman
 _man4 = _group createunit ["C_man_polo_1_F", [_pos select 0, (_pos select 1) + 40, 0], [], 0.5, "Form"];
 _man4 addUniform "U_B_CombatUniform_mcam";
-_man4 addVest "V_PlateCarrier1_cbr";
+_man4 addVest "V_PlateCarrier1_blk";
 _man4 addMagazine "30Rnd_556x45_Stanag";
 _man4 addMagazine "30Rnd_556x45_Stanag";
 _man4 addMagazine "30Rnd_556x45_Stanag";
@@ -57,7 +57,7 @@ _man4 addEventHandler ["killed", {_this execVM "\@dpWastelandServerAltis\functio
 //Rifleman
 _man5 = _group createunit ["C_man_polo_1_F", [_pos select 0, (_pos select 1) + 40, 0], [], 0.5, "Form"];
 _man5 addUniform "U_B_CombatUniform_mcam";
-_man5 addVest "V_PlateCarrier1_cbr";
+_man5 addVest "V_PlateCarrier1_blk";
 _man5 addMagazine "30Rnd_556x45_Stanag";
 _man5 addMagazine "30Rnd_556x45_Stanag";
 _man5 addMagazine "30Rnd_556x45_Stanag";
@@ -67,7 +67,7 @@ _man5 addEventHandler ["killed", {_this execVM "\@dpWastelandServerAltis\functio
 //Marksman
 _man6 = _group createunit ["C_man_polo_1_F", [_pos select 0, (_pos select 1) - 30, 0], [], 0.5, "Form"];
 _man6 addUniform "U_B_CombatUniform_mcam_vest";
-_man6 addVest "V_PlateCarrier1_rgr";
+_man6 addVest "V_PlateCarrier1_blk";
 _man6 addMagazine "30Rnd_65x39_caseless_mag";
 _man6 addMagazine "30Rnd_65x39_caseless_mag";
 _man6 addWeapon "arifle_MXM_Black_F";
@@ -76,7 +76,7 @@ _man6 addEventHandler ["killed", {_this execVM "\@dpWastelandServerAltis\functio
 //Grenadier
 _man7 = _group createunit ["C_man_polo_1_F", [_pos select 0, (_pos select 1) - 40, 0], [], 0.5, "Form"];
 _man7 addUniform "U_B_CombatUniform_mcam";
-_man7 addVest "V_PlateCarrier1_cbr";
+_man7 addVest "V_PlateCarrier1_blk";
 _man7 addMagazine "30Rnd_65x39_caseless_mag";
 _man7 addMagazine "30Rnd_65x39_caseless_mag";
 _man7 addMagazine "30Rnd_65x39_caseless_mag";

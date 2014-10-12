@@ -27,7 +27,7 @@ if (local player) then {
 	_itemText = _conlist lbText _selectedItem;
 
 	//Check Items Price
-	{if(_itemText == _x select 0) then{_price = _x select 2;}}forEach baseObjectList;
+	{if(_itemText == _x select 0) then{_price = _x select 2;}}forEach pvar_baseObjectList;
 	
 	constructionstoreCart = constructionstoreCart + _price;
 	_totalText CtrlsetText format["Total: $%1", constructionstoreCart];

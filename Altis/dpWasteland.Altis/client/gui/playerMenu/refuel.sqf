@@ -97,8 +97,8 @@ for "_iteration" from 1 to _iterationAmount do {
         
 
         if(!(local _currVehicle)) then {
-			refuelVehicle = [netId _currVehicle,_fuelAmount];
-			publicVariable "refuelVehicle";	
+			pvar_refuelVehicle = [netId _currVehicle,_fuelAmount];
+			publicVariable "pvar_refuelVehicle";	
 		} else {
 			_currVehicle setFuel ((fuel _currVehicle) + _fuelAmount);
 		};

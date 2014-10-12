@@ -5,47 +5,55 @@ if(!isDedicated) exitWith {};
 
 //diag_log format["*** heliCreation Started ***"];
 
-private ["_helitype","_heli","_type","_position"];
-_position = _this select 0;
-_objectList = _this select 1;
-_restrictContent = _this select 2;
-_coverArea = _this select 3;
-_respawn = _this select 4;
-_wreck = false;
+private ["_position","_objectList","_restrictContent","_coverArea","_respawn","_wreck","_inSea","_flying"];
+
+_position = _this select 0;			// Position of rough location
+_objectList = _this select 1;		// Object List to choose from
+_restrictContent = _this select 2;	// Empty inventory or not
+_coverArea = _this select 3;		// Radius for random placement
+_respawn = _this select 4;			// Respawn after destroyed or not
+_wreck = false;						
 if (count _this > 5) then 
 {
-	_wreck = _this select 5;
+	_wreck = _this select 5;		// Spawn in full destroyed
+};
+_inSea = 0;
+if (count _this > 6) then 
+{
+	_inSea = _this select 6; 		// Should the position be in the sea 0=Land,1=Either,2=Water
+};
+_flying = "NONE";
+if (count _this > 7) then 
+{
+	_flying = _this select 7;		// Flying or on the ground
 };
 
+private ["_newPos", "_heliType","_heli","_type","_altitude"];
+
+// Get the random position, depending on _inSea and _CoverArea
+_newPos = [_position,1,_coverArea,5,_inSea,0.5,0] call BIS_fnc_findSafePos;
+if (_flying == "FLY") then {_newPos set [2, _position select 2];};
+
+// Get the random vehicle type to spawn
 _type = floor (random (count _objectList));
 _helitype = _objectList select _type;
 
-_heli = createVehicle [_helitype,[7094,5961,0],[],40,"NONE"];
+// Create the object at the found new position
+_heli = createVehicle [_helitype,_newPos,[],0,_flying];
+_heli setDir (random 360);
+
+// Add variables to allow the server to control the respawn, burning times and remove hacked vehicles
 _heli setVariable["newVehicle",vChecksum,true];
 _heli setVariable ["timeout", (time + desertedTimeLimit + random maxRandomTimeLimit), true];
 _heli setVariable ["last_timeout", time, true];
 _heli setVariable ["status", "alive", true];
 _heli setVariable ["respawn", _respawn, true];
-_heli setDir (random 360);
 
-//	_this select 0: center position (Array)
-//	_this select 1: minimum distance from the center position (Number)
-//	_this select 2: maximum distance from the center position (Number)
-//	_this select 3: minimum distance from the nearest object (Number)
-//	_this select 4: water mode (Number)
-//						0: cannot be in water
-//						1: can either be in water or not
-//						2: must be in water
-//	_this select 5: maximum terrain gradient (average altitude difference in meters - Number)
-//	_this select 6: shore mode (Number):
-//						0: does not have to be at a shore
-//						1: must be at a shore
-	
-_position = [_position,1,_coverArea,2,0,1,0] call BIS_fnc_findSafePos;
-_heli setPos _position;
-
-//_heli allowDamage false;
-//_heli enableSimulation false;
+// Open the doors
+_heli animateDoor ['door_R', 1]; 
+_heli animateDoor ['door_L', 1];
+_heli animateDoor ['door_back_R', 1];
+_heli animateDoor ['door_back_L', 1];
 
 if (_restrictContent) then
 {
@@ -55,8 +63,11 @@ if (_restrictContent) then
 
 	//Set Attributes
 	// set status of vehicle
-	_heli setFuel (random 0.50) + 0.10;
-	_heli setDamage (random 0.25) + 0.50;
+	if (_flying != "FLY") then 
+	{
+		_heli setFuel (random 0.50) + 0.10;
+		_heli setDamage (random 0.25) + 0.50;
+	};
 
 	if (count(configFile >> "CfgVehicles" >> (typeOf _heli) >> "Turrets") > 0) then
 	{
@@ -71,4 +82,5 @@ if (_wreck) then
 };
 
 _heli
+
 //diag_log format["*** heliCreation finished ***"];
