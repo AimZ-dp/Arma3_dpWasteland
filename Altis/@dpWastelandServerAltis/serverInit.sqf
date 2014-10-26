@@ -67,9 +67,9 @@ publicVariable "R3F_LOG_PUBVAR_point_attache";
 //Execute Server Missions.
 ["controller1"] spawn sideMissionController;
 ["controller1"] spawn mainMissionController;
-//sleep 150;
-//["controller2"] spawn sideMissionController;
-//["controller2"] spawn mainMissionController;
+sleep 150;
+["controller2"] spawn sideMissionController;
+["controller2"] spawn mainMissionController;
 
 /*
 [] spawn {

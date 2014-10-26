@@ -24,9 +24,8 @@ _zonePos = _zoneData select 0;
 _zoneWidth = _zoneData select 1;
 _zoneHeight = _zoneData select 2;
 _randomEndPos = [_zonePos,_zoneWidth,_zoneHeight,2,0,1,0] call findSafeRectPos;
-_randomEndPos set [2, 300];
-//_randomStartPos = [_zonePos,_zoneWidth,_zoneHeight,2,2,1,0] call findSafeRectPos;
-	
+_randomEndPos set [2, 500];
+
 // ---- CREATE VEHICLE AND UNITS, SEND TO WAYPOINT ----
 
 private ["_vehicle","_CivGrpM","_pilot","_soldier","_waypoint"];
@@ -34,15 +33,15 @@ private ["_vehicle","_CivGrpM","_pilot","_soldier","_waypoint"];
 _vehicle = [_randomEndPos, LightHelicopters, true, 3000, false, false, 2, "FLY"] call HeliCreation;	
 _vehicle setVehicleLock "LOCKED";
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
-_vehicle setDamage 0;
 
 // Create the group and place in heli
 _CivGrpM = createGroup civilian;
 _CivGrpM addVehicle _vehicle;
 _pilot = [_CivGrpM, _randomEndPos] call createRandomSoldier; 
+_CivGrpM selectLeader _pilot;
 _pilot moveInDriver _vehicle;
 
-_CivGrpM selectLeader _pilot;
+_randomEndPos set [2, 0];
 _soldier = [_CivGrpM, _randomEndPos] call createRandomSoldier; 
 _soldier moveInCargo _vehicle;
 _soldier = [_CivGrpM, _randomEndPos] call createRandomSoldier; 
@@ -52,18 +51,20 @@ _soldier moveInCargo _vehicle;
 _soldier = [_CivGrpM, _randomEndPos] call createRandomSoldier; 
 _soldier moveInCargo _vehicle;
 
-_waypoint = _CivGrpM addWaypoint [_randomEndPos, 0];
-_waypoint setWaypointType "MORE";
-_waypoint setWaypointCompletionRadius 100;
-_waypoint setWaypointCombatMode "GREEN"; // Defensive behaviour
-_waypoint setWaypointBehaviour "SAFE"; // Force convoy to normally drive on the street.
-_waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointSpeed "FULL";
+sleep 2;
+
+//_waypoint = _CivGrpM addWaypoint [_randomEndPos, 0];
+//_waypoint setWaypointType "MOVE";
+//_waypoint setWaypointCompletionRadius 100;
+//_waypoint setWaypointCombatMode "GREEN"; 
+//_waypoint setWaypointBehaviour "SAFE"; 
+//_waypoint setWaypointFormation "NO CHANGE";
+//_waypoint setWaypointSpeed "FULL";
 _waypoint = _CivGrpM addWaypoint [_randomEndPos, 0];
 _waypoint setWaypointType "GETOUT";
 _waypoint setWaypointCompletionRadius 10;
-_waypoint setWaypointCombatMode "GREEN"; // Defensive behaviour
-_waypoint setWaypointBehaviour "SAFE"; // Force convoy to normally drive on the street.
+_waypoint setWaypointCombatMode "GREEN"; 
+_waypoint setWaypointBehaviour "SAFE"; 
 _waypoint setWaypointFormation "NO CHANGE";
 _waypoint setWaypointSpeed "FULL";
 
@@ -101,9 +102,6 @@ publicVariable "pvar_messageSystem";
 
 // ---- MISSION LOOP,  ---- 
 
-[_missionMarkerName,_randomEndPos,_missionType] call createClientMarker;
-
-
 private ["_result","_startTime","_missionEnd","_currTime","_playerPresent","_unitsAlive","_hasLanded"];
 _result = 0;
 _startTime = floor(time);
@@ -135,6 +133,8 @@ while {!_missionEnd} do
 			[_missionMarkerName,position _vehicle,_missionType] call createClientMarker;
 			deleteMarker _marker;
 			deleteMarker _marker2;	
+
+			[_CivGrpM, position _vehicle] call defendArea;
 			
 			_hasLanded = true;
 		};
@@ -178,5 +178,6 @@ else
 //Reset Mission Spot.
 [_missionMarkerName] call deleteClientMarker;
 deleteMarker _marker;
+deleteMarker _marker2;
 
 diag_log format["****** mission_CivHeli Finished ******"];

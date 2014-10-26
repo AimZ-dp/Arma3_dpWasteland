@@ -48,6 +48,7 @@ mission_Convoy = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAlti
 mission_LightArmVeh = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\missions\mainMissions\mission_LightArmVeh.sqf";
 mission_APC = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\missions\mainMissions\mission_APC.sqf";
 mission_LightTank = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\missions\mainMissions\mission_LightTank.sqf";
+mission_DuelHeli = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\missions\mainMissions\mission_DuelHeli.sqf";
 
 //Side Mission Compiles
 sideMissionController = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\missions\sideMissionController.sqf";

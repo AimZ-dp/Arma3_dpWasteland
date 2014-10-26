@@ -67,6 +67,11 @@ if (_restrictContent) then
 	{
 		_heli setFuel (random 0.50) + 0.10;
 		_heli setDamage (random 0.25) + 0.50;
+	}
+	else
+	{
+		_heli setFuel 1;
+		_heli setDamage 0;	
 	};
 
 	if (count(configFile >> "CfgVehicles" >> (typeOf _heli) >> "Turrets") > 0) then

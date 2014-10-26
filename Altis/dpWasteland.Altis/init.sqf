@@ -5,7 +5,7 @@
 
 "*** init Started ***" call BIS_fnc_log;
 
-versionName = "v2.7.3";
+versionName = "v2.7.4";
 
 if(!isDedicated) then 
 {

@@ -18,7 +18,7 @@ _MMarray = [
 	[mission_LightTank,"mission_LightTank"],
 	[mission_ArmedHeli,"mission_ArmedHeli"],
 	[mission_LightArmVeh,"mission_LightArmVeh"],
-	//[mission_Convoy,"mission_Convoy"],
+	//[mission_DuelHeli,"mission_DuelHeli"],
 	[mission_Jet,"mission_Jet"]
 ];
 _lastMission = "nomission";

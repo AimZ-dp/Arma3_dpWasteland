@@ -41,6 +41,11 @@ player createDiaryRecord["changelog",
 
 player createDiaryRecord["changelog",
 ["=(dp)=","
+<br/>2.7.4<br/>
+	[Bug] AI seem to run away. Stopped them fleeing due to being scared.<br/>
+<br/>2.7.3<br/>
+	[Improvement] Lots of changes moving code to the server side.<br/>
+	[Improvement] Stores and zones can be random or fixed on server start.<br/>
 <br/>2.7.2<br/>
 	[Improvement] remove scanner - will replace with a perk later.<br/>
 	[Improvement] Player Spawn: spawn in bays.<br/>

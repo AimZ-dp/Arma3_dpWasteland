@@ -33,6 +33,7 @@ _grp = _this select 0;
 _pos = _this select 1;
 
 _grp setBehaviour "AWARE";
+_grp allowFleeing 0;
 
 private ["_list", "_units","_staticWeapons"];
 _list = _pos nearObjects ["StaticWeapon", 120];

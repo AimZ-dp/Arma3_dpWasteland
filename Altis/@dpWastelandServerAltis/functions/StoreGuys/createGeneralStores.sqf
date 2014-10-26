@@ -38,25 +38,17 @@ _storeGuyPos = [];
 				_storeGuyPos = _randomPos;
 			};
 			
+			// Get the nearest road and move to there
+			private ["_dir","_roadlist","_minDistance"];
+			_road = [_storeGuyPos, 1000, []] call BIS_fnc_nearestRoad;
+			_dir = [_road, _storeGuyPos] call BIS_fnc_dirTo;
+			
 			private ["_gunStoreGroup","_storeGuy","_storeHouse","_storeLights","_tempPos"];
 			// create a building
 			_storeHouse = createVehicle ["Land_u_Shop_01_V1_F",_storeGuyPos,[],1,"NONE"]; 
 			_storeHouse allowDamage false;
 			_storeHouse setVariable["newVehicle",vChecksum,true];
 			_storeHouse setVariable["R3F_LOG_disabled",false];
-			
-			private ["_dir","_roadlist","_minDistance"];
-			_dir = 0;
-			_roadlist = _storeHouse nearRoads 150;
-			_minDistance = 999;
-			{
-				_dist = _x distance _storeHouse;
-				if (_dist < _minDistance) then
-				{
-					_minDistance = _dist;
-					_dir = [_x, _storeHouse] call BIS_fnc_dirTo;
-				};
-			} foreach _roadlist;
 			_storeHouse setDir _dir;
 			
 			_tempPos = getPos _storeHouse;
@@ -72,6 +64,7 @@ _storeGuyPos = [];
 			_gunStoreGroup = createGroup civilian;
 			_storeGuy = _gunStoreGroup createunit ["C_man_polo_6_F", _storeGuyPos, [], 1, "NONE"];
 			_storeGuy setSkill 0.8;
+			_storeGuy allowFleeing 0;
 			_storeGuy setBehaviour "SAFE";
 			_storeGuy setCombatMode "BLUE";
 			_storeGuy addVest "V_PlateCarrier1_rgr";
