@@ -15,7 +15,7 @@ _respawn = _this select 4;
 _type = floor (random (count _objectList));
 _boattype = _objectList select _type;
 
-_position = [_position,1,_coverArea,1,2,1,1] call BIS_fnc_findSafePos;	
+_position = [_position,1,_coverArea,1,2,10,1] call BIS_fnc_findSafePos;	
 _boat = createVehicle [_boattype, _position, [],0,"None"];
 _boat setVariable ["newVehicle",vChecksum,true];
 _boat setVariable ["timeout", (time + desertedTimeLimit + random maxRandomTimeLimit), true];
@@ -43,6 +43,15 @@ if (_restrictContent) then
 	//_boat disableTIEquipment true;		// Disabling this allows for Thermal Imagaging Equipment in Boats.
 	//[_boat] call randomWeapons;			// Disabling this disallows for weapons to spawn in Boats (Believe Boats do not have inventory so guess this need to be disabled).
 };
+
+/*
+	_markerName = format["boat_marker_%1",_position];
+	_marker = createMarker [_markerName, _position];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType  "mil_dot";
+	_marker setMarkerColor "ColorBlue";
+	_marker setMarkerAlpha 0.5; 
+*/
 
 _boat
 //diag_log format["*** boatCreation Finished ***"];

@@ -14,6 +14,12 @@ ammoDesertedTimeLimit = 1800;
 maxRandomTimeLimit = 900;
 objectTimeOut = 15; 
 
+maxVehicles = 64;
+maxHelicopters = 10;
+maxBoats = 20;
+maxAmmoBoxes = 20;
+maxSurvivalObjects = 20;
+
 pvar_teamSwitchList = [];
 pvar_teamKillList = [];
 pvar_beaconListBlu = []; 
@@ -605,10 +611,10 @@ ammoBoxes = [
 	"Box_NATO_WpsSpecial_F",
 	"Box_IND_Support_F",
 	"Box_East_Support_F",
-	"Box_NATO_Support_F",
-	"Box_IND_AmmoVeh_F",
-	"Box_East_AmmoVeh_F",
-	"Box_NATO_AmmoVeh_F"
+	"Box_NATO_Support_F"
+	//"Box_IND_AmmoVeh_F",
+	//"Box_East_AmmoVeh_F",
+	//"Box_NATO_AmmoVeh_F"
 ];
 
 missionAmmoBoxes = [
@@ -635,10 +641,10 @@ missionAmmoBoxes = [
 	"Box_NATO_WpsSpecial_F",
 	"Box_IND_Support_F",
 	"Box_East_Support_F",
-	"Box_NATO_Support_F",
-	"Box_IND_AmmoVeh_F",
-	"Box_East_AmmoVeh_F",
-	"Box_NATO_AmmoVeh_F"
+	"Box_NATO_Support_F"
+	//"Box_IND_AmmoVeh_F",
+	//"Box_East_AmmoVeh_F",
+	//"Box_NATO_AmmoVeh_F"
 ];
 
 supplyCrate = [
@@ -650,72 +656,6 @@ supplyCrate = [
 ];
 
 // THESE NEED TO BE FULLY GLOBAL
-
-//Marker Name, Radius, City Name
-pvar_cityList = [
-		["Town_1",300,"Livadi"],
-		["Town_2",300,"Kavala"],
-		["Town_3",300,"Zaros"],
-		["Town_4",300,"Kore"],
-		["Town_5",400,"Athira"],
-		["Town_6",300,"Eginio"],
-		["Town_7",300,"Dorida"],
-		["Town_8",300,"Panagia"], 	
-		["Town_9",300,"Molos"],		
-		["Town_10",200,"Kalithea"],	
-		["Town_11",200,"Galati"],
-		["Town_12",200,"Sfaka"],
-		["Town_13",200,"Frini"],
-		["Town_14",400,"Pyrgos"],	
-		["Town_15",200,"Iraklia"],
-		["Town_16",200,"Krya Nera"],		
-		["Town_17",200,"Ekali"], 	
-		["Town_18",400,"Agios Dionysios"],
-		["Town_19",400,"Neochori"],	
-		["Town_20",400,"Paros"],
-		["Town_21",200,"Syrta"],
-		["Town_22",200,"Telos"],
-		["Town_23",200,"Negades"],
-		["Town_24",400,"Sofia"],
-		["Town_25",400,"Charkia"],
-		["Town_26",200,"Loannina"],
-		["Town_27",200,"Oreokastro"]
-];
-pvar_bayList = [
-		["Bay_1",200,"Ammolofi Bay"],
-		["Bay_2",200,"Tonos Bay"],
-		["Bay_3",200,"Kalithea Bay"],
-		["Bay_4",200,"Pefkas Bay"],
-		["Bay_5",200,"Galana Nera Bay"],
-		["Bay_6",200,"Molos Bay"],
-		["Bay_7",200,"Thelos Bay"],
-		["Bay_8",200,"Chalkeia Bay"],
-		["Bay_9",200,"Mazi Bay"],
-		["Bay_10",200,"Livadi Bay"],
-		["Bay_11",200,"Pyrgos Gulf"],
-		["Bay_12",200,"Katalaki Bay"],
-		["Bay_13",200,"Melanera Bay"],
-		["Bay_14",200,"Naftia Bay"],
-		["Bay_15",200,"Zaros Bay"],
-		["Bay_16",200,"Edessa Bay"],		
-		["Bay_17",200,"Iremi Bay"],
-		["Bay_18",200,"Panochori Bay"],
-		["Bay_19",200,"Neri Bay"],
-		["Bay_20",200,"Kavala Bay"],
-		["Bay_21",200,"Negades Bay"],
-		["Bay_22",200,"Pyrgos Gulf"],
-		["Bay_23",200,"Pyrgos Gulf"],
-		["Bay_24",200,"Pyrgos Gulf"],
-		["Bay_25",200,"Panochori Bay"]
-];
-pvar_airportList = [
-		["Airport_1",180,"Airport 1"],
-		["Airport_2",80,"Airport 2"],
-		["Airport_3",80,"Airport 3"],
-		["Airport_4",150,"Airport 4"],
-		["Airport_5",150,"Airport 5"],
-		["Airport_6",200,"Airport 6"]
-];
 
 //Gunstore Weapon List - Gun Store Base List
 // classname, description, buy cost, sell amount
@@ -1302,10 +1242,6 @@ publicVariable "pvar_restrictedZones";
 publicVariable "pvar_gunStoreLocations";
 publicVariable "pvar_generalStoreLocations";
 publicVariable "pvar_constructionStoreLocations";
-
-publicVariable "pvar_cityList";
-publicVariable "pvar_bayList";
-publicVariable "pvar_airportList";
 
 publicVariable "pvar_weaponsArray";
 publicVariable "pvar_ammoArray";

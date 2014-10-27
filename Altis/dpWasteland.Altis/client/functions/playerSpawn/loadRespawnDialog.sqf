@@ -66,9 +66,9 @@ while {respawnDialogActive} do
         if(!showBeacons) then 
 		{
             {
-                _pos = getMarkerPos (_x select 0);
-                _name = _x select 2;
-                _rad = _x select 1;
+                _pos = _x select 2;
+                _name = _x select 0;
+                _rad = _x select 3;
                 _playerArray = [];
 
                 {
@@ -91,7 +91,7 @@ while {respawnDialogActive} do
                 _friendlyCount = 0;
                 _enemyCount = 0; 
                 
-            }forEach pvar_cityList; 
+            }forEach cityArray; 
 
             {
                 _button = _display displayCtrl (_x select 0);
@@ -205,9 +205,9 @@ while {respawnDialogActive} do
     	if(!showBeacons) then 
         {
         	{
-                _pos = getMarkerPos (_x select 0);
-                _name = _x select 2;
-                _rad = _x select 1;
+                _pos = _x select 2;
+                _name = _x select 0;
+                _rad = _x select 3;
 
                 {
                     if((getPos _x distance _pos) < _rad) then
@@ -227,7 +227,7 @@ while {respawnDialogActive} do
                 };
                 _friendlyCount = 0;
                 _enemyCount = 0; 
-            }forEach pvar_cityList; 
+            }forEach cityArray; 
 
             {
                 _button = _display displayCtrl (_x select 0);

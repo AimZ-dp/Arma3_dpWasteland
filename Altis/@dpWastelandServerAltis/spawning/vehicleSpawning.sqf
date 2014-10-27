@@ -12,38 +12,26 @@ private ["_counter","_position","_type","_radius"];
 
 _counter = 0;
 
-for "_i" from 1 to 60 step 1 do
+for "_i" from 1 to maxVehicles step 1 do
 {
-
-	// TODO: MAKE THIS A FUNCTION - PASS IN AN ARRAY OF MARKER ARRAYS (CITY & BAY), RANDOM WHERE
 	private ["_areaArray","_areaName","_townPos","_townNumber","_ZoneRestricted","_attempts"];
-	_areaArray = pvar_cityList;
-	_areaName = "Town";
+	
+	_areaArray = cityArray;
 	if (random 10 > 8) then {
-		_areaArray = pvar_bayList;	
-		_areaName = "Bay";
+		_areaArray = marineArray;	
 	};
-	_townNumber = 0;
-	_ZoneRestricted = true;
-	_attempts = 0;
-	while {(_ZoneRestricted && _attempts < 1000)} do
-	{
-		// GET A RANDOM TOWN POSITION
-		_townNumber = floor (random (count _areaArray));
-		_townPos = getMarkerPos format ["%1_%2", _areaName, _townNumber+1];
-		_ZoneRestricted = [_townPos] call isPosRestricted;
-		_attempts = _attempts + 1;
-	};
-	_position = getMarkerPos format ["%1_%2", _areaName, _townNumber+1];
-	_radius = (_areaArray select _townNumber) select 1;
+	
+	_area = _areaArray select (floor (random (count _areaArray)));
+	_position = _area select 2;
+	_radius = _area select 3;
 	
 	_type = floor (random 4);
 	switch (_type) do 
 	{ 
-	  case 0: {[_position, Quadbikes, true, _radius, true] call vehicleCreation;}; 
-	  case 1: {[_position, Cars, true, _radius, true] call vehicleCreation;}; 
-	  case 2: {[_position, Trucks, true, _radius, true] call vehicleCreation;}; 
-	  case 3: {[_position, UnarmedMRAPVehicles, true, _radius, true] call vehicleCreation;}; 
+	  case 0: {[_position, Quadbikes, true, _radius, true, true] call vehicleCreation;}; 
+	  case 1: {[_position, Cars, true, _radius, true, true] call vehicleCreation;}; 
+	  case 2: {[_position, Trucks, true, _radius, true, true] call vehicleCreation;}; 
+	  case 3: {[_position, UnarmedMRAPVehicles, true, _radius, true, true] call vehicleCreation;}; 
 	};
 		
 	_counter = _counter + 1;

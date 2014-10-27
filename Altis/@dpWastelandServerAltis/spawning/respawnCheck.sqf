@@ -81,38 +81,22 @@ while {true} do
 							_unit removeAllEventHandlers "HandleDamage";
 							deleteVehicle _unit;
 							
-							// TODO: MAKE THIS A FUNCTION - PASS IN AN ARRAY OF MARKER ARRAYS (CITY & BAY), RANDOM WHERE
 							private ["_areaArray","_areaName","_townPos","_townNumber","_ZoneRestricted","_attempts"];
-							_areaArray = pvar_cityList;
-							_areaName = "Town";
+							_areaArray = cityArray;
 							if (random 10 > 8) then {
-								_areaArray = pvar_bayList;	
-								_areaName = "Bay";
+								_areaArray = marineArray;	
 							};
-							_townNumber = 0;
-							_ZoneRestricted = true;
-							_attempts = 0;
-							while {(_ZoneRestricted && _attempts < 1000)} do
-							{
-								// GET A RANDOM TOWN POSITION
-								_townNumber = floor (random (count _areaArray));
-								_townPos = getMarkerPos format ["%1_%2", _areaName, _townNumber+1];
-
-								_ZoneRestricted = [_townPos] call isPosRestricted;
-								
-								_attempts = _attempts + 1;
-							};
-							_position = _townPos;
-							_radius = (_areaArray select _townNumber) select 1;
-							//-----------------------------------------------------
+							_area = _areaArray select (floor (random (count _areaArray)));
+							_position = _area select 2;
+							_radius = _area select 3;
 							
 							_type = floor (random 4);
 							switch (_type) do 
 							{ 
-							  case 0: {[_position, Quadbikes, true, _radius, true] call vehicleCreation;}; 
-							  case 1: {[_position, Cars, true, _radius, true] call vehicleCreation;}; 
-							  case 2: {[_position, Trucks, true, _radius, true] call vehicleCreation;}; 
-							  case 3: {[_position, UnarmedMRAPVehicles, true, _radius, true] call vehicleCreation;}; 
+							  case 0: {[_position, Quadbikes, true, _radius, true, true] call vehicleCreation;}; 
+							  case 1: {[_position, Cars, true, _radius, true, true] call vehicleCreation;}; 
+							  case 2: {[_position, Trucks, true, _radius, true, true] call vehicleCreation;}; 
+							  case 3: {[_position, UnarmedMRAPVehicles, true, _radius, true, true] call vehicleCreation;}; 
 							};
 						};
 						if (_unit isKindOf "Ship") then		// Ship or Boat_F - could be wrong - TEST IT! Update: Think Ship works fine.
@@ -123,21 +107,10 @@ while {true} do
 							deleteVehicle _unit;
 							
 							private ["_areaArray","_areaName","_townPos","_townNumber","_ZoneRestricted","_attempts"];
-							_townNumber = 0;
-							_ZoneRestricted = true;
-							_attempts = 0;
-							while {(_ZoneRestricted && _attempts < 1000)} do
-							{
-								// GET A RANDOM TOWN POSITION
-								_townNumber = floor (random (count pvar_bayList));
-								_townPos = getMarkerPos format ["Bay_%1", _townNumber+1];
-
-								_ZoneRestricted = [_townPos] call isPosRestricted;
-								
-								_attempts = _attempts + 1;
-							};
-							_position = getMarkerPos format ["Bay_%1", _townNumber+1];
-							_radius = (pvar_bayList select _townNumber) select 1;
+							_areaArray = marineArray;	
+							_area = _areaArray select (floor (random (count _areaArray)));
+							_position = _area select 2;
+							_radius = _area select 3;
 	
 							_type = floor (random 3);
 							switch (_type) do
@@ -155,27 +128,10 @@ while {true} do
 							deleteVehicle _unit;
 							
 							private ["_areaArray","_areaName","_townPos","_townNumber","_ZoneRestricted","_attempts"];
-							_areaArray = pvar_cityList;
-							_areaName = "Town";
-							if (random 10 > 8) then {
-								_areaArray = pvar_bayList;	
-								_areaName = "Bay";
-							};
-							_townNumber = 0;
-							_ZoneRestricted = true;
-							_attempts = 0;
-							while {(_ZoneRestricted && _attempts < 1000)} do
-							{
-								// GET A RANDOM TOWN POSITION
-								_townNumber = floor (random (count _areaArray));
-								_townPos = getMarkerPos format ["%1_%2", _areaName, _townNumber+1];
-
-								_ZoneRestricted = [_townPos] call isPosRestricted;
-								
-								_attempts = _attempts + 1;
-							};
-							_position = _townPos;
-							_radius = (_areaArray select _townNumber) select 1;
+							_areaArray = militaryArray;
+							_area = _areaArray select (floor (random (count _areaArray)));
+							_position = _area select 2;
+							_radius = _area select 3;
 							
 							[_position, ammoBoxes, true, _radius, true] call boxCreation;	
 						};
@@ -186,7 +142,11 @@ while {true} do
 							_unit removeAllEventHandlers "HandleDamage";
 							deleteVehicle _unit;
 							
-							_position = getMarkerPos format ["Airport_%1", floor(random (count pvar_airportList))+1];							
+							_areaArray = airportArray;
+							_area = _areaArray select (floor (random (count _areaArray)));
+							_position = _area select 2;
+							_radius = _area select 3;
+						
 							_type = floor (random 2);
 							switch (_type) do 
 							{ 
@@ -202,27 +162,13 @@ while {true} do
 							deleteVehicle _unit;
 							
 							private ["_areaArray","_areaName","_townPos","_townNumber","_ZoneRestricted","_attempts"];
-							_areaArray = pvar_cityList;
-							_areaName = "Town";
+							_areaArray = cityArray;
 							if (random 10 > 8) then {
-								_areaArray = pvar_bayList;	
-								_areaName = "Bay";
+								_areaArray = marineArray;	
 							};
-							_townNumber = 0;
-							_ZoneRestricted = true;
-							_attempts = 0;
-							while {(_ZoneRestricted && _attempts < 1000)} do
-							{
-								// GET A RANDOM TOWN POSITION
-								_townNumber = floor (random (count _areaArray));
-								_townPos = getMarkerPos format ["Town_%1", _townNumber+1];
-
-								_ZoneRestricted = [_townPos] call isPosRestricted;
-								
-								_attempts = _attempts + 1;
-							};
-							_position = getMarkerPos format ["Town_%1", _townNumber+1];
-							_radius = (_areaArray select _townNumber) select 1;
+							_area = _areaArray select (floor (random (count _areaArray)));
+							_position = _area select 2;
+							_radius = _area select 3;
 							
 							[_position, survivalObjectList, true, _radius, true] call survivalObjectCreation;	
 						};

@@ -46,6 +46,8 @@ publicVariable "R3F_LOG_PUBVAR_point_attache";
 [] call relations;
 [] spawn serverTimeSync;
 [] spawn broadcaster;
+[] call createLocations;
+//[] call drawLocations;
 
 //Create the store guys
 [storesPerActiveZone] call createGunStores;

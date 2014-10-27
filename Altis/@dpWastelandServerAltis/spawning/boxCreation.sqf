@@ -13,6 +13,7 @@ _coverArea = _this select 3;
 _respawn = _this select 4;
 
 private ["_newPos", "_boxtype","_box","_type"];
+
 // Get the random position
 _newPos = [_position,1,_coverArea,5,0,1,0] call BIS_fnc_findSafePos;
 
@@ -23,6 +24,19 @@ _boxtype = _ammoBoxList select _type;
 // Create the object at the found new position
 _box = createVehicle [_boxtype,_newPos,[],0,"NONE"];
 _box setDir (random 360);
+
+// move into building
+_houses = nearestObjects [_position, ["house"], _coverArea];
+// if house valid then _houses
+if (count _houses > 0) then 
+{
+	_positions = [_houses select 0] call BIS_fnc_buildingPositions;
+	if (count _positions > 0) then
+	{
+		_newPos = _positions select (floor (random (count _positions)));
+		_box setPos _newPos;
+	};
+};
 
 // Add variables to allow the server to control the respawn, burning times and remove hacked vehicles
 _box setVariable ["newVehicle",vChecksum,true];
@@ -56,6 +70,15 @@ if (_restrictContent) then
 		};
 	} foreach _ammotype;
 };
+
+/*
+	_markerName = format["box_marker_%1",_newPos];
+	_marker = createMarker [_markerName, _newPos];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType  "mil_dot";
+	_marker setMarkerColor "ColorWhite";
+	_marker setMarkerAlpha 0.5; 
+*/
 
 _box
 //diag_log format["*** boxCreation Finished ***"];

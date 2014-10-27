@@ -30,7 +30,6 @@ titleText ["You were born to respawn...", "BLACK", 0];
 [] spawn detectRestrictedZones; 
 
 // Update map markers
-[] call createTownMarkers;
 [] call displayRestrictedZones; 
 [pvar_gunStoreLocations,"Weapon Store"] call updateStoreMarkers;
 [pvar_generalStoreLocations,"General Store"] call updateStoreMarkers;

@@ -21,6 +21,8 @@ aActionsIDs = aActionsIDs + [player addAction["Take water from Canister","noscri
 
 aActionsIDs = aActionsIDs + [player addAction[("<t color=""#FFFFFF"">Cancel Action</t>"), "noscript.sqf", 'doCancelAction = true;', 1, false, false, "", 'mutexScriptInProgress']];
 
+aActionsIDs = aActionsIDs + [player addAction[("<t color=""#FF0000"">Para Jump</t>"), "client\functions\paraJump.sqf", [], 10, false, false, "", "(vehicle player) isKindOf 'Helicopter' && ((getPos vehicle player) select 2) > 15"]];
+
 playerMenuId = player addAction [format ["<t color='#BE6300'>%1</t>", "Player Menu"], loadPlayerMenu,[],-10,false,false,"","local player"];	
 
 // primary weapon after holster

@@ -41,6 +41,13 @@ player createDiaryRecord["changelog",
 
 player createDiaryRecord["changelog",
 ["=(dp)=","
+<br/>2.7.5<br/>
+	[Improvement] All locations gathered from map data.<br/>
+	[Improvement] Changed vehicle spawns to near roads.<br/>
+	[Improvement] Added a para Jump option when flying.<br/>
+	[Improvement] New mission to destroy 2 armed helicopters.<br/>
+	[Improvement] Removed town markers.<br/>
+	[Improvement] Ammo Boxes now spawn in military buildings, instead of random town.<br/>
 <br/>2.7.4<br/>
 	[Bug] AI seem to run away. Stopped them fleeing due to being scared.<br/>
 <br/>2.7.3<br/>

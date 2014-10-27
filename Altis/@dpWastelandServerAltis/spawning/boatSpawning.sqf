@@ -12,22 +12,15 @@ private ["_counter","_position","_type","_num","_radius"];
 
 _counter= 0;
 
-for "_i" from 1 to 20 step 1 do
+for "_i" from 1 to maxBoats step 1 do
 {
 	private ["_areaArray","_areaName","_townPos","_townNumber","_ZoneRestricted","_attempts"];
-	_townNumber = 0;
-	_ZoneRestricted = true;
-	_attempts = 0;
-	while {(_ZoneRestricted && _attempts < 1000)} do
-	{
-		_townNumber = floor (random (count pvar_bayList));
-		_townPos = getMarkerPos format ["Bay_%1", _townNumber+1];
-		_ZoneRestricted = [_townPos] call isPosRestricted;
-		_attempts = _attempts + 1;
-	};
-	_position = getMarkerPos format ["Bay_%1", _townNumber+1];
-	_radius = (pvar_bayList select _townNumber) select 1;
 
+	_areaArray = marineArray;	
+	_area = _areaArray select (floor (random (count _areaArray)));
+	_position = _area select 2;
+	_radius = _area select 3;
+	
 	_type = floor (random 3);
 	switch (_type) do
 	{ 

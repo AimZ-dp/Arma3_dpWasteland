@@ -39,31 +39,47 @@ _CivGrp addVehicle _vehicle2;
 _pilot1 = [_CivGrp, _randomEndPos] call createRandomSoldier; 
 _pilot1 moveInDriver _vehicle1;
 _CivGrp selectLeader _pilot1;
+
 _pilot2 = [_CivGrp, _randomEndPos] call createRandomSoldier; 
 _pilot2 moveInDriver _vehicle2;
 _CivGrp selectLeader _pilot2;
 
 _copilot1 = [_CivGrp, _randomEndPos] call createRandomSoldier; 
 _copilot1 moveInGunner _vehicle1;
+
 _copilot2 = [_CivGrp, _randomEndPos] call createRandomSoldier; 
 _copilot2 moveInGunner _vehicle2;
 
-_waypoint = _CivGrp addWaypoint [_randomEndPos, 0];
-_waypoint setWaypointType "DESTROY";
+_areaArray = cityArray;
+_area = _areaArray select (floor (random (count _areaArray)));
+_newPosition = _area select 2;
+
+_waypoint = _CivGrp addWaypoint [_newPosition, 0];
+_waypoint setWaypointType "MOVE";
 _waypoint setWaypointCompletionRadius 100;
-_waypoint setWaypointCombatMode "RED"; // Defensive behaviour
-_waypoint setWaypointBehaviour "COMBAT"; // Force convoy to normally drive on the street.
+_waypoint setWaypointCombatMode "RED"; 
+_waypoint setWaypointBehaviour "AWARE"; 
 _waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointSpeed "NORMAL";
-_waypoint = _CivGrp addWaypoint [_randomEndPos, 0];
-_waypoint setWaypointType "CYCLE";
+_waypoint setWaypointSpeed "FULL";
+
+_waypoint setWaypointType "SAD";
 _waypoint setWaypointCompletionRadius 10;
 _waypoint setWaypointCombatMode "RED"; 
-_waypoint setWaypointBehaviour "COMBAT"; 
+_waypoint setWaypointBehaviour "AWARE"; 
 _waypoint setWaypointFormation "NO CHANGE";
 _waypoint setWaypointSpeed "NORMAL";
 
 // ---- MARKERS ----
+
+private ["_marker1","_marker2"];
+_marker1 = createMarker [format["%1_current_1", _missionMarkerName],  position _vehicle1];
+_marker1 setMarkerType "n_air";
+_marker1 setMarkerColor "ColorBlack";
+
+private ["_marker","_marker2"];
+_marker2 = createMarker [format["%1_current_2", _missionMarkerName],  position _vehicle2];
+_marker2 setMarkerType "n_air";
+_marker2 setMarkerColor "ColorBlack";
 
 [_missionMarkerName,_randomEndPos,_missionType] call createClientMarker;
 	
@@ -78,22 +94,40 @@ publicVariable "pvar_messageSystem";
 
 // ---- MISSION LOOP,  ---- 
 
-private ["_result","_startTime","_missionEnd","_currTime","_playerPresent","_unitsAlive"];
+private ["_result","_startTime","_missionEnd","_currTime","_unitsAlive"];
 _result = 0;
 _startTime = floor(time);
 _missionEnd = false;
 while {!_missionEnd} do
 {
     sleep 1; 
-	_playerPresent = false;
     _currTime = floor(time);
 
     if(_currTime - _startTime >= mainMissionTimeout) then {_result = 1;};
     _unitsAlive = ({alive _x} count units _CivGrp);
-    if ((_result == 1) OR ((_playerPresent) AND (_unitsAlive < 1))) then
+    if ((_result == 1) OR (_unitsAlive < 1)) then
 	{
 		_missionEnd = true;
 	};
+	
+	if (damage _vehicle1 < 0.9) then 
+	{
+		_marker1 setMarkerPos (position _vehicle1);
+	}
+	else
+	{
+		deleteMarker _marker1;	
+	};
+	
+	if (damage _vehicle2 < 0.9) then 
+	{
+		_marker2 setMarkerPos (position _vehicle2);
+	}
+	else
+	{
+		deleteMarker _marker2;	
+	};
+
 
 	_vehicle1 setVariable ["timeout", (time + ammoDesertedTimeLimit + random maxRandomTimeLimit), true];
 	_vehicle1 setVariable ["last_timeout", time, true];

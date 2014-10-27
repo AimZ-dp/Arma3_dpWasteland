@@ -85,6 +85,10 @@ controlStoreGuy = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAlt
 refuelVehicle = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\Fuelling\refuelVehicle.sqf";
 defuelVehicle = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\Fuelling\defuelVehicle.sqf";
 
+// Locations
+createLocations = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\locations\createLocations.sqf";
+drawLocations = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\locations\drawLocations.sqf";
+
 serverCompiledScripts = true;
 
 diag_log format["*** serverCompile Finished ***"];

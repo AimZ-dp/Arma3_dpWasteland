@@ -44,4 +44,13 @@ if(_objtype == "Land_Sacks_goods_F") then
 
 _obj setVariable["R3F_LOG_disabled",false];
 
+/*
+	_markerName = format["survival_marker_%1",_newPos];
+	_marker = createMarker [_markerName, _newPos];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType  "mil_dot";
+	_marker setMarkerColor "ColorYellow";
+	_marker setMarkerAlpha 0.5; 
+*/
+
 //diag_log format["*** survivalObjectCreation Finished ***"];

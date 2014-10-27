@@ -21,7 +21,7 @@ class Mission
 	randomSeed=4593667;
 	class Intel
 	{
-		briefingName="dp Wasteland v2.7.4";
+		briefingName="dp Wasteland v2.7.5";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
@@ -2071,453 +2071,8 @@ class Mission
 	};
 	class Markers
 	{
-		items=68;
+		items=10;
 		class Item0
-		{
-			position[]={18439.654,4.8663135,8096.3008};
-			name="Town_1";
-			text="Livadi";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item1
-		{
-			position[]={3531.3284,8.8676796,12945.97};
-			name="Town_2";
-			text="Kavala";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item2
-		{
-			position[]={9111.6689,19.2085,11951.241};
-			name="Town_3";
-			text="Zaros";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item3
-		{
-			position[]={7078.0391,116.65565,16467.727};
-			name="Town_4";
-			text="Kore";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item4
-		{
-			position[]={14012.114,26.530485,18696.441};
-			name="Town_5";
-			text="Athira";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item5
-		{
-			position[]={11559.681,83.73983,7081.4033};
-			name="Town_6";
-			text="Eginio";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item6
-		{
-			position[]={19371.947,38.326698,13248.741};
-			name="Town_7";
-			text="Dorida";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item7
-		{
-			position[]={20523.799,36.223602,8900.5498};
-			name="Town_8";
-			text="Panagia";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item8
-		{
-			position[]={26986.098,19.025387,23155.799};
-			name="Town_9";
-			text="Molos";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item9
-		{
-			position[]={17835,2.0028613,18122.145};
-			name="Town_10";
-			text="Kalithea";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item10
-		{
-			position[]={10283.358,120.51598,19034.844};
-			name="Town_11";
-			text="Galati";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item11
-		{
-			position[]={9236.292,43.273323,8074.9668};
-			name="Town_12";
-			text="Sfaka";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item12
-		{
-			position[]={14629.574,47.65271,20780.088};
-			name="Town_13";
-			text="Frini";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item13
-		{
-			position[]={16826.982,20.267996,12597.821};
-			name="Town_14";
-			text="Pyrgos";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item14
-		{
-			position[]={21592.113,19.341955,21269.83};
-			name="Town_15";
-			text="Iraklia";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item15
-		{
-			position[]={9700.4443,2.6203649,22302.471};
-			name="Town_16";
-			text="Krya Nera";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item16
-		{
-			position[]={17078.537,22.62019,9985.9844};
-			name="Town_17";
-			text="Ekali";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item17
-		{
-			position[]={9202.8154,120.36868,15945.561};
-			name="Town_18";
-			text="Agios Dionysios";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item18
-		{
-			position[]={12527.45,12.586844,14337.014};
-			name="Town_19";
-			text="Neochori";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item19
-		{
-			position[]={20936.266,44.526684,16950.135};
-			name="Town_20";
-			text="Paros";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item20
-		{
-			position[]={8628.5459,179.29642,18301.314};
-			name="Town_21";
-			text="Syrta";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item21
-		{
-			position[]={16246.325,24.631342,17291.715};
-			name="Town_22";
-			text="Telos";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item22
-		{
-			position[]={4890.0986,77.603027,16170.043};
-			name="Town_23";
-			text="Negades";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item23
-		{
-			position[]={25705.402,20.523184,21353.52};
-			name="Town_24";
-			text="Sofia";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item24
-		{
-			position[]={18089.172,25.142389,15257.965};
-			name="Town_25";
-			text="Charkia";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item25
-		{
-			position[]={23216.932,13.873919,19966.129};
-			name="Town_26";
-			text="Loannina";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item26
-		{
-			position[]={4567.438,302.15903,21458.105};
-			name="Town_27";
-			text="Oreokastro";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item27
-		{
-			position[]={9435.7256,-0.0014155542,22596.207};
-			name="Bay_1";
-			text="Ammolofi Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=268.60001;
-		};
-		class Item28
-		{
-			position[]={12063.415,-0.011594126,22955.643};
-			name="Bay_2";
-			text="Tonos Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=250.5;
-		};
-		class Item29
-		{
-			position[]={17638.793,-0.16387831,18249.311};
-			name="Bay_3";
-			text="Kalithea Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=330;
-		};
-		class Item30
-		{
-			position[]={21744.861,-0.018072259,20828.414};
-			name="Bay_4";
-			text="Pefkas Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=241.89999;
-		};
-		class Item31
-		{
-			position[]={25593.006,-0.27987421,23571.531};
-			name="Bay_5";
-			text="Galana Nera Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=232.39999;
-		};
-		class Item32
-		{
-			position[]={27534.271,0.0546012,24480.443};
-			name="Bay_6";
-			text="Molos Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=238.89999;
-		};
-		class Item33
-		{
-			position[]={22414.811,0.0087762037,15101.772};
-			name="Bay_7";
-			text="Thelos Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=314.79999;
-		};
-		class Item34
-		{
-			position[]={21449.367,0.0046867104,12879.655};
-			name="Bay_8";
-			text="Chalkeia Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=270.89999;
-		};
-		class Item35
-		{
-			position[]={21884.41,-0.028197216,6069.0337};
-			name="Bay_9";
-			text="Mazi Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=283.20001;
-		};
-		class Item36
-		{
-			position[]={18330.76,1.6057989e-005,8139.4497};
-			name="Bay_10";
-			text="Livadi Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=45.735901;
-		};
-		class Item37
-		{
-			position[]={16366.674,0.0021310213,12931.377};
-			name="Bay_11";
-			text="Pyrgos Gulf";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=36.502052;
-		};
-		class Item38
-		{
-			position[]={12429.415,-0.13778873,13773.549};
-			name="Bay_12";
-			text="Katalaki Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=313.70001;
-		};
-		class Item39
-		{
-			position[]={11176.188,0.057211522,10235.242};
-			name="Bay_13";
-			text="Melanera Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=225.2;
-		};
-		class Item40
-		{
-			position[]={12177.959,-0.00041014151,6645.1104};
-			name="Bay_14";
-			text="Naftia Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=32.532852;
-		};
-		class Item41
-		{
-			position[]={9302.624,0.012340399,10802.793};
-			name="Bay_15";
-			text="Zaros Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=247.39999;
-		};
-		class Item42
-		{
-			position[]={7194.1548,0.14179158,10874.552};
-			name="Bay_16";
-			text="Edessa Bay";
-			type="Empty";
-			colorName="ColorGreen";
-		};
-		class Item43
-		{
-			position[]={4938.8721,-0.00094929955,9911.8008};
-			name="Bay_17";
-			text="Iremi Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=294.39999;
-		};
-		class Item44
-		{
-			position[]={4484.5884,-0.011431077,10107.592};
-			name="Bay_18";
-			text="Panochori Bay";
-			type="Empty";
-			colorName="ColorGreen";
-		};
-		class Item45
-		{
-			position[]={3538.51,0.23881684,11484.414};
-			name="Bay_19";
-			text="Neri Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=37.978886;
-		};
-		class Item46
-		{
-			position[]={3512.6714,0.0025057709,13775.518};
-			name="Bay_20";
-			text="Kavala Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=90.776459;
-		};
-		class Item47
-		{
-			position[]={4182.0923,-0.015993457,16416.066};
-			name="Bay_21";
-			text="Negades Bay";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=45.875298;
-		};
-		class Item48
-		{
-			position[]={26840.156,21.899445,24651.643};
-			name="Airport_1";
-			type="Empty";
-			colorName="ColorBlack";
-		};
-		class Item49
-		{
-			position[]={20942.166,27.133274,7264.3325};
-			name="Airport_2";
-			type="Empty";
-			colorName="ColorBlack";
-		};
-		class Item50
-		{
-			position[]={14337.746,18.951691,16144.073};
-			name="Airport_3";
-			type="Empty";
-			colorName="ColorBlack";
-		};
-		class Item51
-		{
-			position[]={11629.723,23.122614,11869.336};
-			name="Airport_4";
-			type="Empty";
-			colorName="ColorBlack";
-		};
-		class Item52
-		{
-			position[]={9169.457,16.231901,21543.414};
-			name="Airport_5";
-			type="Empty";
-			colorName="ColorBlack";
-		};
-		class Item53
-		{
-			position[]={23149.035,3.1900001,18811.74};
-			name="Airport_6";
-			type="Empty";
-			colorName="ColorBlack";
-		};
-		class Item54
 		{
 			position[]={8440.4658,81.503235,25252.834};
 			name="respawn_west";
@@ -2525,7 +2080,7 @@ class Mission
 			type="Empty";
 			colorName="ColorYellow";
 		};
-		class Item55
+		class Item1
 		{
 			position[]={8448.8281,82.536972,25253.176};
 			name="respawn_east";
@@ -2533,7 +2088,7 @@ class Mission
 			type="Empty";
 			colorName="ColorYellow";
 		};
-		class Item56
+		class Item2
 		{
 			position[]={8455.585,84.597336,25253.707};
 			name="respawn_guerrila";
@@ -2541,7 +2096,7 @@ class Mission
 			type="Empty";
 			colorName="ColorYellow";
 		};
-		class Item57
+		class Item3
 		{
 			position[]={8466.9482,106.99021,25099.631};
 			name="vehicle_spawn";
@@ -2552,7 +2107,7 @@ class Mission
 			a=300;
 			b=300;
 		};
-		class Item58
+		class Item4
 		{
 			position[]={8441.8955,107.92381,25098.117};
 			name="player_spawn";
@@ -2565,7 +2120,7 @@ class Mission
 			b=460;
 			drawBorder=1;
 		};
-		class Item59
+		class Item5
 		{
 			position[]={8508.3555,87.770851,25255.125};
 			name="player_spawn_text";
@@ -2573,7 +2128,7 @@ class Mission
 			type="mil_box";
 			colorName="ColorBlack";
 		};
-		class Item60
+		class Item6
 		{
 			position[]={8482.2324,84.57856,19835.016};
 			name="map_restriction_1";
@@ -2583,9 +2138,9 @@ class Mission
 			fillName="Border";
 			a=7200;
 			b=4600;
-			drawBorder=0;
+			drawBorder=1;
 		};
-		class Item61
+		class Item7
 		{
 			position[]={22458.578,46.777943,20742.01};
 			name="map_restriction_2";
@@ -2595,9 +2150,9 @@ class Mission
 			fillName="Border";
 			a=6800;
 			b=5500;
-			drawBorder=0;
+			drawBorder=1;
 		};
-		class Item62
+		class Item8
 		{
 			position[]={8050.1343,20.042921,10160.766};
 			name="map_restriction_3";
@@ -2607,9 +2162,9 @@ class Mission
 			fillName="Border";
 			a=6500;
 			b=5100;
-			drawBorder=0;
+			drawBorder=1;
 		};
-		class Item63
+		class Item9
 		{
 			position[]={19754.174,93.486534,9724.1084};
 			name="map_restriction_4";
@@ -2619,42 +2174,7 @@ class Mission
 			fillName="Border";
 			a=5200;
 			b=5500;
-			drawBorder=0;
-		};
-		class Item64
-		{
-			position[]={16458.105,0.0029475477,15549.922};
-			name="Bay_22";
-			text="Pyrgos Gulf";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=36.502102;
-		};
-		class Item65
-		{
-			position[]={15281.361,0.012532413,15764.467};
-			name="Bay_23";
-			text="Pyrgos Gulf";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=36.502102;
-		};
-		class Item66
-		{
-			position[]={13442.823,-0.061317783,14495.705};
-			name="Bay_24";
-			text="Pyrgos Gulf";
-			type="Empty";
-			colorName="ColorGreen";
-			angle=36.502102;
-		};
-		class Item67
-		{
-			position[]={3689.3955,-0.025823142,10083.402};
-			name="Bay_25";
-			text="Panochori Bay";
-			type="Empty";
-			colorName="ColorGreen";
+			drawBorder=1;
 		};
 	};
 };

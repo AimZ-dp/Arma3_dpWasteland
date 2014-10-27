@@ -86,6 +86,15 @@ if (_wreck) then
 	_heli setVariable ["status", "unknown", true];
 };
 
+/*
+	_markerName = format["heli_marker_%1",_newPos];
+	_marker = createMarker [_markerName, _newPos];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType  "mil_dot";
+	_marker setMarkerColor "ColorGreen";
+	_marker setMarkerAlpha 0.5; 
+*/
+
 _heli
 
 //diag_log format["*** heliCreation finished ***"];

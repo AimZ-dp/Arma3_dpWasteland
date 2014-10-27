@@ -60,5 +60,14 @@ if (_wreck) then
 	_jet setVariable ["status", "unknown", true];
 };
 
+/*
+	_markerName = format["jet_marker_%1",_newPos];
+	_marker = createMarker [_markerName, _newPos];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType  "mil_dot";
+	_marker setMarkerColor "ColorRed";
+	_marker setMarkerAlpha 0.5; 
+*/
+
 _jet
 //diag_log format["*** JetCreation finished ***"];
