@@ -11,7 +11,8 @@
 #define respawn_PlayersInTown_Text2 3410
 #define respawn_PlayersInTown_Text3 3411
 #define respawn_PlayersInTown_Text4 3412
-
+#define respawn_Base_Button 3413
+#define respawn_Heli_Button 3414
 
 class RespawnSelectionDialog {
 		idd = respawn_dialog;
@@ -171,9 +172,9 @@ class RespawnSelectionDialog {
 	
 		class LoadTownsButton: w_RscButton
 		{
-			idc = -1;
-			onButtonClick = "[0] execVM 'client\functions\temp\switchButtonNames.sqf'";
-			text = "Towns";
+			idc = respawn_Heli_Button;
+			onButtonClick = "[2] call spawnAction";
+			text = "Heli Drop";
 
 			x = 0.406 * safezoneW + safezoneX;
 			y = 0.384 * safezoneH + safezoneY;
@@ -183,10 +184,10 @@ class RespawnSelectionDialog {
 
 		class LoadBeaconsButton: w_RscButton
 		{
-			idc = -1;
-			onButtonClick = "[1] execVM 'client\functions\temp\switchButtonNames.sqf'";
-			text = "Beacons";
-
+			idc = respawn_Base_Button;
+			onButtonClick = "[3] call spawnAction";
+			text = "Base Flag";
+			
 			x = 0.515 * safezoneW + safezoneX;
 			y = 0.384 * safezoneH + safezoneY;
 			w = 0.078 * safezoneW;

@@ -73,13 +73,6 @@ if (player distance _corpse < 5 && !alive _corpse) then
 				player setVariable["medkits",_ptemp+1,true]; 
 			};
 		};
-		case "spawnBeacon": {
-			player setVariable["spawnBeacon", (player getVariable "spawnBeacon")-1,true];
-			_droppedBeacon = "Land_SatellitePhone_F" createVehicle (position player);
-			_droppedBeacon setVariable["spawnsRemaining", 100, true];
-			_droppedBeacon setVariable["faction","WORLD",true];
-			_droppedBeacon setPos _pos;
-		};
 	};
 
 	mutexScriptInProgress = false;

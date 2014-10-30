@@ -1,7 +1,7 @@
 /**
- * Opens the dialog vehicle content and prepopulated according to the vehicle
+ * Ouvre la boîte de dialogue du contenu du véhicule et la prérempli en fonction de véhicule
  * 
- * @param 0 the vehicle for which to view the content
+ * @param 0 le véhicule dont il faut afficher le contenu
  * 
  * Copyright (C) 2010 madbull ~R3F~
  * 
@@ -10,7 +10,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-disableSerialization; // Because of displayCtrl
+disableSerialization; // A cause des displayCtrl
 
 if (R3F_LOG_mutex_local_verrou) then
 {
@@ -31,14 +31,14 @@ else
 	
 	_contenu = _transporteur getVariable "R3F_LOG_objets_charges";
 	
-	/** List of class names of objects contained in the vehicle, without duplicates */
+	/** Liste des noms de classe des objets contenu dans le véhicule, sans doublon */
 	_tab_objets = [];
-	/** Associated quantity (index) for class names in objectsArray */
+	/** Quantité associé (par l'index) aux noms de classe dans _tab_objets */
 	_tab_quantite = [];
 	
 	_chargement_actuel = 0;
 	
-	// Preparation of the list of contents and amounts associated with the objects
+	// Préparation de la liste du contenu et des quantités associées aux objets
 	for [{_i = 0}, {_i < count _contenu}, {_i = _i + 1}] do
 	{
 		private ["_objet"];
@@ -56,7 +56,7 @@ else
 			_tab_quantite set [_idx_objet, ((_tab_quantite select _idx_objet) + 1)];
 		};
 		
-		// Adding the object of the current load
+		// Ajout de l'objet de le chargement actuel
 		for [{_j = 0}, {_j < count R3F_LOG_CFG_objets_transportables}, {_j = _j + 1}] do
 		{
 			if (_objet isKindOf (R3F_LOG_CFG_objets_transportables select _j select 0)) exitWith
@@ -66,7 +66,7 @@ else
 		};
 	};
 	
-	// Search for the maximum capacity of the carrier
+	// Recherche de la capacité maximale du transporteur
 	_chargement_maxi = 0;
 	for [{_i = 0}, {_i < count R3F_LOG_CFG_transporteurs}, {_i = _i + 1}] do
 	{
@@ -77,18 +77,18 @@ else
 	};
 	
 	
-	// View content in the interface
+	// Affichage du contenu dans l'interface
 	#include "dlg_constantes.h"
 	private ["_ctrl_liste"];
 	
 	_dlg_contenu_vehicule = findDisplay R3F_LOG_IDD_dlg_contenu_vehicule;
 	
-	/**** START translations labels ****/
-	(_dlg_contenu_vehicule displayCtrl R3F_LOG_IDC_dlg_CV_titre) ctrlSetText STR_R3F_LOG_dlg_CV_titre;					//"Content of vehicle"
+	/**** DEBUT des traductions des labels ****/
+	(_dlg_contenu_vehicule displayCtrl R3F_LOG_IDC_dlg_CV_titre) ctrlSetText STR_R3F_LOG_dlg_CV_titre;
 	(_dlg_contenu_vehicule displayCtrl R3F_LOG_IDC_dlg_CV_credits) ctrlSetText STR_R3F_ARTY_LOG_nom_produit;
-	(_dlg_contenu_vehicule displayCtrl R3F_LOG_IDC_dlg_CV_btn_decharger) ctrlSetText STR_R3F_LOG_dlg_CV_btn_decharger;	//"Unload"
-	(_dlg_contenu_vehicule displayCtrl R3F_LOG_IDC_dlg_CV_btn_fermer) ctrlSetText STR_R3F_LOG_dlg_CV_btn_fermer;		//"Cancel"
-	/**** END of the translations of labels ****/
+	(_dlg_contenu_vehicule displayCtrl R3F_LOG_IDC_dlg_CV_btn_decharger) ctrlSetText STR_R3F_LOG_dlg_CV_btn_decharger;
+	(_dlg_contenu_vehicule displayCtrl R3F_LOG_IDC_dlg_CV_btn_fermer) ctrlSetText STR_R3F_LOG_dlg_CV_btn_fermer;
+	/**** FIN des traductions des labels ****/
 	
 	(_dlg_contenu_vehicule displayCtrl R3F_LOG_IDC_dlg_CV_capacite_vehicule) ctrlSetText (format [STR_R3F_LOG_dlg_CV_capacite_vehicule, _chargement_actuel, _chargement_maxi]);
 	
@@ -100,14 +100,14 @@ else
 	}
 	else
 	{
-		// Insertion of each type of objects in the list
+		// Insertion de chaque type d'objets dans la liste
 		for [{_i = 0}, {_i < count _tab_objets}, {_i = _i + 1}] do
 		{
 			private ["_index", "_icone"];
 			
 			_icone = getText (configFile >> "CfgVehicles" >> (_tab_objets select _i) >> "icon");
 			
-			// If the icon is valid
+			// Si l'icône est valide
 			if (toString ([toArray _icone select 0]) == "\") then
 			{
 				_index = _ctrl_liste lbAdd (getText (configFile >> "CfgVehicles" >> (_tab_objets select _i) >> "displayName") + format [" (%1x)", _tab_quantite select _i]);
@@ -115,7 +115,7 @@ else
 			}
 			else
 			{
-				// If the satellite phone is used for artillery PC
+				// Si le téléphone satellite est utilisé pour un PC d'artillerie
 				if (!(isNil "R3F_ARTY_active") && (_tab_objets select _i) == "SatPhone") then
 				{
 					_index = _ctrl_liste lbAdd ("     " + STR_R3F_LOG_nom_pc_arti + format [" (%1x)", _tab_quantite select _i]);

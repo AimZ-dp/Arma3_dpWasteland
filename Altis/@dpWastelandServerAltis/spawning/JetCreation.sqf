@@ -26,7 +26,7 @@ _type = floor (random (count _objectList));
 _jettype = _objectList select _type;
 
 // Create the object at the found new position
-_jet = createVehicle [_jettype,_newPos,[],0,"NONE"];
+_jet = createVehicle [_jettype,_newPos,[],5,"NONE"];
 _jet setDir (random 360);
 
 // Add variables to allow the server to control the respawn, burning times and remove hacked vehicles

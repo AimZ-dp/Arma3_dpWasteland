@@ -14,16 +14,14 @@ ammoDesertedTimeLimit = 1800;
 maxRandomTimeLimit = 900;
 objectTimeOut = 15; 
 
-maxVehicles = 64;
+maxVehicles = 80;
 maxHelicopters = 10;
 maxBoats = 20;
-maxAmmoBoxes = 20;
-maxSurvivalObjects = 20;
+maxAmmoBoxes = 30;
+maxSurvivalObjects = 10;
 
 pvar_teamSwitchList = [];
 pvar_teamKillList = [];
-pvar_beaconListBlu = []; 
-pvar_beaconListRed = []; 
 
 clientMissionMarkers = [];
 
@@ -76,8 +74,8 @@ SDV_01_base_F = [
 //Air
 LightHelicopters = [
     "B_Heli_Light_01_F",        	// *MH-9 - Hummingbird
-    "O_Heli_Light_02_unarmed_F" 	// *PO-30 - Ocra (Unarmed)
-	//"I_Heli_light_03_unarmed_F"	// *WY-55 - Hellcat (Unarmed)
+    "O_Heli_Light_02_unarmed_F", 	// *PO-30 - Ocra (Unarmed)
+	"I_Heli_light_03_unarmed_F"		// *WY-55 - Hellcat (Unarmed)
 ];
 TransportHelicopters = [
     "B_Heli_Transport_01_F",      	// *UH-80 - Ghosthawk
@@ -89,8 +87,8 @@ AttackHelicopters = [
     "O_Heli_Attack_02_F",      		// *Mi-48 - Kajman
     "O_Heli_Attack_02_black_F",		// *Mi-48 - Kajman
     "B_Heli_Light_01_armed_F",  	// *AH-9 - Pawnee
-    "O_Heli_Light_02_F"         	// *PO-30 - Ocra
-	//"I_Heli_light_03_F"			// *WY-55 - Hellcat
+    "O_Heli_Light_02_F",         	// *PO-30 - Ocra
+	"I_Heli_light_03_F"				// *WY-55 - Hellcat
 ];
 ArmedFighterPlanes = [
     "B_Plane_CAS_01_F",             // *A-164 Wipeout CAS
@@ -661,73 +659,72 @@ supplyCrate = [
 // classname, description, buy cost, sell amount
 pvar_weaponsArray = [
     //Handgun		
-	//["hgun_Pistol_Signal_F","Starter Pistol",50,20],	 
-	["hgun_P07_F","P07 9 mm",50,20],
-	["hgun_Rook40_F","Rook-40 9 mm",50,20],
-	["hgun_ACPC2_F","ACP-C2 .45",50,20],
-	["hgun_Pistol_heavy_01_F","4-five .45",100,20],			//New HGun. (4-five .45)
-	["hgun_Pistol_heavy_02_F","Zubr .45",100,20],	 	//New HGun. (Zubr .45)
+	["hgun_P07_F","P07 9 mm",50,25],
+	["hgun_Rook40_F","Rook-40 9 mm",50,25],
+	["hgun_ACPC2_F","ACP-C2 .45",50,25],
+	["hgun_Pistol_heavy_01_F","4-five .45",100,50],	
+	["hgun_Pistol_heavy_02_F","Zubr .45",100,50],
 
 	//SMG
-	["hgun_PDW2000_F","PDW2000 9 mm",100,25],
-	["SMG_01_F","Vermin SMG .45 ACP",100,25],
-	["SMG_02_F","Sting 9 mm",100,25],
+	["hgun_PDW2000_F","PDW2000 9 mm",100,50],
+	["SMG_01_F","Vermin SMG .45 ACP",100,50],
+	["SMG_02_F","Sting 9 mm",100,50],
 
     //Underwater Gun
-	["arifle_SDAR_F","SDAR 5.56 mm",100,25],
+	["arifle_SDAR_F","SDAR 5.56 mm",100,50],
 
 	//TRG20/21 Series
-	["arifle_TRG21_F","TRG-21 5.56mm",100,25],
-	["arifle_TRG20_F","TRG-20 5.56mm",100,25],
-	["arifle_TRG21_GL_F","TRG-21 EGLM 5.56mm",150,50],
+	["arifle_TRG21_F","TRG-21 5.56mm",100,50],
+	["arifle_TRG20_F","TRG-20 5.56mm",100,50],
+	["arifle_TRG21_GL_F","TRG-21 EGLM 5.56mm",150,75],
 
 	//Mk20 Series
-	["arifle_Mk20_F","Mk20 5.56mm (Camo)",100,25],
-	["arifle_Mk20_plain_F","Mk20 5.56mm",100,25],
-	["arifle_Mk20C_F","Mk20C 5.56mm (Camo)",100,25],
-	["arifle_Mk20C_plain_F","Mk20C 5.56mm",100,25],
-	["arifle_Mk20_GL_F","Mk20 EGLM 5.56mm (Camo)",150,50],
-	["arifle_Mk20_GL_plain_F","Mk20 EGLM 5.56mm",150,50],
+	["arifle_Mk20_F","Mk20 5.56mm (Camo)",100,50],
+	["arifle_Mk20_plain_F","Mk20 5.56mm",100,50],
+	["arifle_Mk20C_F","Mk20C 5.56mm (Camo)",100,50],
+	["arifle_Mk20C_plain_F","Mk20C 5.56mm",100,50],
+	["arifle_Mk20_GL_F","Mk20 EGLM 5.56mm (Camo)",150,75],
+	["arifle_Mk20_GL_plain_F","Mk20 EGLM 5.56mm",150,75],
 
 	//Katiba Series
-	["arifle_Katiba_F","Katiba 6.5mm",100,25],
-	["arifle_Katiba_C_F","Katiba Carbine 6.5mm",100,25],
-	["arifle_Katiba_GL_F","Katiba GL 6.5mm",150,50],
+	["arifle_Katiba_F","Katiba 6.5mm",100,50],
+	["arifle_Katiba_C_F","Katiba Carbine 6.5mm",100,50],
+	["arifle_Katiba_GL_F","Katiba GL 6.5mm",150,75],
 
 	//MX Series
-	["arifle_MX_F","MX 6.5mm",100,25],
-	["arifle_MXC_F","MXC 6.5mm",100,25],
-	["arifle_MX_GL_F","MX 3GL 6.5mm",150,50],
-	["arifle_MXM_F","MXM 6.5mm",300,100],
-	["arifle_MX_SW_F","MX SW 6.5mm",300,100],
+	["arifle_MX_F","MX 6.5mm",100,50],
+	["arifle_MXC_F","MXC 6.5mm",100,50],
+	["arifle_MX_GL_F","MX 3GL 6.5mm",150,75],
+	["arifle_MXM_F","MXM 6.5mm",300,150],
+	["arifle_MX_SW_F","MX SW 6.5mm",300,150],
 	//MX Series - Black Edition
-	["arifle_MX_Black_F","MX 6.5mm Black",100,25],
-	["arifle_MXC_Black_F","MXC 6.5mm Black",100,25],
-	["arifle_MX_GL_Black_F","MX 3GL 6.5mm Black",150,50],
-	["arifle_MXM_Black_F","MXM 6.5mm Black",300,100],
-	["arifle_MX_SW_Black_F","MX SW 6.5mm Black",300,100],
+	["arifle_MX_Black_F","MX 6.5mm Black",100,50],
+	["arifle_MXC_Black_F","MXC 6.5mm Black",100,50],
+	["arifle_MX_GL_Black_F","MX 3GL 6.5mm Black",150,75],
+	["arifle_MXM_Black_F","MXM 6.5mm Black",300,150],
+	["arifle_MX_SW_Black_F","MX SW 6.5mm Black",300,150],
 
    	//Light Machine Gun
-	["LMG_Mk200_F","Mk200 6.5mm",350,100],
-	["LMG_Zafir_F","Zafir 7.62mm",450,150],
+	["LMG_Mk200_F","Mk200 6.5mm",350,175],
+	["LMG_Zafir_F","Zafir 7.62mm",450,225],
 
 	//Sniper Rifle
-	["srifle_DMR_01_F","Rahim 7.62mm",400,150],
-	["srifle_EBR_F","Mk18 ABR 7.62mm",400,150],
-	["srifle_LRR_F","M320 LRR .408",500,200],
-	["srifle_LRR_camo_F","M320 LRR (Camo) .408",540,240],
-	["srifle_GM6_F","GM6 Lynx 12.7mm",500,200],
-	["srifle_GM6_camo_F","GM6 Lynx (Camo) 12.7mm",540,240],
+	["srifle_DMR_01_F","Rahim 7.62mm",400,200],
+	["srifle_EBR_F","Mk18 ABR 7.62mm",400,200],
+	["srifle_LRR_F","M320 LRR .408",500,250],
+	["srifle_LRR_camo_F","M320 LRR (Camo) .408",540,270],
+	["srifle_GM6_F","GM6 Lynx 12.7mm",500,250],
+	["srifle_GM6_camo_F","GM6 Lynx (Camo) 12.7mm",540,270],
 	
 	//Launchers
 	["launch_RPG32_F","RPG-42 Alamut",200,100],
 	["launch_NLAW_F","PCML",300,150],
-	["launch_B_Titan_F","Titan [NATO]",500,200],
-	["launch_O_Titan_F","Titan [CSAT]",500,200],
-	["launch_I_Titan_F","Titan [AAF]",500,200],
-	["launch_B_Titan_short_F","Titan (Compact) [NATO]",500,200],
-	["launch_O_Titan_short_F","Titan (Compact) [CSAT]",500,200],
-	["launch_I_Titan_short_F","Titan (Compact) [AAF]",500,200]
+	["launch_B_Titan_F","Titan [NATO]",500,250],
+	["launch_O_Titan_F","Titan [CSAT]",500,250],
+	["launch_I_Titan_F","Titan [AAF]",500,250],
+	["launch_B_Titan_short_F","Titan (Compact) [NATO]",500,250],
+	["launch_O_Titan_short_F","Titan (Compact) [CSAT]",500,250],
+	["launch_I_Titan_short_F","Titan (Compact) [AAF]",500,250]
 ];
 
 //Gun Store Ammo List
@@ -859,7 +856,7 @@ pvar_ammoArray = [
 	["Chemlight_blue","Chemlight (Blue)", 10,1]
 ];
 
-//Gun Store Equipment List
+//General Store Equipment List
 //Classname, Description, Buy cost, Sell amount
 pvar_accessoriesArray = [
 	["NVGoggles","NV Goggles (blufor)", 750,"item"],
@@ -1210,11 +1207,11 @@ pvar_baseObjectList = [
 //General Store Item List
 //Display Name, Classname, Description, Picture, Buy cost, Sell amount.
 pvar_generalStore = [
-	["Bottled Water","water",localize "STR_WL_ShopDescriptions_Water","client\ui\icons\water.paa",50,10],
-	["Canned Food","canfood",localize "STR_WL_ShopDescriptions_CanFood","client\ui\icons\cannedfood.paa",50,10],
+	["Bottled Water","water",localize "STR_WL_ShopDescriptions_Water","client\ui\icons\water.paa",25,10],
+	["Canned Food","canfood",localize "STR_WL_ShopDescriptions_CanFood","client\ui\icons\cannedfood.paa",25,10],
 	["Repair Kit","repairkits",localize "STR_WL_ShopDescriptions_RepairKit","client\ui\icons\briefcase.paa",100,50],
 	["Medical Kit","medkits",localize "STR_WL_ShopDescriptions_MedKit","client\ui\icons\medkit.paa",100,50],
-	["Jerry Can (Full)","fuelFull",localize "STR_WL_ShopDescriptions_fuelFull","client\ui\icons\jerrycan.paa",100,10],
+	["Jerry Can (Full)","fuelFull",localize "STR_WL_ShopDescriptions_fuelFull","client\ui\icons\jerrycan.paa",100,50],
 	["Jerry Can (Empty)","fuelEmpty",localize "STR_WL_ShopDescriptions_fuelEmpty","client\ui\icons\jerrycan.paa",50,25]
 ];
 
@@ -1222,8 +1219,6 @@ pvar_generalStore = [
 
 publicVariable "pvar_teamSwitchList";
 publicVariable "pvar_teamKillList";
-publicVariable "pvar_beaconListBlu";
-publicVariable "pvar_beaconListRed";
 
 publicVariable "clientMissionMarkers";
 

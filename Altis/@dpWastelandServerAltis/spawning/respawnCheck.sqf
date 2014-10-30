@@ -83,9 +83,6 @@ while {true} do
 							
 							private ["_areaArray","_areaName","_townPos","_townNumber","_ZoneRestricted","_attempts"];
 							_areaArray = cityArray;
-							if (random 10 > 8) then {
-								_areaArray = marineArray;	
-							};
 							_area = _areaArray select (floor (random (count _areaArray)));
 							_position = _area select 2;
 							_radius = _area select 3;
@@ -163,9 +160,6 @@ while {true} do
 							
 							private ["_areaArray","_areaName","_townPos","_townNumber","_ZoneRestricted","_attempts"];
 							_areaArray = cityArray;
-							if (random 10 > 8) then {
-								_areaArray = marineArray;	
-							};
 							_area = _areaArray select (floor (random (count _areaArray)));
 							_position = _area select 2;
 							_radius = _area select 3;

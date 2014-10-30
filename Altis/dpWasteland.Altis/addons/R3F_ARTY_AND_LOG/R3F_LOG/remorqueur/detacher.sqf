@@ -1,7 +1,7 @@
 /**
- * Remove an object of a vehicle
+ * Détacher un objet d'un véhicule
  * 
- * @param 0 object to detach
+ * @param 0 l'objet à détacher
  * 
  * Copyright (C) 2010 madbull ~R3F~
  * 
@@ -18,29 +18,28 @@ else
 {
 	R3F_LOG_mutex_local_verrou = true;
 	
-	// remorqueur = TOW
 	private ["_remorqueur", "_objet"];
 	
 	_objet = _this select 0;
 	_remorqueur = _objet getVariable "R3F_LOG_est_transporte_par";
 	
-	// Do not allow to drop an object if it is conveyed by helicopter
+	// Ne pas permettre de décrocher un objet s'il est porté héliporté
 	if ({_remorqueur isKindOf _x} count R3F_LOG_CFG_remorqueurs > 0) then
 	{
-		// Is stored on the network that the vehicle tow something
+		// On mémorise sur le réseau que le véhicule remorque quelque chose
 		_remorqueur setVariable ["R3F_LOG_remorque", objNull, true];
-		// It also stores the network as the object is attached tow
+		// On mémorise aussi sur le réseau que le objet est attaché en remorque
 		_objet setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 		
-		player playMove "AinvPknlMstpSlayWnonDnon_medic";
-		sleep 8;
 		detach _objet;
-		_objet setVelocity [0, 0, 0.01];
+		_objet setVelocity [0, 0, 0];
 		
+		player playMove "AinvPknlMstpSlayWnonDnon_medic";
+		sleep 7;
 		
 		if ({_objet isKindOf _x} count R3F_LOG_CFG_objets_deplacables > 0) then
 		{
-			// If no one has de-tow the object during sleep 4
+			// Si personne n'a re-remorquer l'objet pendant le sleep 7
 			if (isNull (_remorqueur getVariable "R3F_LOG_remorque") &&
 				(isNull (_objet getVariable "R3F_LOG_est_transporte_par")) &&
 				(isNull (_objet getVariable "R3F_LOG_est_deplace_par"))
@@ -51,12 +50,12 @@ else
 		}
 		else
 		{
-			player globalChat STR_R3F_LOG_action_detacher_fait;		//"Object untowed."
+			player globalChat STR_R3F_LOG_action_detacher_fait;
 		};
 	}
 	else
 	{
-		player globalChat STR_R3F_LOG_action_detacher_impossible_pour_ce_vehicule;		//"Only the pilot can detach this object."
+		player globalChat STR_R3F_LOG_action_detacher_impossible_pour_ce_vehicule;
 	};
 	
 	R3F_LOG_mutex_local_verrou = false;

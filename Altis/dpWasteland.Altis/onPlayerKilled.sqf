@@ -75,7 +75,6 @@ if ((_player != _killer) && (isNull pvar_PlayerTeamKiller)) then
 	_corpse setVariable["cmoney",player getVariable ["cmoney",0],true];
 	_corpse setVariable["fuelFull",player getVariable ["fuelFull", 0], true];
 	_corpse setVariable["fuelEmpty",player getVariable ["fuelFull", 0], true];
-	_corpse setVariable["spawnBeacon",player getVariable ["spawnBeacon", 0],true];
 }
 else
 {
@@ -86,7 +85,6 @@ else
 	_corpse setVariable["cmoney",0,true];
 	_corpse setVariable["fuelFull", 0, true];
 	_corpse setVariable["fuelEmpty", 0, true];
-	_corpse setVariable["spawnBeacon",0,true];
 };
 
 if(!isNull(pvar_PlayerTeamKiller)) then {

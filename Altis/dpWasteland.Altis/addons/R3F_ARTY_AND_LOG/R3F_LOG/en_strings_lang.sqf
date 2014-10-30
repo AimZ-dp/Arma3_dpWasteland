@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Alternative to stringtable.csv which is simpler to install for the mission maker.
  * Alternative au stringtable.csv qui est plus simple à installer pour le créateur de mission.
  */
@@ -15,7 +15,7 @@ STR_R3F_LOG_action_heliport_larguer_fait = "Object ""%1"" dropped.";
 STR_R3F_LOG_action_deplacer_objet = "Move this object";
 STR_R3F_LOG_action_relacher_objet = "Release the object";
 STR_R3F_LOG_ne_pas_monter_dans_vehicule = "You can't get in a vehicle while you're carrying this object !";
-STR_R3F_LOG_courir_trop_vite = "You're moving too fast! (Press C to slow down!)";
+STR_R3F_LOG_courir_trop_vite = "You're running too fast ! (Press C to slow down !)";
 STR_LOCK_OBJECT = "Lock this object";
 STR_UNLOCK_OBJECT = "Unlock this object";
 STR_RELEASE_HORIZONTAL = "Release the object horizontally";
@@ -56,7 +56,7 @@ STR_R3F_LOG_transport_en_cours = "This vehicle is being transported.";
 STR_R3F_LOG_mutex_action_en_cours = "The current operation isn't finished.";
 
 STR_R3F_LOG_dlg_CV_titre = "Content of vehicle";
-STR_R3F_LOG_dlg_CV_capacite_vehicule = "Load : %1/%2";
+STR_R3F_LOG_dlg_CV_capacite_vehicule = "Loading : %1/%2";
 STR_R3F_LOG_dlg_CV_btn_decharger = "Unload";
 STR_R3F_LOG_dlg_CV_btn_fermer = "Cancel";
 

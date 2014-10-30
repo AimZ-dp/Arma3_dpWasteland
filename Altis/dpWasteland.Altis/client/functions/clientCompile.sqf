@@ -30,7 +30,7 @@ welcomeMessage = compileFinal preprocessFileLineNumbers "client\functions\player
 client_respawnDialog = compileFinal preprocessFileLineNumbers "client\functions\playerSpawn\loadRespawnDialog.sqf";
 spawnRandom = compileFinal preprocessFileLineNumbers "client\functions\playerSpawn\spawnRandom.sqf";
 spawnInTown = compileFinal preprocessFileLineNumbers "client\functions\playerSpawn\spawnInTown.sqf";
-spawnOnBeacon = compileFinal preprocessFileLineNumbers "client\functions\playerSpawn\spawnOnBeacon.sqf";
+spawnInHeli = compileFinal preprocessFileLineNumbers "client\functions\playerSpawn\spawnInHeli.sqf";
 
 // Player Menu Panel
 loadPlayerMenu = compileFinal preprocessFileLineNumbers "client\gui\playerMenu\loadPlayerMenu.sqf";
@@ -38,7 +38,6 @@ itemfnc = compileFinal preprocessFileLineNumbers "client\gui\playerMenu\itemfnc.
 takeMoney = compileFinal preprocessFileLineNumbers "client\gui\playerMenu\takeMoney.sqf";
 takeItem = compileFinal preprocessFileLineNumbers "client\gui\playerMenu\takeItem.sqf";
 giveMoney = compileFinal preprocessFileLineNumbers "client\gui\playerMenu\giveMoney.sqf";
-placeSpawnBeacon = compileFinal preprocessFileLineNumbers "client\gui\playerMenu\placeSpawnBeacon.sqf";
 refuel = compileFinal preprocessFileLineNumbers "client\gui\playerMenu\refuel.sqf";
 repairVehicle = compileFinal preprocessFileLineNumbers "client\gui\playerMenu\repair.sqf";
 

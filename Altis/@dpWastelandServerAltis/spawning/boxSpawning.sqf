@@ -12,6 +12,8 @@ private ["_counter","_position","_type"];
 
 _counter = 0;
 
+waituntil {!collectingMilitaryData};
+
 for "_i" from 1 to maxAmmoBoxes step 1 do
 {
 	private ["_areaArray","_areaName","_townPos","_townNumber","_ZoneRestricted","_attempts","_radius"];

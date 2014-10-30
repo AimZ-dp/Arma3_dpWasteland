@@ -70,11 +70,6 @@ if(!dialog) then
 		_itemList lbSetData [(lbSize _itemList)-1, "medkits"];
 	};
 
-	if(player getVariable "spawnBeacon" > 0) then {
-		_itemListIndex = _itemList lbAdd "Spawn Beacon";
-		_itemList lbSetData [(lbSize _itemList)-1, "spawnBeacon"];
-	};
-
 	_nearestPlayers = nearestobjects [player, ["SoldierWB","SoldierEB","SoldierGB"],  5];
 	{
 		if (player distance _x < 5 && alive _x && player != _x) then

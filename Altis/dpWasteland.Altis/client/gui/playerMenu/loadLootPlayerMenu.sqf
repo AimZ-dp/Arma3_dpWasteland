@@ -69,11 +69,6 @@ while {dialog} do
 			_itemListIndex = _itemList lbAdd _str;
 			_itemList lbSetData [(lbSize _itemList)-1, "medkits"];
 		};
-
-		if(_corpse getVariable "spawnBeacon" > 0) then {
-			_itemListIndex = _itemList lbAdd "Spawn Beacon";
-			_itemList lbSetData [(lbSize _itemList)-1, "spawnBeacon"];
-		};
 	}
 	else 
 	{

@@ -15,12 +15,14 @@ switch(_switch) do
 		[] spawn spawnRandom;
 	};
     case 1:{
-	    if(showBeacons) then { 	
-			[_button] spawn spawnOnBeacon;
-	    } else {
-			[_button] spawn spawnInTown;
-	    }; 
-    };
+		[_button] spawn spawnInTown;
+	}; 
+    case 2:{
+		[] spawn spawnInHeli;
+	}; 
+    case 3:{
+		[] spawn spawnOnBaseFlag;
+	}; 
 };
 
 if(isNil{client_firstSpawn}) then 

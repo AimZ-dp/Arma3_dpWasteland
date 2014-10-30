@@ -75,33 +75,40 @@ for "_i" from 0 to (count _airports) do
 	};
 };
 
-
-_centerPos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
-_mapSize =  getNumber(configFile >> "CfgWorlds" >> worldName >> "mapSize");
-_list = nearestObjects [_centerPos, ["Land_Cargo_House_V1_F","Land_Cargo_House_V2_F","Land_Cargo_House_V3_F","Land_Cargo_HQ_V1_F",
-						"Land_Cargo_HQ_V2_F","Land_Cargo_HQ_V3_F","Land_Cargo_Patrol_V1_F","Land_Cargo_Patrol_V2_F",
-						"Land_Cargo_Patrol_V3_F","Land_Cargo_Tower_V1_F","Land_Cargo_Tower_V2_F","Land_Cargo_Tower_V3_F",
-						"Land_Dome_Big_F","Land_Dome_Small_F","Land_MilOffices_V1_F","Land_i_Barracks_V1_F","Land_i_Barracks_V2_F",
-						"Land_u_Barracks_V2_F","Land_Airport_center_F","Land_Airport_left_F","Land_Airport_right_F",
-						"Land_Airport_Tower_F","Land_Hangar_F"], _mapSize/2];
-{	
-	_name = format["military_%1",_forEachIndex];
-	_type = "Military";
-	_position = getPos _x;		
-	_radiusA = 20;
-	_radiusB = 20;
-	_angle = 0;
-	
-	_ZoneRestricted = [_position] call isPosRestricted;	
-	if (!_ZoneRestricted) then
-	{
-		militaryArray set [count militaryArray, [_name,_type,_position,_radiusA,_radiusB,_angle]];
-	};
-} foreach _list;
-			
-
 publicVariable "cityArray";
 publicVariable "marineArray";
 publicVariable "airportArray";
-publicVariable "militryArray";
+
+
+collectingMilitaryData = true;
+[] spawn {
+	_centerPos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
+	_mapSize =  getNumber(configFile >> "CfgWorlds" >> worldName >> "mapSize");
+	_list = nearestObjects [_centerPos, ["Land_Cargo_House_V1_F","Land_Cargo_House_V2_F","Land_Cargo_House_V3_F","Land_Cargo_HQ_V1_F",
+							"Land_Cargo_HQ_V2_F","Land_Cargo_HQ_V3_F","Land_Cargo_Patrol_V1_F","Land_Cargo_Patrol_V2_F",
+							"Land_Cargo_Patrol_V3_F","Land_Cargo_Tower_V1_F","Land_Cargo_Tower_V2_F","Land_Cargo_Tower_V3_F",
+							"Land_Dome_Big_F","Land_Dome_Small_F","Land_MilOffices_V1_F","Land_i_Barracks_V1_F","Land_i_Barracks_V2_F",
+							"Land_u_Barracks_V2_F","Land_Airport_center_F","Land_Airport_left_F","Land_Airport_right_F",
+							"Land_Airport_Tower_F","Land_Hangar_F"], _mapSize/2];
+	{	
+		_name = format["military_%1",_forEachIndex];
+		_type = "Military";
+		_position = getPos _x;		
+		_radiusA = 20;
+		_radiusB = 20;
+		_angle = 0;
+		
+		_ZoneRestricted = [_position] call isPosRestricted;	
+		if (!_ZoneRestricted) then
+		{
+			militaryArray set [count militaryArray, [_name,_type,_position,_radiusA,_radiusB,_angle]];
+		};
+		sleep 0.1;
+	} foreach _list;
+
+	publicVariable "militryArray";
+	
+	collectingMilitaryData = false;
+};
+
 true

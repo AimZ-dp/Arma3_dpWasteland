@@ -102,9 +102,6 @@
 		<Key ID="STR_WL_ShopDescriptions_fuelEmpty">
 			<English>Straight off the back of a lorry, this can will last a lifetime.</English>
 		</Key>
-		<Key ID="STR_WL_ShopDescriptions_spawnBeacon">
-			<English>Choose your spawn location. Disclaimer: This product does not guarantee safe delivery of goods.</English>
-		</Key>
 	</Package>
 	<Package name="Dialogs">
 		<Key ID="STR_WL_dialog_TeamkillText">
@@ -123,15 +120,6 @@
 		<Key ID="STR_WL_Errors_InVehicle">
 			<English>YOU ARE CURRENTLY BUSY!</English>
 		</Key>
-		<Key ID="STR_WL_Errors_BeaconActive">
-			<English>YOU ALREADY HAVE AN ACTIVE SPAWN BEACON!</English>
-		</Key>
-		<Key ID="STR_WL_Errors_BeaconInVehicle">
-			<English>YOU CANNOT ENTER A VEHICLE WHILE PLACING A SPAWN BEACON!</English>
-		</Key>		
-		<Key ID="STR_WL_Errors_BeaconTooMany">
-			<English>YOU ARE ALREADY HAVE TOO MANY OF THAT OBJECT!</English>
-		</Key>						
 	</Package>
 </Project>
 		

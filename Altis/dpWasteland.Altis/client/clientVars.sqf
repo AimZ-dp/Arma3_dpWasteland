@@ -33,4 +33,6 @@ scanningInProgress = false;
 pvar_refuelVehicle = ["",0];
 pvar_defuelVehicle = ["",0];
 
+respawnHelicopter = ObjNull;
+
 diag_log format["*** clientVars Finished ***"];

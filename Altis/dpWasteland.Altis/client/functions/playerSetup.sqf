@@ -28,7 +28,6 @@ player setVariable["water",1,true];
 player setVariable["repairkits",1,true];
 player setVariable["fuelFull", 0, true];
 player setVariable["fuelEmpty", 1, true];
-player setVariable["spawnBeacon",0,true];
 
 // remove everything
 {player removeWeapon _x;} foreach weapons player;

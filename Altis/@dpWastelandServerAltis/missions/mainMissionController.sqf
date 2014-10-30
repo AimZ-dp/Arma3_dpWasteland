@@ -18,13 +18,29 @@ _MMarray = [
 	[mission_LightTank,"mission_LightTank"],
 	[mission_ArmedHeli,"mission_ArmedHeli"],
 	[mission_LightArmVeh,"mission_LightArmVeh"],
-	//[mission_DuelHeli,"mission_DuelHeli"],
+	[mission_DuelHeli,"mission_DuelHeli"],
 	[mission_Jet,"mission_Jet"]
 ];
-_lastMission = "nomission";
+//_lastMission = "nomission";
 
+_newMissionArray = + _MMarray;
 while {true} do
 {
+	//Select Mission
+    _randomIndex = floor (random (count _newMissionArray));
+    _mission = _newMissionArray select _randomIndex select 0;
+    _missionType = _newMissionArray select _randomIndex select 1;
+
+	if (count _newMissionArray > 1) then
+	{
+        _newMissionArray set [_randomIndex, "REMOVETHISMISSION"];
+        _newMissionArray = _newMissionArray - ["REMOVETHISMISSION"];
+	}
+	else
+	{
+		_newMissionArray = + _MMarray;
+	};
+/*
     //Select Mission
     _randomIndex = floor (random (count _MMarray));
     _mission = _MMarray select _randomIndex select 0;
@@ -40,14 +56,14 @@ while {true} do
         _missionType = _newMissionArray select _randomIndex select 1;
         _mission = _newMissionArray select _randomIndex select 0;    
     };
-	
+*/
 	_missionRunning = [_controllerName] spawn _mission;
 
     _hint = parseText format ["<t align='center' color='%2' shadow='2' size='1.75'>Main Objective</t><br/><t align='center' color='%2'>------------------------------</t><br/><t color='%3' size='1.0'>Starting in %1 Minutes</t>", mainMissionDelayTime / 60, mainMissionColor, subTextColor];
 	pvar_messageSystem = _hint;
 	publicVariable "pvar_messageSystem";
 	
-    _lastMission = _missionType;
+//    _lastMission = _missionType;
     waitUntil{scriptDone _missionRunning};
     sleep 5; 
 };

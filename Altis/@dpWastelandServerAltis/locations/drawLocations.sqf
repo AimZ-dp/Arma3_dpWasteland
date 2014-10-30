@@ -10,6 +10,7 @@
 	_marker setMarkerAlpha 0.3; 
 } foreach cityArray;
 
+/*
 {
 	// [_name,_type,_position,_radiusA,_radiusB,_angle]
     _markerName = format["local_marker_%1",_forEachIndex];
@@ -53,5 +54,5 @@
     _marker setMarkerBrush "SolidBorder";
 	_marker setMarkerAlpha 0.5; 
 } foreach militaryArray;
-
+*/
 

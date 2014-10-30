@@ -25,7 +25,7 @@ _randomPos = call createJetMissionLocation;
 
 [_missionMarkerName,_randomPos,_missionType] call createClientMarker;
 
-_vehicle = [_randomPos, ArmedFighterPlanes, true, 1, false] call JetCreation;	
+_vehicle = [_randomPos, ArmedFighterPlanes, true, 5, false] call JetCreation;	
 _vehicle setVehicleLock "LOCKED";
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
 
@@ -50,7 +50,7 @@ while {!_missionEnd} do
     if(_currTime - _startTime >= mainMissionTimeout || (damage _vehicle) == 1) then {_result = 1;};
     {if((isPlayer _x) AND (_x distance _vehicle <= missionRadiusTrigger)) then {_playerPresent = true};sleep 0.1;}forEach playableUnits;
     _unitsAlive = ({alive _x} count units _CivGrpM);
-    if ((_result == 1) OR ((_playerPresent) AND (_unitsAlive < 1)) OR ((damage _vehicle) == 1)) then 
+    if ((_result == 1) OR ((_playerPresent) AND (_unitsAlive < 1))) then 
 	{
 		_missionEnd = true;
 	};

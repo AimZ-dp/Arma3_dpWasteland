@@ -47,7 +47,7 @@ publicVariable "R3F_LOG_PUBVAR_point_attache";
 [] spawn serverTimeSync;
 [] spawn broadcaster;
 [] call createLocations;
-//[] call drawLocations;
+[] call drawLocations;
 
 //Create the store guys
 [storesPerActiveZone] call createGunStores;
@@ -57,6 +57,8 @@ publicVariable "R3F_LOG_PUBVAR_point_attache";
 //Execute Server Cleanup.
 [] spawn cleanObjects;
 [] spawn cleanDead;
+
+[] spawn createRespawnHelicopter;
 
 //Execute Server Spawning.
 [] call vehicleSpawning;

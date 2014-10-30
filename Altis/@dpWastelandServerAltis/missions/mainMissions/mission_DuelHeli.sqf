@@ -36,18 +36,26 @@ _CivGrp = createGroup civilian;
 _CivGrp addVehicle _vehicle1;
 _CivGrp addVehicle _vehicle2;
 
-_pilot1 = [_CivGrp, _randomEndPos] call createRandomSoldier; 
+_heliPos = getPos _vehicle1;
+_pilot1 = [_CivGrp, _heliPos] call createRandomSoldier; 
+_pilot1 setPos _heliPos;
 _pilot1 moveInDriver _vehicle1;
 _CivGrp selectLeader _pilot1;
 
-_pilot2 = [_CivGrp, _randomEndPos] call createRandomSoldier; 
+_heliPos = getPos _vehicle2;
+_pilot2 = [_CivGrp, _heliPos] call createRandomSoldier; 
+_pilot2 setPos _heliPos;
 _pilot2 moveInDriver _vehicle2;
 _CivGrp selectLeader _pilot2;
 
-_copilot1 = [_CivGrp, _randomEndPos] call createRandomSoldier; 
+_heliPos = getPos _vehicle1;
+_copilot1 = [_CivGrp, _heliPos] call createRandomSoldier; 
+_copilot1 setPos _heliPos;
 _copilot1 moveInGunner _vehicle1;
 
-_copilot2 = [_CivGrp, _randomEndPos] call createRandomSoldier; 
+_heliPos = getPos _vehicle2;
+_copilot2 = [_CivGrp, _heliPos] call createRandomSoldier; 
+_copilot2 setPos _heliPos;
 _copilot2 moveInGunner _vehicle2;
 
 _areaArray = cityArray;
@@ -81,7 +89,7 @@ _marker2 = createMarker [format["%1_current_2", _missionMarkerName],  position _
 _marker2 setMarkerType "n_air";
 _marker2 setMarkerColor "ColorBlack";
 
-[_missionMarkerName,_randomEndPos,_missionType] call createClientMarker;
+[_missionMarkerName,_newPosition,_missionType] call createClientMarker;
 	
 // ---- HINT TO CLIENTS ----
 
@@ -168,5 +176,7 @@ else
 
 //Reset Mission Spot.
 [_missionMarkerName] call deleteClientMarker;
+deleteMarker _marker1;	
+deleteMarker _marker2;	
 
 //diag_log format["****** mission_ArmedHeli Finished ******"];

@@ -37,18 +37,24 @@ _vehicle setVariable ["R3F_LOG_disabled", true, true];
 // Create the group and place in heli
 _CivGrpM = createGroup civilian;
 _CivGrpM addVehicle _vehicle;
-_pilot = [_CivGrpM, _randomEndPos] call createRandomSoldier; 
-_CivGrpM selectLeader _pilot;
-_pilot moveInDriver _vehicle;
 
-_randomEndPos set [2, 0];
-_soldier = [_CivGrpM, _randomEndPos] call createRandomSoldier; 
+_heliPos = getPos _vehicle;
+_pilot = [_CivGrpM, _heliPos] call createRandomSoldier; 
+_pilot setPos _heliPos;
+_pilot moveInDriver _vehicle;
+_CivGrpM selectLeader _pilot;
+
+_soldier = [_CivGrpM, _heliPos] call createRandomSoldier; 
+_soldier setPos _heliPos;
 _soldier moveInCargo _vehicle;
-_soldier = [_CivGrpM, _randomEndPos] call createRandomSoldier; 
+_soldier = [_CivGrpM, _heliPos] call createRandomSoldier; 
+_soldier setPos _heliPos;
 _soldier moveInCargo _vehicle;
-_soldier = [_CivGrpM, _randomEndPos] call createRandomSoldier; 
+_soldier = [_CivGrpM, _heliPos] call createRandomSoldier; 
+_soldier setPos _heliPos;
 _soldier moveInCargo _vehicle;
-_soldier = [_CivGrpM, _randomEndPos] call createRandomSoldier; 
+_soldier = [_CivGrpM, _heliPos] call createRandomSoldier; 
+_soldier setPos _heliPos;
 _soldier moveInCargo _vehicle;
 
 sleep 2;

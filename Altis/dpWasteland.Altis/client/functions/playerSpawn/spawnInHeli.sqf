@@ -8,13 +8,29 @@ diag_log format["*** spawnRandom Started ***"];
 
 waituntil {!isnil "bis_fnc_init"};
 
-private ["_areaArray","_areaName","_townName","_randomLoc","_pos","_townPos","_townNumber","_ZoneRestricted","_mins","_attempts"];
+private ["_townName","_objPos","_mins","_para"];
 
-_areaArray = cityArray;
-_city = _areaArray select (floor (random (count _areaArray)));
-_pos = [_city select 2,0,_city select 3,1,0,10,0] call BIS_fnc_findSafePos;
-_pos = [_pos select 0, _pos select 1, (_pos select 2) + 10];
-player setPos _pos;
+if !(isNull respawnHelicopter) then
+{
+	_objPos = position respawnHelicopter;
+	if (respawnHelicopter emptypositions "cargo" > 0) then 
+	{
+		player setPos _objPos;
+		player setdir direction respawnHelicopter;
+		player moveincargo respawnHelicopter;
+	} 
+	else 
+	{
+		_para = createvehicle ["Steerable_Parachute_F",_objPos,[],0,"none"];
+		_para setpos _objPos;
+		_para setdir direction respawnHelicopter;
+		player moveindriver _para;
+	};
+}
+else
+{
+	[] spawn spawnRandom;
+};
 
 // CLOSE THE RESPAWN DIALOG
 respawnDialogActive = false;
@@ -22,7 +38,7 @@ closeDialog 0;
 
 // DISPLAY TOWN NAME 
 _mins = floor(60 * (daytime - floor(daytime)));
-_townName = _city select 0;
+_townName = "Para Drop";
 ["dp Wasteland",_townName,format ["%1:%3%2", floor(daytime), _mins, if(_mins < 10) then {"0"} else {""}]] spawn BIS_fnc_infoText;
 
 diag_log format["*** spawnRandom Finished ***"];

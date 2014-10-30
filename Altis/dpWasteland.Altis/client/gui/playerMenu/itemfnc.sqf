@@ -155,10 +155,6 @@ switch(_switch) do
                 player playMoveNow _currState;
                 doCancelAction = false;    
 			};
-            case "spawnBeacon": 
-            {
-            	[] call placeSpawnBeacon;
-            };
 		};
 		
 		mutexScriptInProgress = false;
@@ -201,7 +197,6 @@ switch(_switch) do
 					case "repairkits": {player setVariable["repairkits",(player getVariable "repairkits")-1,true];_x setVariable["repairkits",(_x getVariable "repairkits")+1,true];};
 					case "water": {player setVariable["water",(player getVariable "water")-1,true];_x setVariable["water",(_x getVariable "water")+1,true];};
 					case "medkits": {player setVariable["medkits",(player getVariable "medkits")-1,true];_x setVariable["medkits",(_x getVariable "medkits")+1,true];};
-					case "spawnBeacon": {player setVariable["spawnBeacon",(player getVariable "spawnBeacon")-1,true];_x setVariable["spawnBeacon",(_x getVariable "spawnBeacon")+1,true];};
 				};
 
 				sleep 5;

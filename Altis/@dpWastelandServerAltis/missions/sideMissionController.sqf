@@ -23,8 +23,26 @@ _SMarray = [
 ];
 			
 _lastMission = "nomission";
+_newMissionArray = + _SMarray;
+
 while {true} do
 {
+	//Select Mission
+    _randomIndex = floor (random (count _newMissionArray));
+    _mission = _newMissionArray select _randomIndex select 0;
+    _missionType = _newMissionArray select _randomIndex select 1;
+
+	if (count _newMissionArray > 1) then
+	{
+        _newMissionArray set [_randomIndex, "REMOVETHISMISSION"];
+        _newMissionArray = _newMissionArray - ["REMOVETHISMISSION"];
+	}
+	else
+	{
+		_newMissionArray = + _SMarray;
+	};
+
+/*
 	//Select Mission
     _randomIndex = floor (random (count _SMarray));
     _mission = _SMarray select _randomIndex select 0;
@@ -40,14 +58,15 @@ while {true} do
         _missionType = _newMissionArray select _randomIndex select 1;
         _mission = _newMissionArray select _randomIndex select 0;   
     };
-	
+*/
+
 	_missionRunning = [_controllerName] spawn _mission;
 
     _hint = parseText format ["<t align='center' color='%2' shadow='2' size='1.75'>Side Objective</t><br/><t align='center' color='%2'>------------------------------</t><br/><t color='%3' size='1.0'>Starting in %1 Minutes</t>", sideMissionDelayTime / 60, sideMissionColor, subTextColor];
 	pvar_messageSystem = _hint;
 	publicVariable "pvar_messageSystem";
 	
-    _lastMission = _missionType;
+//    _lastMission = _missionType;
 	waitUntil{scriptDone _missionRunning};
     sleep 5;
 };

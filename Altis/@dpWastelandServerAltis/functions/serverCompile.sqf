@@ -88,6 +88,7 @@ defuelVehicle = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis
 // Locations
 createLocations = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\locations\createLocations.sqf";
 drawLocations = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\locations\drawLocations.sqf";
+createRespawnHelicopter = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\locations\createRespawnHelicopter.sqf";
 
 serverCompiledScripts = true;
 

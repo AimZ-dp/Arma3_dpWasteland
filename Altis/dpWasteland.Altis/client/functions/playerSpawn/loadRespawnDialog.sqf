@@ -17,6 +17,9 @@
 #define respawn_PlayersInTown_Text3 3411
 #define respawn_PlayersInTown_Text4 3412
 
+#define respawn_Base_Button 3413
+#define respawn_Heli_Button 3414
+
 diag_log format["*** loadRespawnDialog Started ***"];
 
 waitUntil{!isnil "bis_fnc_init"};
@@ -54,17 +57,25 @@ _friendlyTowns = [];
 _friendlyCount = 0;
 _enemyCount = 0;
 _tempArray = [];
-showBeacons = false;
 
 while {respawnDialogActive} do
 {
     _timeText = [time/60/60] call BIS_fnc_timeToString;
     _missionUptimeText ctrlSetText format["Mission Uptime: %1", _timeText];
-       
+
+	ctrlEnable [respawn_Base_Button, false];
+	if ((isNull respawnHelicopter)
+		|| respawnHelicopter emptypositions "cargo" < 1) then
+	{
+		ctrlEnable [respawn_Heli_Button, false];	
+	}
+	else
+	{
+		ctrlEnable [respawn_Heli_Button, true];
+	};
+	
     if(_side != "Independent") then
     {  
-        if(!showBeacons) then 
-		{
             {
                 _pos = _x select 2;
                 _name = _x select 0;
@@ -119,79 +130,6 @@ while {respawnDialogActive} do
             }forEach _dynamicControlsArray;
             
             _friendlyTowns = [];    
-            
-        } else {
-            _enemyCount = 0;
-            {
-                _button = _display displayCtrl (_x select 0);
-                _text = _display displayCtrl (_x select 1);
-                
-                _button ctrlSetText format[""];
-                _button ctrlShow false;   
-                _text ctrlSetText format[""];
-                _text ctrlShow false;  
-                
-            }foreach _dynamicControlsArray;
-            
-            {
-                if(_side == "Blufor") then {
-                    _button = _display displayCtrl (_dynamicControlsArray select _forEachIndex select 0);
-                    _centrePos = (pvar_beaconListBlu select _forEachIndex) select 1;
-
-                    {
-                        _onTeam = str(side _x) in ["EAST","GUER"];   
-                        if(_onTeam) then {
-                            if((getPos _x distance _centrePos) < 100) then {
-                                if(!(side _x == playerSide)) then {
-                                    _enemyCount = _enemyCount + 1; 
-                                };   
-                            }; 
-                        };  
-                    }forEach playableUnits;
-
-                    if(_enemyCount == 0) then {
-                        _button ctrlShow true;   
-                        _name = (pvar_beaconListBlu select _forEachIndex) select 0;
-                        _button ctrlSetText	format["%1",_name]; 
-                    } else {
-                        _name = "";
-                        _button ctrlSetText _name;
-                        _button ctrlShow false; 
-                    };
-                }; 
-                _enemyCount = 0;         
-            }forEach pvar_beaconListBlu;
-
-            {
-                if(_side == "Opfor") then {
-                    _button = _display displayCtrl (_dynamicControlsArray select _forEachIndex select 0);
-                    _centrePos = (pvar_beaconListRed select _forEachIndex) select 1;
-
-                    {
-                        _onTeam = str(side _x) in ["WEST","GUER"];   
-                        if(_onTeam) then {
-                            if((getPos _x distance _centrePos) < 100) then {
-                                if(!(side _x == playerSide)) then {
-                                    _enemyCount = _enemyCount + 1; 
-                                };   
-                            }; 
-                        };  
-                    }forEach playableUnits;
-
-
-                    if(_enemyCount == 0) then {
-                        _button ctrlShow true;   
-                        _name = (pvar_beaconListRed select _forEachIndex) select 0;
-                        _button ctrlSetText	format["%1",_name]; 
-                    } else {
-                        _name = "";
-                        _button ctrlSetText _name;
-                        _button ctrlShow false; 
-                    };   
-                };
-                _enemyCount = 0;                   
-            }forEach pvar_beaconListRed;       
-        };
     };
     
     if((count units group player > 1) AND (_side == "Independent")) then
@@ -202,9 +140,7 @@ while {respawnDialogActive} do
         }forEach units player;
                     
         //Towns
-    	if(!showBeacons) then 
-        {
-        	{
+    	   	{
                 _pos = _x select 2;
                 _name = _x select 0;
                 _rad = _x select 3;
@@ -243,9 +179,6 @@ while {respawnDialogActive} do
                 };          
             }forEach _dynamicControlsArray;
             _friendlyTowns = [];    
-        } else { //Beacons
-            
-        };	    
     };
     sleep 0.1;
 };
