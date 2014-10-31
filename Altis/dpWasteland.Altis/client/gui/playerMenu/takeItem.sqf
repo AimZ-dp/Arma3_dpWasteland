@@ -9,7 +9,7 @@ disableSerialization;
 private["_data","_corpse","_ctemp","_ptemp"];
 _data = GET_SELECTED_DATA(loot_item_list);
 
-_corpse = nearestobjects [player, ["SoldierWB","SoldierEB","SoldierGB"], 5] select 1;
+_corpse = nearestobjects [player, ["SoldierWB","SoldierEB","SoldierGB","Civilian_F"], 5] select 1;
 
 if (player distance _corpse < 5 && !alive _corpse) then
 {

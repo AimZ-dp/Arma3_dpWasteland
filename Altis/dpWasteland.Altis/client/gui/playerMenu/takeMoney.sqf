@@ -9,7 +9,7 @@ if(mutexScriptInProgress) exitWith
 };
 
 private["_money","_pos","_cash"];
-_corpse = nearestobjects [player, ["SoldierWB","SoldierEB","SoldierGB"], 5] select 1;
+_corpse = nearestobjects [player, ["SoldierWB","SoldierEB","SoldierGB","Civilian_F"], 5] select 1;
 
 if (player distance _corpse < 5 && !alive _corpse) then
 {	

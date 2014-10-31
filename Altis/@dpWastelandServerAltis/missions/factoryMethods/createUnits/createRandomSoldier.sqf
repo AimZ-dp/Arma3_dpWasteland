@@ -27,4 +27,10 @@ _soldier addVest (_vestTypes call BIS_fnc_selectRandom);
 [_soldier, _weaponTypes call BIS_fnc_selectRandom, 3] call BIS_fnc_addWeapon;
 _soldier addEventHandler ["killed", {_this execVM "\@dpWastelandServerAltis\functions\enemyKilled.sqf"}];
 
+_soldier setVariable["cmoney",floor(random 500),true];
+_soldier setVariable["canfood",floor(random 3),true];
+_soldier setVariable["medkits",floor(random 2),true];
+_soldier setVariable["water",floor(random 3),true];
+_soldier setVariable["repairkits",floor(random 2),true];
+
 _soldier

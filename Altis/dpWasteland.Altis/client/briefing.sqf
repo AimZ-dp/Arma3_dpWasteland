@@ -41,6 +41,13 @@ player createDiaryRecord["changelog",
 
 player createDiaryRecord["changelog",
 ["=(dp)=","
+<br/>2.7.6<br/>
+	[Improvement] Respawn Heli.<br/>
+	[Improvement] Clean objects after 10 mins.<br/>
+	[Improvement] Money mission.<br/>
+	[Improvement] Loot AI for money.<br/>
+	[Improvement] Sell price for guns now 50% buy price.<br/>
+	[Improvement] Slowed down the food and water.<br/>
 <br/>2.7.5<br/>
 	[Improvement] All locations gathered from map data.<br/>
 	[Improvement] Changed vehicle spawns to near roads.<br/>

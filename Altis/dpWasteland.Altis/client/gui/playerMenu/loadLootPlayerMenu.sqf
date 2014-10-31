@@ -6,7 +6,7 @@ private["_playerDialog","_Dialog","_foodtext","_watertext","_moneytext","_uptime
 _playerDialog = createDialog "lootPlayerMenu";
 
 waituntil {dialog};
-_corpse = (nearestobjects [player, ["SoldierWB","SoldierEB","SoldierGB"], 5] select 1);
+_corpse = (nearestobjects [player, ["SoldierWB","SoldierEB","SoldierGB","Civilian_F"], 5] select 1);
 	
 _currPlayerState = animationState player;
 player playMoveNow "AinvPknlMstpSnonWnonDnon_Putdown_AinvPknlMstpSnonWnonDnon";

@@ -26,13 +26,13 @@ while {true} do
 			{
 				_check = _x getVariable ["newVehicle",0];
 				_checkCount = _x getVariable ["newVehicleCount",0];
-				_timeout = _x getVariable ["timeout", time + 240];	
+				_timeout = _x getVariable ["timeout", time + 600];	
 				
 				if (_check != vChecksum && _checkCount == 0) then 
 				{
 					_checkCount = _checkCount + 1;
 					_x setVariable ["newVehicleCount",_checkCount,true];
-					_x setVariable ["timeout", time + 240, true];
+					_x setVariable ["timeout", time + 600, true];
 				};
 			
 				if(_check != vChecksum and time > _timeout) then

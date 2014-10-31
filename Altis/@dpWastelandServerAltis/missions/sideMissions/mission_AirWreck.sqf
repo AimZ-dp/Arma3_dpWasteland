@@ -38,7 +38,10 @@ _vehicle setDamage 0;
 // Create the group and place in heli
 _CivGrpS = createGroup civilian;
 _CivGrpS addVehicle _vehicle;
-_pilot = [_CivGrpS, _randomEndPos] call createRandomSoldier; 
+
+_heliPos = getPos _vehicle;
+_pilot = [_CivGrpS, _heliPos] call createRandomSoldier; 
+_pilot setPos _heliPos;
 _pilot moveInDriver _vehicle;
 
 _waypoint = _CivGrpS addWaypoint [_randomEndPos, 0];

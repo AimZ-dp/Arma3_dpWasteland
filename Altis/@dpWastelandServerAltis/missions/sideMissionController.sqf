@@ -19,6 +19,7 @@ _SMarray = [
 	[mission_AirWreck,"mission_AirWreck"],
 	[mission_CivHeli,"mission_CivHeli"],
 	[mission_AbandonedVehicle,"mission_AbandonedVehicle"],
+	[mission_RichGuy,"mission_RichGuy"],
 	[mission_Boat,"mission_Boat"]
 ];
 			

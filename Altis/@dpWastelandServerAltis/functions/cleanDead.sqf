@@ -20,7 +20,7 @@ while {true} do
 			if (_x isKindOf "CAManBase" && !(alive _x) && !(isPlayer _x)) then
 			{
 				_bodyCount = _x getVariable ["newBodyCount",0];
-				_timeout = _x getVariable ["timeout", time + 300];
+				_timeout = _x getVariable ["timeout", time + 600];
 				
 				_x setVariable ["last_timeout", time, true];
 				
@@ -29,7 +29,7 @@ while {true} do
 				{
 					_bodyCount = _bodyCount + 1;
 					_x setVariable ["newBodyCount",_bodyCount,true];
-					_x setVariable ["timeout", time + 300, true];
+					_x setVariable ["timeout", time + 600, true];
 				};
 				
 				// make sure things stay above ground...

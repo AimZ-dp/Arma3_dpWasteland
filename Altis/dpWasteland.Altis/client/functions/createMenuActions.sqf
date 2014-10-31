@@ -7,7 +7,7 @@ aActionsIDs = [];
 aActionsIDs = aActionsIDs + [player addAction["Holster Weapon", {player action ["SwitchWeapon", player, player, 999];},[], 1, false, false, "", 'currentWeapon player != ""']];
 
 //aActionsIDs = aActionsIDs + [player addAction["Scanner", "client\actions\useScanner.sqf", [], 1, false, false, "", 'scannerBattery > 60 && !scanningInProgress']];
-aActionsIDs = aActionsIDs + [player addAction["Loot Dead Body", "client\gui\playerMenu\loadLootPlayerMenu.sqf", [], 1, false, false, "", '_object = nearestobjects [player, ["SoldierWB","SoldierEB","SoldierGB"], 5]; if (count _object > 1) then {_object = _object select 1;} else {_object = player;}; player distance _object < 5 && !alive _object']];
+aActionsIDs = aActionsIDs + [player addAction["Loot Dead Body", "client\gui\playerMenu\loadLootPlayerMenu.sqf", [], 1, false, false, "", '_object = nearestobjects [player, ["SoldierWB","SoldierEB","SoldierGB","Civilian_F"], 5]; if (count _object > 1) then {_object = _object select 1;} else {_object = player;}; player distance _object < 5 && !alive _object']];
 
 aActionsIDs = aActionsIDs + [player addAction["Use The Gun Store", "client\gui\gunStore\loadGunStore.sqf", [], 1, false, false, "", 'player distance (nearestobjects [player, ["C_man_polo_4_F"],  5] select 0) < 5']];
 aActionsIDs = aActionsIDs + [player addAction["Use The General Store", "client\gui\generalStore\loadGenStore.sqf", [], 1, false, false, "", 'player distance (nearestobjects [player, ["C_man_polo_6_F"],  5] select 0) < 5']];
