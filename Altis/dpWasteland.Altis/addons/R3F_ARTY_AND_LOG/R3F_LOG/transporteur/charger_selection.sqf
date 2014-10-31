@@ -72,6 +72,11 @@ else
 					_objets_charges = _objets_charges + [_objet];
 					_transporteur setVariable ["R3F_LOG_objets_charges", _objets_charges, true];
 					
+					if (_objet getVariable "timeout" >= 0) Then	// Only get objects which already have a timer on them, this prevents setting timers on objects that should not have one.
+					{
+						// This gives the object 2 hours extra time while inside the vehicle, so it does not despawn while being transported!  |  Tag: boxCreation.sqf
+						_objet setVariable ["timeout", (time + 7200), true];
+					};
 					player globalChat STR_R3F_LOG_action_charger_selection_en_cours;
 					
 					sleep 2;

@@ -27,14 +27,22 @@
  */
 R3F_LOG_CFG_remorqueurs = [
     "Offroad_01_base_F",
+	"SUV_01_base_F",
+	"Hatchback_01_base_F",
+	"Van_01_base_F",
+	"Truck_01_base_F",
+	"Truck_02_base_F",
+	"Truck_03_base_F",
 	"MRAP_01_base_F",
 	"MRAP_02_base_F",
 	"MRAP_03_base_F",
-    "Truck_F",
     "Wheeled_APC_F",
 	"APC_Tracked_01_base_F",
     "APC_Tracked_02_base_F",
-    "APC_Tracked_03_base_F"
+    "APC_Tracked_03_base_F",
+	"MBT_01_base_F",
+	"MBT_02_base_F",
+	"MBT_03_base_F"
 ];
 
 /**
@@ -43,9 +51,12 @@ R3F_LOG_CFG_remorqueurs = [
  */
 R3F_LOG_CFG_objets_remorquables = [
     "Offroad_01_base_F",
-	"C_SUV_01_F",
+	"SUV_01_base_F",
 	"Hatchback_01_base_F",
-    "Truck_F",
+	"Van_01_base_F",
+	"Truck_01_base_F",
+	"Truck_02_base_F",
+	"Truck_03_base_F",
 	"MRAP_01_base_F",
 	"MRAP_02_base_F",
 	"MRAP_03_base_F",
@@ -53,8 +64,20 @@ R3F_LOG_CFG_objets_remorquables = [
 	"APC_Tracked_01_base_F",
     "APC_Tracked_02_base_F",
     "APC_Tracked_03_base_F",
-    "Helicopter_Base_F",
-	"Plane_Base_F"
+	"MBT_01_base_F",
+	"MBT_02_base_F",
+	"MBT_03_base_F",
+	"Heli_Light_01_base_F",
+	"Heli_Light_02_base_F",
+	"Heli_Transport_01_base_F",
+	"Heli_Transport_02_base_F",
+	"Heli_Attack_01_base_F",
+	"Heli_Attack_02_base_F",
+	"Heli_Light_01_armed_base_F",
+	"I_Heli_light_03_base_F",
+    "Plane_CAS_01_base_F",
+	"Plane_CAS_02_base_F",
+	"Plane_Fighter_03_base_F"
 ];
 
 /****** LIFT WITH VEHICLE / HELIPORTER AVEC VEHICULE ******/
@@ -143,45 +166,45 @@ R3F_LOG_CFG_objets_heliportables = [
  */
 R3F_LOG_CFG_transporteurs = [
 //	Trucks & Vans
-	["Truck_01_base_F", 30],
-	["Truck_03_base_F", 30],
-	["Truck_02_base_F", 25],
-	["Van_01_base_F", 10],
+	["Truck_01_base_F", 50],
+	["Truck_03_base_F", 50],
+	["Truck_02_base_F", 50],
+	["Van_01_base_F", 50],
 //	MRAPs
-	["MRAP_01_base_F", 15],
-	["MRAP_02_base_F", 15],
-	["MRAP_03_base_F", 15],
+	["MRAP_01_base_F", 20],
+	["MRAP_02_base_F", 20],
+	["MRAP_03_base_F", 20],
 //	Light Armour
 	["Wheeled_APC_F", 20],
-	["APC_Tracked_01_base_F", 25],
-	["APC_Tracked_02_base_F", 25],
-	["APC_Tracked_03_base_F", 25],
+	["APC_Tracked_01_base_F", 20],
+	["APC_Tracked_02_base_F", 20],
+	["APC_Tracked_03_base_F", 20],
 //	Heavy Armour
 	["MBT_01_base_F", 20],
 	["MBT_02_base_F", 20],
 	["MBT_03_base_F", 20],
 //	Helis
 	["Heli_Light_01_base_F", 10],			// MH-9 & AH-9
-	["Heli_Transport_01_base_F", 25],		// UH-80
-	["Heli_Attack_01_base_F", 5],			// AH-99
-	["Heli_Light_02_base_F", 15],			// PO-30
-	["Heli_Attack_02_base_F", 15],			// Mi-48
-	["Heli_Transport_02_base_F", 30],		// CH-49
-	["I_Heli_light_03_base_F", 20],			// WY-55
+	["Heli_Transport_01_base_F", 50],		// UH-80
+	["Heli_Attack_01_base_F", 10],			// AH-99
+	["Heli_Light_02_base_F", 10],			// PO-30
+	["Heli_Attack_02_base_F", 10],			// Mi-48
+	["Heli_Transport_02_base_F", 50],		// CH-49
+	["I_Heli_light_03_base_F", 10],			// WY-55
 //	Offroads
-	["Offroad_01_base_F", 15],
+	["Offroad_01_base_F", 20],
 //	Cars
 	["SUV_01_base_F", 10],
-	["Hatchback_01_base_F", 5],
+	["Hatchback_01_base_F", 10],
 //	ATVs
     ["Quadbike_01_base_F", 5],
 //	Boats
-	["Ship_F", 5],
+	["Ship_F", 10],
 //	Boxes and Containers
-	["Land_Pallet_MilBoxes_F", 25],
-	["Land_CargoBox_V1_F", 40],
-	["Land_Cargo20_military_green_F", 100],
-	["Land_Cargo40_military_green_F", 200]
+	["Land_Pallet_MilBoxes_F", 20],
+	["Land_CargoBox_V1_F", 50],
+	["Land_Cargo20_military_green_F", 50],
+	["Land_Cargo40_military_green_F", 50]
 ];
 
 /**
@@ -194,64 +217,64 @@ R3F_LOG_CFG_transporteurs = [
  
 R3F_LOG_CFG_objets_transportables =  [
 //	Crates / containers
-	["NATO_Box_Base", 5],
-	["EAST_Box_Base", 5],
-	["Box_Ammo_F", 5],
-	["Land_Box_AmmoOld_F", 5],
-	["IND_Box_Base", 5],
+	["NATO_Box_Base", 1],
+	["EAST_Box_Base", 1],
+	["Box_Ammo_F", 1],
+	["Land_Box_AmmoOld_F", 1],
+	["IND_Box_Base", 1],
 //	Structures
-	["Land_Sacks_goods_F", 5],
-	["Land_Pipes_small_F", 5],
-	["Land_Pipes_large_F", 5],
-	["Land_MetalBarrel_F", 5],
-	["Land_IronPipes_F", 5],
-	["Land_ConcretePipe_F", 15],
-	["Land_BagFence_Corner_F", 2],
-	["Land_BagFence_End_F", 2],
-	["Land_BagFence_Long_F", 5],
-	["Land_BagFence_Round_F", 5],
-	["Land_BagFence_Short_F", 2],
-	["Land_CncBarrier_F", 5],
-	["Land_CncBarrier_stripes_F", 5],	
-	["Land_CncBarrierMedium_F", 5],
-	["Land_CncBarrierMedium4_F", 15],
-	["Land_CncWall1_F", 10],
-	["Land_CncWall4_F", 20],
-	["Land_CncShelter_F", 10],	
-	["Land_HBarrier_1_F", 5],
-	["Land_HBarrier_3_F", 10],
-	["Land_HBarrier_5_F", 15],
-	["Land_HBarrierBig_F", 25],
-	["Land_HBarrierWall_corner_F", 15],
-	["Land_HBarrierWall4_F", 10],
-	["Land_HBarrierWall6_F", 15],
-	["Land_HBarrierWall_corridor_F", 15],
-	["Land_HBarrierTower_F", 25],
-	["Land_Crash_barrier_F", 5],
-	["Land_LampHalogen_F", 10],
-	["Land_CanisterFuel_F", 2],
-	["Land_CanisterPlastic_F", 2],
-	["Land_Cargo_House_V1_F", 20],
-	["Land_Cargo_HQ_V1_F", 40],
-	["Land_Cargo_Patrol_V1_F", 30],
-	["Land_Unfinished_Building_01_F", 30],
-	["Land_Unfinished_Building_02_F", 40],
-	["Land_BarGate_F", 10],
-	["Land_RampConcrete_F", 20],	
-	["Land_RampConcreteHigh_F", 30],	
-	["Land_Obstacle_Bridge_F", 5],	
+	["Land_Sacks_goods_F", 1],
+	["Land_Pipes_small_F", 1],
+	["Land_Pipes_large_F", 1],
+	["Land_MetalBarrel_F", 1],
+	["Land_IronPipes_F", 1],
+	["Land_ConcretePipe_F", 1],
+	["Land_BagFence_Corner_F", 1],
+	["Land_BagFence_End_F", 1],
+	["Land_BagFence_Long_F", 1],
+	["Land_BagFence_Round_F", 1],
+	["Land_BagFence_Short_F", 1],
+	["Land_CncBarrier_F", 2],
+	["Land_CncBarrier_stripes_F", 2],	
+	["Land_CncBarrierMedium_F", 2],
+	["Land_CncBarrierMedium4_F", 5],
+	["Land_CncWall1_F", 2],
+	["Land_CncWall4_F", 5],
+	["Land_CncShelter_F", 5],	
+	["Land_HBarrier_1_F", 2],
+	["Land_HBarrier_3_F", 2],
+	["Land_HBarrier_5_F", 2],
+	["Land_HBarrierBig_F", 2],
+	["Land_HBarrierWall_corner_F", 5],
+	["Land_HBarrierWall4_F", 5],
+	["Land_HBarrierWall6_F", 5],
+	["Land_HBarrierWall_corridor_F", 5],
+	["Land_HBarrierTower_F", 5],
+	["Land_Crash_barrier_F", 1],
+	["Land_LampHalogen_F", 1],
+	["Land_CanisterFuel_F", 1],
+	["Land_CanisterPlastic_F", 1],
+	["Land_Cargo_House_V1_F", 10],
+	["Land_Cargo_HQ_V1_F", 10],
+	["Land_Cargo_Patrol_V1_F", 10],
+	["Land_Unfinished_Building_01_F", 10],
+	["Land_Unfinished_Building_02_F", 10],
+	["Land_BarGate_F", 1],
+	["Land_RampConcrete_F", 2],	
+	["Land_RampConcreteHigh_F", 2],	
+	["Land_Obstacle_Bridge_F", 2],	
 	["Land_New_WiredFence_10m_F", 5],	
-	["Land_BagBunker_Small_F", 15],
-	["Land_BagBunker_Large_F", 30],	
-	["Land_BagBunker_Tower_F", 20],	
+	["Land_BagBunker_Small_F", 5],
+	["Land_BagBunker_Large_F", 5],	
+	["Land_BagBunker_Tower_F", 5],	
 	["Land_Concrete_SmallWall_4m_F", 5],
-	["Land_Concrete_SmallWall_8m_F", 10],
-	["Land_i_Garage_V1_F", 20],
-	["Land_dp_smallTank_F", 30],	
-	["Land_dp_bigTank_F", 40],
-	["Land_ReservoirTower_F", 60],
-	["Land_Cargo_Tower_V1_F", 120],
-	["Land_FuelStation_Feed_F", 25]
+	["Land_Concrete_SmallWall_8m_F", 5],
+	["Land_i_Garage_V1_F", 10],
+	["Land_dp_smallTank_F", 10],	
+	["Land_dp_bigTank_F", 10],
+	["Land_ReservoirTower_F", 10],
+	["Land_Cargo_Tower_V1_F", 10],
+	["Land_FuelStation_Feed_F", 2]
 ];
 
 /****** MOVABLE-BY-PLAYER OBJECTS / OBJETS DEPLACABLES PAR LE JOUEUR ******/

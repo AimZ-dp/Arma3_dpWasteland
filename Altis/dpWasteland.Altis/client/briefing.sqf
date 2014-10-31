@@ -41,6 +41,12 @@ player createDiaryRecord["changelog",
 
 player createDiaryRecord["changelog",
 ["=(dp)=","
+<br/>2.7.7<br/>
+	[Fixed] Attempt at stopping Respawn Heli and going off course.<br/>
+	[Improvement] Changed the size of objects and capacity of vehicles.<br/>
+	[Improvement] Increased vehicles to 160 and added server code to remove physics of distant vehicles.<br/>
+	[Improvement] Hopefully stopped stores spawning on roads.<br/>
+	[BUG] First para drop of first joiner seems bugged, fine for all other drops.<br/>
 <br/>2.7.6<br/>
 	[Improvement] Respawn Heli.<br/>
 	[Improvement] Clean objects after 10 mins.<br/>

@@ -16,7 +16,7 @@ class Header
 // --- MISSION LOADING -----------------------------------------
 
 author = "=(dp)= Dev Team";
-OnLoadName = "dp Wasteland v2.7.6";
+OnLoadName = "dp Wasteland v2.7.7";
 OnLoadMission = "Wasteland is a harsh survival sandbox where 2 teams and independent players fight for survival";
 loadScreen = "Loading.jpg";
 

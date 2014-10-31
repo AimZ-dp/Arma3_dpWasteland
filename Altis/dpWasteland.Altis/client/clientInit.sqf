@@ -47,17 +47,6 @@ sleep 2;
 
 //[] spawn rechargeScanner;
 //[] spawn cleanLocalObjects;
-
-
-/* MAKE ALL BUILDINGS INDESTRUCTIBLE
-[] spawn {
-	_objects = nearestObjects [getMarkerPos "Town_1", ["House_F"], 28000];
-	{
-		_x allowDamage false;
-		_x enableSimulation false;
-		sleep 0.01;
-	} foreach _objects;
-};
-*/
+//[] call objectProtection;
 
 diag_log format["******** clientInit Finished ********"];

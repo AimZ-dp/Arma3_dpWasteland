@@ -14,10 +14,10 @@ ammoDesertedTimeLimit = 1800;
 maxRandomTimeLimit = 900;
 objectTimeOut = 15; 
 
-maxVehicles = 80;
+maxVehicles = 160;
 maxHelicopters = 10;
-maxBoats = 20;
-maxAmmoBoxes = 30;
+maxBoats = 10;
+maxAmmoBoxes = 20;
 maxSurvivalObjects = 10;
 
 pvar_teamSwitchList = [];
@@ -107,18 +107,18 @@ Parachutes = [
 
 //Ground
 Quadbikes = [
-    "B_Quadbike_01_F",
+    "B_Quadbike_01_F",		//Quadbike_01_base_F
     "O_Quadbike_01_F",
     "C_Quadbike_01_F",
     "I_Quadbike_01_F",
     "B_G_Quadbike_01_F"
 ];
 Cars = [
-    "C_Offroad_01_F",
+    "C_Offroad_01_F",			//Offroad_01_base_F
     "B_G_Offroad_01_F",
-    "B_G_Offroad_01_armed_F",
-    "C_SUV_01_F",
-    "C_Hatchback_01_F",
+    "B_G_Offroad_01_armed_F",	
+    "C_SUV_01_F",				//SUV_01_base_F
+    "C_Hatchback_01_F",			//Hatchback_01_base_F
     "C_Hatchback_01_sport_F"
 ];
 SupportTrucks = [
@@ -142,70 +142,70 @@ SupportTrucks = [
 	"O_Truck_02_medical_F"
 ];
 Trucks = [
-    "C_Van_01_box_F",
+    "C_Van_01_box_F",				//Van_01_base_F
     "C_Van_01_transport_F",
     "B_G_Van_01_transport_F",
-    "B_Truck_01_box_F",
+    "B_Truck_01_box_F",				//Truck_01_base_F
     "B_Truck_01_covered_F",
     "B_Truck_01_mover_F",
     "B_Truck_01_transport_F",
-    "O_Truck_02_box_F",
+    "O_Truck_02_box_F",				//Truck_02_base_F
     "O_Truck_02_covered_F",
     "O_Truck_02_transport_F",
-    "O_Truck_03_covered_F",         // Tempest
-    "O_Truck_03_device_F",          // Tempest
-    "O_Truck_03_transport_F",       // Tempest
     "I_Truck_02_box_F",
     "I_Truck_02_covered_F",
-    "I_Truck_02_transport_F"
+    "I_Truck_02_transport_F",
+    "O_Truck_03_covered_F",         //Truck_03_base_F
+    "O_Truck_03_device_F",          
+    "O_Truck_03_transport_F"       
 ];
 UnarmedMRAPVehicles = [
-	"B_MRAP_01_F", 
-	"O_MRAP_02_F", 
-	"I_MRAP_03_F"
+	"B_MRAP_01_F", 					//MRAP_01_base_F
+	"O_MRAP_02_F", 					//MRAP_02_base_F
+	"I_MRAP_03_F"					//MRAP_03_base_F
 ];
 ArmedMRAPVehicles = [
-	"B_MRAP_01_gmg_F", 
+	"B_MRAP_01_gmg_F", 				
 	"B_MRAP_01_hmg_F", 
-	"O_MRAP_02_gmg_F", 
+	"O_MRAP_02_gmg_F", 				
 	"O_MRAP_02_hmg_F", 
-	"I_MRAP_03_gmg_F", 
+	"I_MRAP_03_gmg_F", 				
 	"I_MRAP_03_hmg_F"
 ];
 ArmouredPersonnelCarriers = [
-    "B_APC_Wheeled_01_cannon_F",
-    "O_APC_Wheeled_02_rcws_F",
-    "I_APC_Wheeled_03_cannon_F",
-	"I_APC_tracked_03_cannon_F",
-    "B_APC_Tracked_01_rcws_F",
+    "B_APC_Wheeled_01_cannon_F",	//Wheeled_APC_F
+    "O_APC_Wheeled_02_rcws_F",		
+    "I_APC_Wheeled_03_cannon_F",	
+	"I_APC_tracked_03_cannon_F",	//APC_Tracked_03_base_F
+    "B_APC_Tracked_01_rcws_F",		//APC_Tracked_01_base_F
     "B_APC_Tracked_01_CRV_F",
     "B_APC_Tracked_01_AA_F",
-    "O_APC_Tracked_02_cannon_F",
+    "O_APC_Tracked_02_cannon_F",	//APC_Tracked_02_base_F
     "O_APC_Tracked_02_AA_F"	
 ];
 MainBattleTanks = [
-    "B_MBT_01_cannon_F",
+    "B_MBT_01_cannon_F",			//MBT_01_base_F
 	"B_MBT_01_TUSK_F",
     "B_MBT_01_arty_F",
     "B_MBT_01_mlrs_F",
-    "O_MBT_02_arty_F",
+    "O_MBT_02_arty_F",				//MBT_02_base_F
     "O_MBT_02_cannon_F",
-	"I_MBT_03_cannon_F"
+	"I_MBT_03_cannon_F"				//MBT_03_base_F
 ];
 //Unmanned
 UnmannedAirVehicles = [
-    "B_UAV_01_F",
+    "B_UAV_01_F",					//UAV_01_base_F
     "O_UAV_01_F",
     "I_UAV_01_F",
     "B_UAV_02_F",
-    "O_UAV_02_F",
+    "O_UAV_02_F",					//UAV_02_base_F
     "I_UAV_02_F",
     "B_UAV_02_CAS_F",
     "O_UAV_02_CAS_F",
     "I_UAV_02_CAS_F"
 ];
 UnmannedGroundVehicles = [
-    "B_UGV_01_F",
+    "B_UGV_01_F",					//UGV_01_base_F
     "O_UGV_01_F",
     "I_UGV_01_F",
     "B_UGV_01_rcws_F",
@@ -214,8 +214,8 @@ UnmannedGroundVehicles = [
 ];
 
 survivalObjectList = [
-	"Land_Sacks_goods_F",
-	"Land_MetalBarrel_F",
+	"Land_Sacks_goods_F",			//Stall_base_F
+	"Land_MetalBarrel_F",			//Items_base_F
 	"Land_CanisterPlastic_F"
 ];
 

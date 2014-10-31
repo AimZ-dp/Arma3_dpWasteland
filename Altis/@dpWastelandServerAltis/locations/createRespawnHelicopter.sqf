@@ -1,11 +1,13 @@
 // create a set of waypoints (place all locations in an array, start at top and find closest)
 _waypointlocations = + cityArray;
-_currentLocation = _waypointlocations select 0;
-_waypointlocations set [0, -1];
+_startIndex = floor (random (count _waypointlocations));
+_currentLocation = _waypointlocations select _startIndex;
+_waypointlocations set [_startIndex, -1];
 _waypointlocations = _waypointlocations - [-1];
 
 _pos = _currentLocation select 2;
 _pos set [2, 400];
+_originalPos = _pos;
 
 _group = createGroup civilian;
 _vehicle = createVehicle ["I_Heli_Transport_02_F", _pos, [], 4, "FLY"];
@@ -17,7 +19,7 @@ _vehicle setVariable ["newVehicle",vChecksum,true];
 _vehicle setVariable ["timeout", (time + desertedTimeLimit + random maxRandomTimeLimit), true];
 _vehicle setVariable ["last_timeout", time, true];
 _vehicle setVariable ["status", "alive", true];
-_vehicle setVariable ["respawn", _respawn, false];
+_vehicle setVariable ["respawn", false, false];
 
 // Make them indestructible
 _vehicle addEventHandler ["HandleDamage", {false}];
@@ -28,11 +30,11 @@ _vehicle animateDoor ['door_back_R', 1];
 _vehicle animateDoor ['door_back_L', 1];
 _vehicle flyInHeight 200;
 
-_waypoint = _group addWaypoint [_pos, 0];
+_waypoint = _group addWaypoint [_originalPos, 0];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointCompletionRadius 50;
-_waypoint setWaypointCombatMode "GREEN"; 
-_waypoint setWaypointBehaviour "SAFE"; 
+_waypoint setWaypointCombatMode "BLUE"; 
+_waypoint setWaypointBehaviour "CARELESS"; 
 _waypoint setWaypointFormation "NO CHANGE";
 _waypoint setWaypointSpeed "FULL";
 
@@ -61,32 +63,44 @@ while {count _waypointlocations > 0} do
 	_waypoint = _group addWaypoint [_pos, 0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointCompletionRadius 50;
-	_waypoint setWaypointCombatMode "GREEN"; 
-	_waypoint setWaypointBehaviour "SAFE"; 
+	_waypoint setWaypointCombatMode "NO CHANGE"; 
+	_waypoint setWaypointBehaviour "NO CHANGE"; 
 	_waypoint setWaypointFormation "NO CHANGE";
-	_waypoint setWaypointSpeed "FULL";
+	_waypoint setWaypointSpeed "NO CHANGE";
 };
 
-// add final cycle waypoint
-_waypoint = _group addWaypoint [_currentLocation select 2, 0];
+_waypoint = _group addWaypoint [_originalPos, 0];
 _waypoint setWaypointType "CYCLE";
-
-respawnHelicopter = _vehicle;
-publicVariable "respawnHelicopter";
-
-[_vehicle,_group] spawn {
+_waypoint setWaypointCombatMode "NO CHANGE"; 
+_waypoint setWaypointBehaviour "NO CHANGE"; 
+_waypoint setWaypointFormation "NO CHANGE";
+_waypoint setWaypointSpeed "NO CHANGE";
+	
+[_vehicle,_group,_pilot] spawn {
+	
 	_vehicle = _this select 0;
 	_group = _this select 1;
+	_pilot = _this select 2;
+
+	while {(alive _vehicle) && (alive _pilot)} do 
+	{
+		_vehicle setFuel 1;
+		
+		_vehicle setVariable ["newVehicle",vChecksum,true];
+		_vehicle setVariable ["timeout", (time + desertedTimeLimit + random maxRandomTimeLimit), true];
+		_vehicle setVariable ["last_timeout", time, true];
+		_vehicle setVariable ["status", "alive", true];
+		_vehicle setVariable ["respawn", false, false];
+
+		respawnHelicopter = _vehicle;
+		publicVariable "respawnHelicopter";
+		
+		sleep 30;
+	};
 	
-	_vehicle setFuel 1;
-	
-	_vehicle setVariable ["newVehicle",vChecksum,true];
-	_vehicle setVariable ["timeout", (time + desertedTimeLimit + random maxRandomTimeLimit), true];
-	_vehicle setVariable ["last_timeout", time, true];
-	_vehicle setVariable ["status", "alive", true];
-	_vehicle setVariable ["respawn", _respawn, false];
-	
-	sleep 60;
+	[] spawn createRespawnHelicopter;
 };
+
+
  
 true

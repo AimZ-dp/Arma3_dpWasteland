@@ -49,6 +49,8 @@ publicVariable "R3F_LOG_PUBVAR_point_attache";
 [] call createLocations;
 [] call drawLocations;
 
+[] call objectProtection;
+
 //Create the store guys
 [storesPerActiveZone] call createGunStores;
 [storesPerActiveZone] call createGeneralStores;
@@ -75,16 +77,5 @@ sleep 150;
 ["controller2"] spawn sideMissionController;
 ["controller2"] spawn mainMissionController;
 
-/*
-[] spawn {
-	_objects = nearestObjects [getMarkerPos "Town_1", ["House_F"], 28000];
-	{
-		_x allowDamage false;
-		_x enableSimulation false;
-		_x setVariable ["R3F_LOG_disabled", true, true];
-		sleep 0.01;
-	} foreach _objects;
-};
-*/
 
 diag_log format["****** SERVER init Finshed ******"];

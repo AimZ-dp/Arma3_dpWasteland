@@ -29,11 +29,21 @@ _storeGuyPos = [];
 				_zoneSize = getMarkerSize format ["map_restriction_%1", _x];
 				_zoneWidth = _zoneSize select 0;
 				_zoneHeight = _zoneSize select 1;
-				_randomPos = [_zonePos,_zoneWidth,_zoneHeight,4,0,1,0] call findSafeRectPos;
-				//----------------------------------------------
-								
-				// OUTPUT THE POSITION TO THE LOG JUST INCASE POSITION WANTS TO BE SET PERMANENTLY
-				["	General Store (zone %1): Generated Pos=%2", _x, _randomPos] call BIS_fnc_logFormat;
+				
+				_posValid = false;
+				while {!_posValid} do
+				{				
+					_randomPos = [_zonePos,_zoneWidth,_zoneHeight,4,0,1,0] call findSafeRectPos;
+					//----------------------------------------------
+					
+					// OUTPUT THE POSITION TO THE LOG JUST INCASE POSITION WANTS TO BE SET PERMANENTLY
+					["	General Store (zone %1): Generated Pos=%2", _x, _randomPos] call BIS_fnc_logFormat;
+					
+					if !(isOnRoad _randomPos) then
+					{
+						_posValid = true;
+					};
+				};
 				
 				_storeGuyPos = _randomPos;
 			};

@@ -58,6 +58,7 @@ mission_CivHeli = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAlt
 mission_AbandonedVehicle = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\missions\sideMissions\mission_AbandonedVehicle.sqf";
 mission_UAV = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\missions\sideMissions\mission_UAV.sqf";
 mission_Boat = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\missions\sideMissions\mission_Boat.sqf";
+mission_RichGuy = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\missions\sideMissions\mission_RichGuy.sqf";
 
 //Factory Compiles
 createMissionLocation = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\missions\factoryMethods\createMissionLocation.sqf";
@@ -89,6 +90,8 @@ defuelVehicle = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis
 createLocations = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\locations\createLocations.sqf";
 drawLocations = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\locations\drawLocations.sqf";
 createRespawnHelicopter = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\locations\createRespawnHelicopter.sqf";
+
+objectProtection = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\objectProtection.sqf";
 
 serverCompiledScripts = true;
 

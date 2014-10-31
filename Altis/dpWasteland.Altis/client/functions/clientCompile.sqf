@@ -84,6 +84,8 @@ updateStoreMarkers = compileFinal preprocessFileLineNumbers "client\functions\up
 refuelVehicle = compileFinal preprocessFileLineNumbers "client\functions\Fuelling\refuelVehicle.sqf";
 defuelVehicle = compileFinal preprocessFileLineNumbers "client\functions\Fuelling\defuelVehicle.sqf";
 
+objectProtection = compileFinal preprocessFileLineNumbers "client\functions\objectProtection.sqf";
+
 playerCompiledScripts = true;
 
 diag_log format["****** clientCompile Finished ******"];
