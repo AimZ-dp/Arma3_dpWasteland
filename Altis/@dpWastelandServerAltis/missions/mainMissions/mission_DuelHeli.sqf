@@ -42,21 +42,25 @@ _pilot1 setPos _heliPos;
 _pilot1 moveInDriver _vehicle1;
 _CivGrp selectLeader _pilot1;
 
+/*
 _heliPos = getPos _vehicle2;
 _pilot2 = [_CivGrp, _heliPos] call createRandomSoldier; 
 _pilot2 setPos _heliPos;
 _pilot2 moveInDriver _vehicle2;
 _CivGrp selectLeader _pilot2;
+*/
 
 _heliPos = getPos _vehicle1;
 _copilot1 = [_CivGrp, _heliPos] call createRandomSoldier; 
 _copilot1 setPos _heliPos;
 _copilot1 moveInGunner _vehicle1;
 
+/*
 _heliPos = getPos _vehicle2;
 _copilot2 = [_CivGrp, _heliPos] call createRandomSoldier; 
 _copilot2 setPos _heliPos;
 _copilot2 moveInGunner _vehicle2;
+*/
 
 _areaArray = cityArray;
 _area = _areaArray select (floor (random (count _areaArray)));
@@ -84,10 +88,12 @@ _marker1 = createMarker [format["%1_current_1", _missionMarkerName],  position _
 _marker1 setMarkerType "n_air";
 _marker1 setMarkerColor "ColorBlack";
 
+/*
 private ["_marker","_marker2"];
 _marker2 = createMarker [format["%1_current_2", _missionMarkerName],  position _vehicle2];
 _marker2 setMarkerType "n_air";
 _marker2 setMarkerColor "ColorBlack";
+*/
 
 [_missionMarkerName,_newPosition,_missionType] call createClientMarker;
 	
@@ -127,6 +133,7 @@ while {!_missionEnd} do
 		deleteMarker _marker1;	
 	};
 	
+	/*
 	if (damage _vehicle2 < 0.9) then 
 	{
 		_marker2 setMarkerPos (position _vehicle2);
@@ -135,12 +142,12 @@ while {!_missionEnd} do
 	{
 		deleteMarker _marker2;	
 	};
-
+	*/
 
 	_vehicle1 setVariable ["timeout", (time + ammoDesertedTimeLimit + random maxRandomTimeLimit), true];
 	_vehicle1 setVariable ["last_timeout", time, true];
-	_vehicle2 setVariable ["timeout", (time + ammoDesertedTimeLimit + random maxRandomTimeLimit), true];
-	_vehicle2 setVariable ["last_timeout", time, true];
+	//_vehicle2 setVariable ["timeout", (time + ammoDesertedTimeLimit + random maxRandomTimeLimit), true];
+	//_vehicle2 setVariable ["last_timeout", time, true];
 };
 
 if(_result == 1) then
@@ -148,7 +155,7 @@ if(_result == 1) then
 	//Mission Failed.
 	
 	_vehicle1 setDamage 1;
-	_vehicle2 setDamage 1;
+	//_vehicle2 setDamage 1;
 	
 	{
 		_x removeAllEventHandlers "killed";
@@ -165,7 +172,7 @@ else
 	//Mission Complete.
 	
 	_vehicle1 setDamage 1;
-	_vehicle2 setDamage 1;
+	//_vehicle2 setDamage 1;
 	
     deleteGroup _CivGrp;
 
@@ -177,6 +184,6 @@ else
 //Reset Mission Spot.
 [_missionMarkerName] call deleteClientMarker;
 deleteMarker _marker1;	
-deleteMarker _marker2;	
+//deleteMarker _marker2;	
 
 //diag_log format["****** mission_ArmedHeli Finished ******"];

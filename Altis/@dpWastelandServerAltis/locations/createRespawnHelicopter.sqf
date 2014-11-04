@@ -14,6 +14,8 @@ _vehicle = createVehicle ["I_Heli_Transport_02_F", _pos, [], 4, "FLY"];
 _group addVehicle _vehicle;
 _pilot = _group createUnit ["C_man_1_1_F", _pos, [], 0, "FLY"];
 _pilot moveInDriver _vehicle;
+_pilot allowFleeing 0;
+_pilot setCaptive true;
 
 _vehicle setVariable ["newVehicle",vChecksum,true];
 _vehicle setVariable ["timeout", (time + desertedTimeLimit + random maxRandomTimeLimit), true];
@@ -22,8 +24,8 @@ _vehicle setVariable ["status", "alive", true];
 _vehicle setVariable ["respawn", false, false];
 
 // Make them indestructible
-_vehicle addEventHandler ["HandleDamage", {false}];
-_pilot addEventHandler ["HandleDamage", {false}];
+//_vehicle addEventHandler ["HandleDamage", {false}];
+//_pilot addEventHandler ["HandleDamage", {false}];
 _vehicle animateDoor ['door_R', 1]; 
 _vehicle animateDoor ['door_L', 1];
 _vehicle animateDoor ['door_back_R', 1];
@@ -94,6 +96,9 @@ _waypoint setWaypointSpeed "NO CHANGE";
 
 		respawnHelicopter = _vehicle;
 		publicVariable "respawnHelicopter";
+		
+		_pos = waypointPosition [_group, currentWaypoint _group];
+		_pilot moveTo _pos;
 		
 		sleep 30;
 	};

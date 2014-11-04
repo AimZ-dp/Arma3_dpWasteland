@@ -77,5 +77,6 @@ sleep 150;
 ["controller2"] spawn sideMissionController;
 ["controller2"] spawn mainMissionController;
 
+0 setOvercast 0;
 
 diag_log format["****** SERVER init Finshed ******"];

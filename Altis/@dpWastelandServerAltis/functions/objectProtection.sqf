@@ -24,15 +24,25 @@
 
 	while {true} do
 	{
-		// allMines
-		//_objects = allMissionObjects "All";
 		_objects = vehicles;
-		// entities "All";
-		//_objects = nearestObjects [_centerPos, ["Car","Helicopter","Ship"], _mapSize/2];
 		{
-			//_players = nearestObjects [_x, ["SoldierWB","SoldierEB","SoldierGB","Civilian"], 30];
-			_players = _x nearEntities ["Man", 20];
-			if (count _players > 0 || count (crew _x) > 0) then
+			_cars = _x nearEntities ["Car", 50];
+			{
+				if (count (crew _x) <= 0) then
+				{
+					_cars set [_forEachIndex, -1];
+				};
+			} foreach _cars;
+			_cars = _cars - [-1]; 
+			
+			_players = _x nearEntities ["Man", 50];
+			_vel = velocity _x; 
+			_status = _x getVariable ["status", "unknown"];
+						
+			if ((count _players > 0 || count _cars > 0) 
+				|| ((_vel select 0) > 0 || (_vel select 1) > 0 || (_vel select 2) > 0) 
+				|| (count (crew _x) > 0 || isEngineOn _x)
+				|| (_status == "burn")) then
 			{
 				if !(simulationEnabled _x) then
 				{
@@ -41,14 +51,29 @@
 			}
 			else
 			{
-				if (simulationEnabled _x) then
-				{
-					_x enableSimulationGlobal false;
-					_pos = position _x;
-					_pos set [2, (_pos select 2) + 0.1];
-					_x setPos _pos;
+				// need a delay before it locks
+				[_x] spawn {
+					_x = _this select 0;
+					
+					if (simulationEnabled _x) then
+					{
+						sleep 5;
+						
+						_x enableSimulationGlobal false;
+						
+						//_pos = position _x;
+						//_pos set [2, (_pos select 2) + 0.2];
+						//_x setPos _pos;
+					};
 				};
 			};
+			
+						
+			if (count (crew _x) <= 0 && isEngineOn _x) then
+			{
+				[[[_x],"client\functions\serverFunc\engineOff.sqf"],"BIS_fnc_execVM",_x,false] spawn BIS_fnc_MP;
+			};
+			
 		} foreach _objects;
 		sleep 0.1;
 	};

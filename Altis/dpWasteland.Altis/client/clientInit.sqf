@@ -49,4 +49,6 @@ sleep 2;
 //[] spawn cleanLocalObjects;
 //[] call objectProtection;
 
+0 setOvercast 0;
+
 diag_log format["******** clientInit Finished ********"];

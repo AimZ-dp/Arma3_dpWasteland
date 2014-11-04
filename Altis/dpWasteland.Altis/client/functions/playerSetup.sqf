@@ -85,7 +85,7 @@ player addMagazine "16Rnd_9x21_Mag";
 player addMagazine "16Rnd_9x21_Mag";
 player addWeapon "hgun_Rook40_F";
 player selectWeapon "hgun_Rook40_F";
-player switchMove "aidlpercmstpsraswrfldnon_idlesteady01n";
-player playMove "aidlpercmstpsraswrfldnon_idlesteady01n";
+//player switchMove "aidlpercmstpsraswrfldnon_idlesteady01n";
+//player playMove "aidlpercmstpsraswrfldnon_idlesteady01n";
 
 diag_log format["*** playerSetup Finished ***"];

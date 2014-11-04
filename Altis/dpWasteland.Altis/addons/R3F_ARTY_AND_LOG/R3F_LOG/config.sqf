@@ -222,6 +222,7 @@ R3F_LOG_CFG_objets_transportables =  [
 	["Box_Ammo_F", 1],
 	["Land_Box_AmmoOld_F", 1],
 	["IND_Box_Base", 1],
+	["I_supplyCrate_F", 1],
 //	Structures
 	["Land_Sacks_goods_F", 1],
 	["Land_Pipes_small_F", 1],

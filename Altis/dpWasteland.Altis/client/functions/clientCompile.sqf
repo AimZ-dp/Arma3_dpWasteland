@@ -50,6 +50,7 @@ loadGroupManagement = compileFinal preprocessFileLineNumbers "client\gui\groups\
 // Sync client with server time
 timeSync = compileFinal preprocessFileLineNumbers "client\functions\serverFunc\clientTimeSync.sqf";
 serverMessage = compileFinal preprocessFileLineNumbers "client\functions\serverFunc\serverMessage.sqf";
+engineOff = compileFinal preprocessFileLineNumbers "client\functions\serverFunc\engineOff.sqf";
 
 // Update scripts
 updateMissionsMarkers = compileFinal preprocessFileLineNumbers "client\functions\updatePlayerMissionMarkers.sqf";
