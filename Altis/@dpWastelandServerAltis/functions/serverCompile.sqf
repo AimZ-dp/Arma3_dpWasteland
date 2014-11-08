@@ -14,7 +14,6 @@ serverAdminList = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAlt
 serverVars = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\serverVars.sqf";
 relations = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\relations.sqf";
 serverTimeSync = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\serverTimeSync.sqf";
-broadcaster = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\broadcaster.sqf";
 createBaseObject = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\createBaseObject.sqf";
 
 //Spawning Compiles
@@ -82,16 +81,20 @@ createGeneralStores = compileFinal preprocessFileLineNumbers "\@dpWastelandServe
 createConstructionStores = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\StoreGuys\createConstructionStores.sqf";
 controlStoreGuy = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\StoreGuys\controlStoreGuy.sqf";
 
-// Fuelling
-refuelVehicle = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\Fuelling\refuelVehicle.sqf";
-defuelVehicle = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\Fuelling\defuelVehicle.sqf";
-
 // Locations
 createLocations = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\locations\createLocations.sqf";
 drawLocations = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\locations\drawLocations.sqf";
 createRespawnHelicopter = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\locations\createRespawnHelicopter.sqf";
 
+// clean server
 objectProtection = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\objectProtection.sqf";
+
+// bases
+dp_fnc_abandonBase = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\bases\abandonBase.sqf";
+dp_fnc_captureBase = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\bases\captureBase.sqf";
+dp_fnc_registerBase = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\bases\registerBase.sqf";
+dp_fnc_processAction = compileFinal preprocessFileLineNumbers "\@dpWastelandServerAltis\functions\bases\processAction.sqf";
+
 
 serverCompiledScripts = true;
 

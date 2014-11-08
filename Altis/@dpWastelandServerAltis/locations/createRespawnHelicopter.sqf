@@ -77,6 +77,9 @@ _waypoint setWaypointCombatMode "NO CHANGE";
 _waypoint setWaypointBehaviour "NO CHANGE"; 
 _waypoint setWaypointFormation "NO CHANGE";
 _waypoint setWaypointSpeed "NO CHANGE";
+
+pvar_respawnHelicopter = _vehicle;
+publicVariable "pvar_respawnHelicopter";
 	
 [_vehicle,_group,_pilot] spawn {
 	
@@ -84,6 +87,8 @@ _waypoint setWaypointSpeed "NO CHANGE";
 	_group = _this select 1;
 	_pilot = _this select 2;
 
+	_rearmTime = time;
+	
 	while {(alive _vehicle) && (alive _pilot)} do 
 	{
 		_vehicle setFuel 1;
@@ -93,12 +98,47 @@ _waypoint setWaypointSpeed "NO CHANGE";
 		_vehicle setVariable ["last_timeout", time, true];
 		_vehicle setVariable ["status", "alive", true];
 		_vehicle setVariable ["respawn", false, false];
-
-		respawnHelicopter = _vehicle;
-		publicVariable "respawnHelicopter";
 		
 		_pos = waypointPosition [_group, currentWaypoint _group];
 		_pilot moveTo _pos;
+		
+		if (time >= _rearmTime) then
+		{
+			// clear current cargo
+			clearWeaponCargoGlobal _vehicle;
+			clearMagazineCargoGlobal _vehicle;
+			clearItemCargoGlobal _vehicle;
+			clearBackpackCargoGlobal _vehicle;
+			
+			for "_i" from 0 to 1 do
+			{
+				// create a random gun
+				_weapon = (pvar_weaponsArray select floor(random (count pvar_weaponsArray))) select 0;
+				_magArray = getArray (configFile >> "Cfgweapons" >> _weapon >> "magazines");
+				_mag = _magArray select floor (random (count _magArray));
+				_vehicle addMagazineCargoGlobal [_mag,2];
+				_vehicle addWeaponCargoGlobal [_weapon,1];
+			
+				// create a random accessory
+				_scope = (pvar_accessoriesArray select floor(random (count pvar_accessoriesArray))) select 0;
+				_vehicle addItemCargoGlobal [_scope,2];
+
+				// create a random uniform
+				_uniform = pvar_uniformArray select floor(random (count pvar_uniformArray));
+				_uniformType = _uniform select 3;
+				_uniformClass = _uniform select 0;
+				if (_uniformType == "backpack") then 
+				{
+					_vehicle addBackpackCargoGlobal [_uniformClass,1];
+				}
+				else
+				{
+					_vehicle addItemCargoGlobal [_uniformClass,1];	
+				};
+			};
+
+			_rearmTime = time + 900;
+		};
 		
 		sleep 30;
 	};

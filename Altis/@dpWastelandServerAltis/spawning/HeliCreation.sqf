@@ -65,8 +65,8 @@ if (_restrictContent) then
 	// set status of vehicle
 	if (_flying != "FLY") then 
 	{
-		_heli setFuel (random 0.50) + 0.10;
-		_heli setDamage (random 0.25) + 0.50;
+		_heli setFuel (random 0.45) + 0.35;
+		_heli setDamage (random 0.50) + 0.25;
 	}
 	else
 	{

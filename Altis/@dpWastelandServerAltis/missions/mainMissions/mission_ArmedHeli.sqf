@@ -30,7 +30,16 @@ _randomEndPos set [2,  300];
 
 private ["_vehicle","_CivGrpM","_pilot","_soldier","_waypoint"];
 // Create the vehicle FLYING
-_vehicle = [_randomEndPos, AttackHelicopters, true, 3000, false, false, 2, "FLY"] call HeliCreation;	
+_heliArray = ArmedTransportHelicopters;
+if (random 10 > 5) then
+{
+	_heliArray = ArmedLightHelicopters;
+	if (random 10 > 5) then
+	{
+		_heliArray = AttackHelicopters;
+	};
+};
+_vehicle = [_randomEndPos, ArmedTransportHelicopters, true, 3000, false, false, 2, "FLY"] call HeliCreation;	
 _vehicle setVehicleLock "LOCKED";
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
 
@@ -60,18 +69,11 @@ _soldier = [_CivGrpM, _heliPos] call createRandomSoldier;
 _soldier setPos _heliPos;
 _soldier moveInCargo _vehicle;
 
-//_waypoint = _CivGrpM addWaypoint [_randomEndPos, 0];
-//_waypoint setWaypointType "MOVE";
-//_waypoint setWaypointCompletionRadius 100;
-//_waypoint setWaypointCombatMode "GREEN"; 
-//_waypoint setWaypointBehaviour "SAFE"; 
-//_waypoint setWaypointFormation "NO CHANGE";
-//_waypoint setWaypointSpeed "FULL";
 _waypoint = _CivGrpM addWaypoint [_randomEndPos, 0];
 _waypoint setWaypointType "GETOUT";
 _waypoint setWaypointCompletionRadius 10;
-_waypoint setWaypointCombatMode "GREEN"; 
-_waypoint setWaypointBehaviour "SAFE"; 
+_waypoint setWaypointCombatMode "BLUE"; 
+_waypoint setWaypointBehaviour "CARELESS"; 
 _waypoint setWaypointFormation "NO CHANGE";
 _waypoint setWaypointSpeed "FULL";
 

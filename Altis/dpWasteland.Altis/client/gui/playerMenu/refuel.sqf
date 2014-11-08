@@ -97,8 +97,7 @@ for "_iteration" from 1 to _iterationAmount do {
         
 
         if(!(local _currVehicle)) then {
-			pvar_refuelVehicle = [netId _currVehicle,_fuelAmount];
-			publicVariable "pvar_refuelVehicle";	
+			[[[netId _currVehicle,_fuelAmount],"client\functions\Fuelling\refuelVehicle.sqf"],"BIS_fnc_execVM",_currVehicle,false] spawn BIS_fnc_MP;
 		} else {
 			_currVehicle setFuel ((fuel _currVehicle) + _fuelAmount);
 		};

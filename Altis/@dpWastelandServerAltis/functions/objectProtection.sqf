@@ -5,6 +5,7 @@
 
 [] spawn {
 
+	private ["_centerPos","_mapSize","_objects"];
 	_centerPos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
 	_mapSize =  getNumber(configFile >> "CfgWorlds" >> worldName >> "mapSize");
 
@@ -19,6 +20,7 @@
 
 [] spawn {
 
+	private ["_centerPos","_mapSize","_objects","_cars","_players","_vel","_status"];
 	_centerPos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
 	_mapSize =  getNumber(configFile >> "CfgWorlds" >> worldName >> "mapSize");
 
@@ -26,55 +28,53 @@
 	{
 		_objects = vehicles;
 		{
-			_cars = _x nearEntities ["Car", 50];
+			if (!(isNull _x)) then
 			{
-				if (count (crew _x) <= 0) then
+				_cars = _x nearEntities ["Car", 50];
 				{
-					_cars set [_forEachIndex, -1];
-				};
-			} foreach _cars;
-			_cars = _cars - [-1]; 
-			
-			_players = _x nearEntities ["Man", 50];
-			_vel = velocity _x; 
-			_status = _x getVariable ["status", "unknown"];
-						
-			if ((count _players > 0 || count _cars > 0) 
-				|| ((_vel select 0) > 0 || (_vel select 1) > 0 || (_vel select 2) > 0) 
-				|| (count (crew _x) > 0 || isEngineOn _x)
-				|| (_status == "burn")) then
-			{
-				if !(simulationEnabled _x) then
-				{
-					_x enableSimulationGlobal true;
-				};
-			}
-			else
-			{
-				// need a delay before it locks
-				[_x] spawn {
-					_x = _this select 0;
-					
-					if (simulationEnabled _x) then
+					if (count (crew _x) <= 0) then
 					{
-						sleep 5;
+						_cars set [_forEachIndex, -1];
+					};
+				} forEach _cars;
+				_cars = _cars - [-1]; 
+				
+				_players = _x nearEntities ["Man", 50];
+				_vel = velocity _x; 
+				_status = _x getVariable ["status", "unknown"];
+							
+				if ((count _players > 0 || count _cars > 0) 
+					|| ((_vel select 0) != 0 || (_vel select 1) != 0 || (_vel select 2) != 0)
+					|| ((getPos _x select 2) > 0.1)
+					|| (count (crew _x) > 0 || isEngineOn _x)
+					|| (_status == "burn")) then
+				{
+					if !(simulationEnabled _x) then
+					{
+						_x enableSimulationGlobal true;
+					};
+				}
+				else
+				{
+					// need a delay before it locks
+					[_x] spawn {
+						_x = _this select 0;
 						
-						_x enableSimulationGlobal false;
-						
-						//_pos = position _x;
-						//_pos set [2, (_pos select 2) + 0.2];
-						//_x setPos _pos;
+						if (simulationEnabled _x) then
+						{
+							sleep 5;
+							
+							_x enableSimulationGlobal false;
+						};
 					};
 				};
+										
+				if (count (crew _x) <= 0 && isEngineOn _x) then
+				{
+					[[[_x],"client\functions\serverFunc\engineOff.sqf"],"BIS_fnc_execVM",_x,false] spawn BIS_fnc_MP;
+				};
 			};
-			
-						
-			if (count (crew _x) <= 0 && isEngineOn _x) then
-			{
-				[[[_x],"client\functions\serverFunc\engineOff.sqf"],"BIS_fnc_execVM",_x,false] spawn BIS_fnc_MP;
-			};
-			
-		} foreach _objects;
+		} forEach _objects;
 		sleep 0.1;
 	};
 };

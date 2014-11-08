@@ -21,7 +21,7 @@ class Mission
 	randomSeed=4593667;
 	class Intel
 	{
-		briefingName="dp Wasteland v2.7.7";
+		briefingName="dp Wasteland v2.7.8";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
@@ -2142,14 +2142,14 @@ class Mission
 		};
 		class Item7
 		{
-			position[]={22458.578,46.777943,20742.01};
+			position[]={22479.389,33.241512,20533.893};
 			name="map_restriction_2";
 			markerType="RECTANGLE";
 			type="Empty";
 			colorName="ColorRed";
 			fillName="Border";
 			a=6800;
-			b=5500;
+			b=6000;
 			drawBorder=1;
 		};
 		class Item8
@@ -2166,7 +2166,7 @@ class Mission
 		};
 		class Item9
 		{
-			position[]={19754.174,93.486534,9724.1084};
+			position[]={19717.256,74.265167,9022.6885};
 			name="map_restriction_4";
 			markerType="RECTANGLE";
 			type="Empty";

@@ -216,6 +216,8 @@ R3F_LOG_CFG_transporteurs = [
  */
  
 R3F_LOG_CFG_objets_transportables =  [
+	["FlagPole_F", 1],
+	["Land_HelipadCivil_F",5],
 //	Crates / containers
 	["NATO_Box_Base", 1],
 	["EAST_Box_Base", 1],
@@ -286,6 +288,8 @@ R3F_LOG_CFG_objets_transportables =  [
  */
 
 R3F_LOG_CFG_objets_deplacables = [
+	"FlagPole_F",
+	"Land_HelipadCivil_F",
 	"Quadbike_01_base_F",
 	"ReammoBox_F",
 	"Land_Pallet_MilBoxes_F",

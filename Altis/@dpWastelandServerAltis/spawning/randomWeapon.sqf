@@ -24,7 +24,6 @@ _additionOne = vehicleAddition select floor(random (count vehicleAddition));
 _additionTwo = vehicleAddition2 select floor(random (count vehicleAddition2));
 _additionThree = vehicleAddition3 select floor(random (count vehicleAddition3));
 
-
 //Add guns and magazines, note the Global at the end..
 _car addMagazineCargoGlobal [_mag,4];
 _car addWeaponCargoGlobal [_weapon,1];
@@ -32,4 +31,20 @@ _car addItemCargoGlobal [_additionOne,2];
 _car addMagazineCargoGlobal [_additionTwo,2];
 _car addItemCargoGlobal [_additionThree,2];
 
+// uniform or backpack to vehicle
+for "_i" from 0 to 2 do
+{
+	_uniform = pvar_uniformArray select floor(random (count pvar_uniformArray));
+	_uniformType = _uniform select 3;
+	_uniformClass = _uniform select 0;
+	if (_uniformType == "backpack") then 
+	{
+		_car addBackpackCargoGlobal [_uniformClass,1];
+	}
+	else
+	{
+		_car addItemCargoGlobal [_uniformClass,1];	
+	};
+};
+			
 //diag_log format["*** randomWeapon Finished ***"];

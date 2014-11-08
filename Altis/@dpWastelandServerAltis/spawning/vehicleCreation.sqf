@@ -81,8 +81,8 @@ if (_restrictContent) then
 	clearWeaponCargoGlobal _car;
 
 	//Set Cars Attributes
-	_car setFuel (random 0.50) + 0.10;
-	_car setDamage (random 0.25) + 0.50;
+	_car setFuel (random 0.50) + 0.25;
+	_car setDamage (random 0.50) + 0.25;
 
 	if (count(configFile >> "CfgVehicles" >> (typeOf _car) >> "Turrets") > 0) then
 	{

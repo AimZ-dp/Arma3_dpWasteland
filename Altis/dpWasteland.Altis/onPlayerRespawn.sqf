@@ -39,12 +39,11 @@ titleText ["You were born to respawn...", "BLACK", 0];
 [] spawn 
 {
 	sleep 2;
-	//waitUntil{!respawnDialogActive};
-	
-	if(!isNull pvar_PlayerTeamKiller) then 
+
+	if(!isNull PlayerTeamKiller) then 
 	{
-		pDialogTeamkiller = pvar_PlayerTeamKiller;
-		pvar_PlayerTeamKiller = objNull;
+		pDialogTeamkiller = PlayerTeamKiller;
+		PlayerTeamKiller = objNull;
 		if (pvar_allowPlayerIcons == "ON") then
 		{
 			[] execVM "client\functions\createTeamKillDialog.sqf";

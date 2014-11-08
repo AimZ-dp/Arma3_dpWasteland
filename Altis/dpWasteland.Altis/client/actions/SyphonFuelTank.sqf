@@ -24,8 +24,7 @@ if (fuel _vehicle > 0.10) then
 	{
         if(!(local _vehicle)) then 
 		{
-			pvar_defuelVehicle = [netId _vehicle,_fuelAmount];
-			publicVariable "pvar_defuelVehicle";	
+			[[[netId _vehicle,_fuelAmount],"client\functions\Fuelling\defuelVehicle.sqf"],"BIS_fnc_execVM",_vehicle,false] spawn BIS_fnc_MP;
 		} 
 		else 
 		{

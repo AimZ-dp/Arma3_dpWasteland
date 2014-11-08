@@ -29,9 +29,9 @@ _player = player;
 _suspects = [];
 
 if((_player != _killer) && (vehicle _player != vehicle _killer) && (playerSide == side _killer) && (str(playerSide) in ["WEST", "EAST"])) then {
-	pvar_PlayerTeamKiller = objNull;
+	PlayerTeamKiller = objNull;
 	if(_killer isKindOf "CAManBase") then {
-		pvar_PlayerTeamKiller = _killer;
+		PlayerTeamKiller = _killer;
 	} else {
 		_veh = (_killer);
 		_trts = configFile >> "CfgVehicles" >> typeof _veh >> "turrets";
@@ -61,12 +61,12 @@ if((_player != _killer) && (vehicle _player != vehicle _killer) && (playerSide =
 		} forEach _paths;
 
 		if(count _suspects == 1) then {
-			pvar_PlayerTeamKiller = _suspects select 0;
+			PlayerTeamKiller = _suspects select 0;
 		};
 	};
 };
 
-if ((_player != _killer) && (isNull pvar_PlayerTeamKiller)) then 
+if ((_player != _killer) && (isNull PlayerTeamKiller)) then 
 {
 	_corpse setVariable["canfood",player getVariable ["canfood",0],true];
 	_corpse setVariable["water",player getVariable ["water",0],true];
@@ -87,8 +87,8 @@ else
 	_corpse setVariable["fuelEmpty", 0, true];
 };
 
-if(!isNull(pvar_PlayerTeamKiller)) then {
-	pvar_teamkillMessage = pvar_PlayerTeamKiller;
+if(!isNull(PlayerTeamKiller)) then {
+	pvar_teamkillMessage = PlayerTeamKiller;
 	publicVariable "pvar_teamkillMessage";
 };
 // **************************************

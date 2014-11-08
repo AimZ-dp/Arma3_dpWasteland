@@ -33,15 +33,15 @@ pvar_allowPlayerIcons = "ON";
 pvar_allowGroups = "ON";
 pvar_clockCycle = "DAY ONLY";
 
-pvar_refuelVehicle = ["",0];
-pvar_defuelVehicle = ["",0];
-
 pvar_gameZones = [1,2,3,4];
-pvar_restrictedZones = [1,3];
+pvar_restrictedZones = [1,3,4];
 storesPerActiveZone = 2;
-pvar_gunStoreLocations = [[17479.3,16801.2],[21294.9,15720.9],[],[]]; // Empty array will be randomised 
+pvar_gunStoreLocations = [[],[],[],[]]; // Empty array will be randomised 
 pvar_generalStoreLocations = [[],[],[],[]];
 pvar_constructionStoreLocations = [[],[],[],[]];
+
+pvar_respawnHelicopter = objNull;
+pvar_baseFlags = [];
 
 //Sea
 Boat_Armed_01_base_F = [
@@ -75,20 +75,29 @@ SDV_01_base_F = [
 LightHelicopters = [
     "B_Heli_Light_01_F",        	// *MH-9 - Hummingbird
     "O_Heli_Light_02_unarmed_F", 	// *PO-30 - Ocra (Unarmed)
-	"I_Heli_light_03_unarmed_F"		// *WY-55 - Hellcat (Unarmed)
+	"I_Heli_light_03_unarmed_F",	// *WY-55 - Hellcat (Unarmed)
+	"C_Heli_Light_01_civil_F"
+];
+ArmedLightHelicopters = [
+    "B_Heli_Light_01_armed_F",  	// *AH-9 - Pawnee
+	"I_Heli_light_03_F",			// *WY-55 - Hellcat
+    "O_Heli_Light_02_F",         	// *PO-30 - Ocra
+	"O_Heli_Light_02_v2_F"			// *PO-30 - Ocra (B&W)
 ];
 TransportHelicopters = [
+    "I_Heli_Transport_02_F",	  	// *CH-49 - Mohawk
+	"B_Heli_Transport_03_unarmed_F",  
+	"O_Heli_Transport_04_F"
+];
+ArmedTransportHelicopters = [
     "B_Heli_Transport_01_F",      	// *UH-80 - Ghosthawk
     "B_Heli_Transport_01_camo_F", 	// *UH-80 - Ghosthawk
-    "I_Heli_Transport_02_F"	  		// *CH-49 - Mohawk
+	"B_Heli_Transport_03_F"
 ];
 AttackHelicopters = [
     "B_Heli_Attack_01_F",       	// *AH-99 - Blackfoot
     "O_Heli_Attack_02_F",      		// *Mi-48 - Kajman
-    "O_Heli_Attack_02_black_F",		// *Mi-48 - Kajman
-    "B_Heli_Light_01_armed_F",  	// *AH-9 - Pawnee
-    "O_Heli_Light_02_F",         	// *PO-30 - Ocra
-	"I_Heli_light_03_F"				// *WY-55 - Hellcat
+    "O_Heli_Attack_02_black_F"		// *Mi-48 - Kajman
 ];
 ArmedFighterPlanes = [
     "B_Plane_CAS_01_F",             // *A-164 Wipeout CAS
@@ -974,6 +983,7 @@ pvar_uniformArray = [
 	["H_HelmetB_snakeskin","ECH Snakeskin", 150,"hat"],
 	["H_HelmetB_grass","ECH Grass", 150,"hat"],
 	["H_Helmet_Kerry","ECH Kerry", 150,"hat"],
+	
 	["H_HelmetB","ECH", 150,"hat"],
 	["H_HelmetB_camo","ECH (Camo)", 150,"hat"],
 	["H_HelmetB_paint","ECH (Spraypaint)", 150,"hat"],
@@ -997,22 +1007,25 @@ pvar_uniformArray = [
 	["H_HelmetCrew_O","Crew Helmet [CSAT]", 100,"hat"],
 	["H_CrewHelmetHeli_O","Heli Crew Helmet [CSAT]", 100,"hat"],
 	["H_HelmetIA","MICH", 100,"hat"],
-	["H_HelmetIA_net","MICH (Camo)", 100,"hat"],
-	["H_HelmetIA_camo","MICH2 (Camo)", 100,"hat"],
+	//["H_HelmetIA_net","MICH (Camo)", 100,"hat"],
+	//["H_HelmetIA_camo","MICH2 (Camo)", 100,"hat"],
 	["H_PilotHelmetHeli_I","Heli Pilot Helmet [AAF]", 100,"hat"],
 	["H_PilotHelmetFighter_I","Pilot Helmet [AAF]", 100,"hat"],
 	["H_HelmetCrew_I","Crew Helmet [AAF]", 100,"hat"],
 	["H_CrewHelmetHeli_I","Heli Crew Helmet [AAF]", 100,"hat"],
+	
 	["H_Booniehat_khk","Boonie hat (Hex)", 50,"hat"],
 	["H_Booniehat_indp","Boonie hat (Khaki)", 50,"hat"],
 	["H_Booniehat_mcamo","Boonie hat (MTP)", 50,"hat"],
-	["H_Booniehat_grn","Boonie hat (Green)", 50,"hat"],
+	//["H_Booniehat_grn","Boonie hat (Green)", 50,"hat"],
 	["H_Booniehat_tan","Boonie hat (Tan)", 50,"hat"],
-	["H_Booniehat_dirty","Boonie hat (Dirty)", 50,"hat"],
+	//["H_Booniehat_dirty","Boonie hat (Dirty)", 50,"hat"],
 	["H_Booniehat_dgtl","Boonie hat (Digi)", 50,"hat"],
+	["H_Booniehat_oli","Boonie hat (Olive)", 50,"hat"],
+	
 	["H_Cap_blu","Cap (Blue)", 50,"hat"],
 	["H_Cap_red","Cap (Red)", 50,"hat"],
-	["H_Cap_oli","Cap (Green)", 50,"hat"],
+	["H_Cap_oli","Cap (Olive)", 50,"hat"],
 	["H_Cap_tan","Cap (Tan)", 50,"hat"],
 	["H_Cap_blk","Cap (Black)", 50,"hat"],
 	["H_Cap_blk_CMMG","Cap (CMMG)", 50,"hat"],
@@ -1020,9 +1033,11 @@ pvar_uniformArray = [
 	["H_Cap_tan_specops_US","Cap (SF)", 50,"hat"],
 	["H_Cap_khaki_specops_UK","Cap (SAS)", 50,"hat"],
 	["H_Cap_grn_BI","Cap (BI)", 50,"hat"],
+	["H_Cap_grn","Cap (Green)", 50,"hat"],
 	["H_Cap_blk_Raven","Cap (Raven Security)", 50,"hat"],
 	["H_Cap_blk_ION","Cap (ION)", 50,"hat"],
 	["H_Cap_headphones","Rangemaster Cap", 50,"hat"],
+	
 	["H_MilCap_ocamo","Military Cap (Hex)", 50,"hat"],
 	["H_MilCap_mcamo","Military Cap (MTP)", 50,"hat"],
 	["H_MilCap_oucamo","Military Cap (Urban)", 50,"hat"],
@@ -1030,6 +1045,7 @@ pvar_uniformArray = [
 	["H_MilCap_gry","Military Cap (Gray)", 50,"hat"],
 	["H_MilCap_blue","Military Cap (Blue)", 50,"hat"],
 	["H_MilCap_dgtl","Military Cap [AAF]", 50,"hat"],
+	
 	["H_Bandanna_surfer","Bandanna (Surfer)", 50,"hat"],
 	["H_Bandanna_khk","Bandanna (Khaki)", 50,"hat"],
 	["H_Bandanna_cbr","Bandanna (Coyote)", 50,"hat"],
@@ -1037,26 +1053,43 @@ pvar_uniformArray = [
 	["H_Bandanna_gry","Bandanna (Gray)", 50,"hat"],
 	["H_Bandanna_camo","Bandanna (Camo)", 50,"hat"],
 	["H_Bandanna_mcamo","Bandanna (MTP)", 50,"hat"],
+	["H_Bandanna_surfer_blk","Bandanna (Black)", 50,"hat"],
+	["H_Bandanna_surfer_grn","Bandanna (Green)", 50,"hat"],
+	["H_Bandanna_blu","Bandanna (Blue)", 50,"hat"],
+	["H_Bandanna_sand","Bandanna (Sand)", 50,"hat"],
+	
 	["H_Hat_blue","Hat (Blue)", 50,"hat"],
 	["H_Hat_brown","Hat (Brown)", 50,"hat"],
 	["H_Hat_camo","Hat (Camo)", 50,"hat"],
 	["H_Hat_grey","Hat (Gray)", 50,"hat"],
 	["H_Hat_checker","Hat (Checker)", 50,"hat"],
 	["H_Hat_tan","Hat (Tan)", 50,"hat"],
+
+	["H_BandMask_blk","Band mask (Black)", 50,"hat"],
+	["H_BandMask_khk","Band mask (Khaki)", 50,"hat"],
+	["H_BandMask_reaper","Band mask (Reaper)", 50,"hat"],
+	["H_BandMask_demon","Band mask (Demon)", 50,"hat"],
+		
 	["H_Shemag_khk","Shemag mask (Khaki)", 50,"hat"],
 	["H_Shemag_olive","Shemag (Olive)", 50,"hat"],
 	["H_ShemagOpen_khk","Shemag (Khaki)", 50,"hat"],
+	["H_TurbanO_blk","Turban (Black)", 50,"hat"],
+	
+	["H_Beret_Colonel","Beret", 50,"hat"],
 	["H_Beret_blk","Beret (Black)", 50,"hat"],
-	["H_Beret_blk_POLICE","Beret (Police)", 50,"hat"],
-	["H_Beret_red","Beret (Red)", 50,"hat"],
-	["H_Beret_grn","Beret (Green)", 50,"hat"],
-	["H_Beret_grn_SF","Beret (SF)", 50,"hat"],
-	["H_Beret_brn_SF","Beret (SAS)", 50,"hat"],
-	["H_Beret_ocamo","Beret [CSAT]", 50,"hat"],
+	//["H_Beret_blk_POLICE","Beret (Police)", 50,"hat"],
+	//["H_Beret_red","Beret (Red)", 50,"hat"],
+	//["H_Beret_grn","Beret (Green)", 50,"hat"],
+	//["H_Beret_grn_SF","Beret (SF)", 50,"hat"],
+	//["H_Beret_brn_SF","Beret (SAS)", 50,"hat"],
+	//["H_Beret_ocamo","Beret [CSAT]", 50,"hat"],
+	
 	["H_Watchcap_blk","Beanie", 50,"hat"],
 	["H_Watchcap_khk","Beanie (Khaki)", 50,"hat"],
 	["H_Watchcap_camo","Beanie (Camo)", 50,"hat"],
 	["H_Watchcap_sgg","Beanie (Sage)", 50,"hat"],
+	["H_Watchcap_cbr","Beanie (Coyote)", 50,"hat"],
+	
 	["H_StrawHat","Straw Hat", 50,"hat"],
 	["H_StrawHat_dark","Straw hat (Dark)", 50,"hat"],
 
@@ -1145,6 +1178,18 @@ pvar_uniformArray = [
 
 //Object List - Random Spawns.
 pvar_baseObjectList = [
+	["Base Flag","FlagPole_F",50,""],
+	
+	["Heli Pod (Covered)","Land_Pod_Heli_Transport_04_covered_F",250,""],
+	["Heli Pod (Repair)","Land_Pod_Heli_Transport_04_repair_F",250,""],
+	["Heli Pod (Medevac)","Land_Pod_Heli_Transport_04_medevac_F",250,""],
+	["Heli Pod (Fuel)","Land_Pod_Heli_Transport_04_fuel_F",250,""],
+	["Heli Pod (Box)","Land_Pod_Heli_Transport_04_box_F",250,""],
+	["Heli Pod (Bench)","Land_Pod_Heli_Transport_04_bench_F",250,""],
+	["Heli Pod (Ammo)","Land_Pod_Heli_Transport_04_ammo_F",250,""],
+	
+	["Helipad","Land_HelipadCivil_F",200,""],
+		
 	["Storage - Supply Crate","I_supplyCrate_F",50,"client\ui\pictures\storagecrate.paa"],
 
 	["Concrete Ramp","Land_RampConcrete_F",100,"client\ui\pictures\concreteramp.paa"],
@@ -1229,9 +1274,6 @@ publicVariable "pvar_allowPlayerIcons";
 publicVariable "pvar_allowGroups";
 publicVariable "pvar_clockCycle";
 
-publicVariable "pvar_refuelVehicle";
-publicVariable "pvar_defuelVehicle";
-
 publicVariable "pvar_gameZones";
 publicVariable "pvar_restrictedZones";
 publicVariable "pvar_gunStoreLocations";
@@ -1244,5 +1286,9 @@ publicVariable "pvar_accessoriesArray";
 publicVariable "pvar_uniformArray";
 publicVariable "pvar_baseObjectList";
 publicVariable "pvar_generalStore";
+
+publicVariable "pvar_respawnHelicopter";
+
+publicVariable "pvar_baseFlags";
 
 diag_log format["*** serverVar Finshed ***"];

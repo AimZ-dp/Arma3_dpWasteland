@@ -10,20 +10,20 @@ waituntil {!isnil "bis_fnc_init"};
 
 private ["_townName","_objPos","_mins","_para"];
 
-if !(isNull respawnHelicopter) then
+if !(isNull pvar_respawnHelicopter) then
 {
-	_objPos = position respawnHelicopter;
-	if (respawnHelicopter emptypositions "cargo" > 0) then 
+	_objPos = position pvar_respawnHelicopter;
+	if (pvar_respawnHelicopter emptypositions "cargo" > 0) then 
 	{
 		player setPos _objPos;
-		player setdir direction respawnHelicopter;
-		player moveincargo respawnHelicopter;
+		player setdir direction pvar_respawnHelicopter;
+		player moveincargo pvar_respawnHelicopter;
 	} 
 	else 
 	{
 		_para = createvehicle ["Steerable_Parachute_F",_objPos,[],0,"none"];
 		_para setpos _objPos;
-		_para setdir direction respawnHelicopter;
+		_para setdir direction pvar_respawnHelicopter;
 		player moveindriver _para;
 	};
 }

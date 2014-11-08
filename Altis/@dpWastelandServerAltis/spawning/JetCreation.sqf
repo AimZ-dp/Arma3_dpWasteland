@@ -45,7 +45,7 @@ if (_restrictContent) then
 	// Set Attributes
 	// set status of vehicle
 	_jet setFuel (0.75 + (random 0.25));
-	_jet setDamage (0.75 + (random 0.25));
+	_jet setDamage (0.25 + (random 0.50));
 
 	if (count(configFile >> "CfgVehicles" >> (typeOf _jet) >> "Turrets") > 0) then
 	{

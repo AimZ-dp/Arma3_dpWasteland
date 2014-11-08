@@ -20,9 +20,6 @@ diag_log format["****** clientInit Started ******"];
 "pvar_allowGroups" addPublicVariableEventHandler {pvars_allowGroups = pvar_allowGroups; if(pvar_allowGroups == "OFF") then {[player] joinSilent grpNull;}; hint format["Groups %1", pvar_allowGroups];};
 "pvar_clockCycle" addPublicVariableEventHandler {pvars_clockCycle = pvar_clockCycle; hint format["Day Night Cycle %1", pvar_clockCycle];};
 
-"pvar_refuelVehicle" addPublicVariableEventHandler {[_this select 1] call refuelVehicle};
-"pvar_defuelVehicle" addPublicVariableEventHandler {[_this select 1] call defuelVehicle};
-
 // Initialise
 [] call clientVars;
 

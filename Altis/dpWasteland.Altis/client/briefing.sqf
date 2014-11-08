@@ -41,6 +41,16 @@ player createDiaryRecord["changelog",
 
 player createDiaryRecord["changelog",
 ["=(dp)=","
+<br/>2.7.8<br/>
+	[Added] New DLC Helicopters<br/>
+	[Added] New DLC Helicopters Pods added to the construction store.<br/>
+	[Added] Helicopters Pad added to the construction store.<br/>
+	[Added] Random items added to the respawn helicopter inventory.<br/>
+	[Added] Random items added to the vehicles inventory.<br/>
+	[Added] Base Flag added to the construction store.<br/>
+	[Added] Recoded the refueling code.<br/>
+	[Added] Tweaked vehicle physics disabler.<br/>	
+	[Added] Changed the helicopter spawns.<br/>		
 <br/>2.7.7<br/>
 	[Fixed] Attempt at stopping Respawn Heli and going off course.<br/>
 	[Improvement] Changed the size of objects and capacity of vehicles.<br/>

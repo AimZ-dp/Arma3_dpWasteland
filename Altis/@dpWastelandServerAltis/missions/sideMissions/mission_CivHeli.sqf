@@ -70,7 +70,7 @@ _waypoint = _CivGrpM addWaypoint [_randomEndPos, 0];
 _waypoint setWaypointType "GETOUT";
 _waypoint setWaypointCompletionRadius 10;
 _waypoint setWaypointCombatMode "GREEN"; 
-_waypoint setWaypointBehaviour "SAFE"; 
+_waypoint setWaypointBehaviour "CARELESS"; 
 _waypoint setWaypointFormation "NO CHANGE";
 _waypoint setWaypointSpeed "FULL";
 

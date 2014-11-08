@@ -64,14 +64,28 @@ while {respawnDialogActive} do
     _missionUptimeText ctrlSetText format["Mission Uptime: %1", _timeText];
 
 	ctrlEnable [respawn_Base_Button, false];
-	if ((isNull respawnHelicopter)
-		|| respawnHelicopter emptypositions "cargo" < 1) then
+	{
+		_baseUsers = _x getVariable ["BASE_USERS",[]];
+		if (getPlayerUID player in _baseUsers) then
+		{
+			ctrlEnable [respawn_Base_Button, true];
+		};
+	} forEach pvar_baseFlags;
+		
+	if (isNil "pvar_respawnHelicopter") then 
 	{
 		ctrlEnable [respawn_Heli_Button, false];	
 	}
 	else
 	{
-		ctrlEnable [respawn_Heli_Button, true];
+		if (!(alive pvar_respawnHelicopter) || pvar_respawnHelicopter emptypositions "cargo" < 1) then
+		{
+			ctrlEnable [respawn_Heli_Button, false];	
+		}
+		else
+		{
+			ctrlEnable [respawn_Heli_Button, true];
+		};		
 	};
 	
     if(_side != "Independent") then

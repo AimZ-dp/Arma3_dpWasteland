@@ -47,15 +47,15 @@ _pilot moveInDriver _vehicle;
 _waypoint = _CivGrpS addWaypoint [_randomEndPos, 0];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointCompletionRadius 500;
-_waypoint setWaypointCombatMode "GREEN"; // Defensive behaviour
-_waypoint setWaypointBehaviour "SAFE"; // Force convoy to normally drive on the street.
+_waypoint setWaypointCombatMode "GREEN";
+_waypoint setWaypointBehaviour "SAFE";
 _waypoint setWaypointFormation "NO CHANGE";
 _waypoint setWaypointSpeed "FULL";
 _waypoint = _CivGrpS addWaypoint [[0,0,250], 0];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointCompletionRadius 300;
-_waypoint setWaypointCombatMode "GREEN"; // Defensive behaviour
-_waypoint setWaypointBehaviour "SAFE"; // Force convoy to normally drive on the street.
+_waypoint setWaypointCombatMode "GREEN";
+_waypoint setWaypointBehaviour "SAFE"; 
 _waypoint setWaypointFormation "NO CHANGE";
 _waypoint setWaypointSpeed "NORMAL";
 

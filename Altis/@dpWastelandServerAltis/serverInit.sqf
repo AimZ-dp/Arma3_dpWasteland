@@ -37,15 +37,13 @@ publicVariable "R3F_LOG_PUBVAR_point_attache";
 };
 
 "pvar_createBaseObject" addPublicVariableEventHandler {[_this select 1] call createBaseObject};
-"pvar_refuelVehicle" addPublicVariableEventHandler {[_this select 1] call refuelVehicle};
-"pvar_defuelVehicle" addPublicVariableEventHandler {[_this select 1] call refuelVehicle};
+"currentInvites" addPublicVariableEventHandler {publicVariable "currentInvites"};
 
 //Execute Server Side Scripts.
 [] call serverAdminList;
 [] call serverVars;
 [] call relations;
 [] spawn serverTimeSync;
-[] spawn broadcaster;
 [] call createLocations;
 [] call drawLocations;
 

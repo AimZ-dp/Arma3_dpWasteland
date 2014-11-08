@@ -31,6 +31,7 @@ client_respawnDialog = compileFinal preprocessFileLineNumbers "client\functions\
 spawnRandom = compileFinal preprocessFileLineNumbers "client\functions\playerSpawn\spawnRandom.sqf";
 spawnInTown = compileFinal preprocessFileLineNumbers "client\functions\playerSpawn\spawnInTown.sqf";
 spawnInHeli = compileFinal preprocessFileLineNumbers "client\functions\playerSpawn\spawnInHeli.sqf";
+spawnOnBaseFlag = compileFinal preprocessFileLineNumbers "client\functions\playerSpawn\spawnOnBaseFlag.sqf";
 
 // Player Menu Panel
 loadPlayerMenu = compileFinal preprocessFileLineNumbers "client\gui\playerMenu\loadPlayerMenu.sqf";
@@ -81,11 +82,9 @@ getDebugData = compileFinal preprocessFileLineNumbers "client\gui\hud\getDebugDa
 createTownMarkers = compileFinal preprocessFileLineNumbers "client\functions\createTownMarkers.sqf";
 updateStoreMarkers = compileFinal preprocessFileLineNumbers "client\functions\updateStoreMarkers.sqf";
 
-// Fuelling
-refuelVehicle = compileFinal preprocessFileLineNumbers "client\functions\Fuelling\refuelVehicle.sqf";
-defuelVehicle = compileFinal preprocessFileLineNumbers "client\functions\Fuelling\defuelVehicle.sqf";
-
 objectProtection = compileFinal preprocessFileLineNumbers "client\functions\objectProtection.sqf";
+
+
 
 playerCompiledScripts = true;
 
