@@ -8,11 +8,13 @@ if(!isDedicated) exitWith {};
 
 diag_log format["*** serverVar Started ***"];
 
-burningTimeLimit = 90;
-desertedTimeLimit = 900;
+burningTimeLimit = 90;			// 1.5 Mins
+desertedTimeLimit = 1800;		// 30 Mins
 ammoDesertedTimeLimit = 1800;
-maxRandomTimeLimit = 900;
-objectTimeOut = 15; 
+maxRandomTimeLimit = 600;
+objectTimeOut = 600; 			// Unwanted Objects - 10 Mins
+baseObjectTimeOut = 3600;		// Base Objects - 1 Hour
+baseRadius = 50;
 
 maxVehicles = 160;
 maxHelicopters = 10;
@@ -1178,7 +1180,7 @@ pvar_uniformArray = [
 
 //Object List - Random Spawns.
 pvar_baseObjectList = [
-	["Base Flag","FlagPole_F",50,""],
+	["Base Flag","FlagPole_F",500,""],
 	
 	["Heli Pod (Covered)","Land_Pod_Heli_Transport_04_covered_F",250,""],
 	["Heli Pod (Repair)","Land_Pod_Heli_Transport_04_repair_F",250,""],
@@ -1188,7 +1190,7 @@ pvar_baseObjectList = [
 	["Heli Pod (Bench)","Land_Pod_Heli_Transport_04_bench_F",250,""],
 	["Heli Pod (Ammo)","Land_Pod_Heli_Transport_04_ammo_F",250,""],
 	
-	["Helipad","Land_HelipadCivil_F",200,""],
+	//["Helipad","Land_HelipadCivil_F",200,""],
 		
 	["Storage - Supply Crate","I_supplyCrate_F",50,"client\ui\pictures\storagecrate.paa"],
 
